@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **score_max** | **String** |  | [optional] 
 **total_time** | **String** |  | [optional] 
 **time_tracked** | **String** |  | [optional] 
-**runtime_success_status** | **String** |  | [optional] [default to &quot;UNKNOWN&quot;]
+**runtime_success_status** | **String** |  | [optional] [default to &#39;UNKNOWN&#39;]
 **suspend_data** | **String** |  | [optional] 
 **learner_comments** | [**Array&lt;CommentSchema&gt;**](CommentSchema.md) |  | [optional] 
 **lms_comments** | [**Array&lt;CommentSchema&gt;**](CommentSchema.md) |  | [optional] 

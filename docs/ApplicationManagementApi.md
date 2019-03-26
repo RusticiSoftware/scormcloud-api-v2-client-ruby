@@ -1,6 +1,6 @@
 # RusticiSoftwareCloudV2::ApplicationManagementApi
 
-All URIs are relative to *https://dev.cloud.scorm.com/api/v2/*
+All URIs are relative to *https://cloud.scorm.com/api/v2/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -37,7 +37,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 
-application_name = "application_name_example" # String | 
+application_name = 'application_name_example' # String | 
 
 
 begin
@@ -91,7 +91,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 
-child_app_id = "child_app_id_example" # String | 
+child_app_id = 'child_app_id_example' # String | 
 
 credential_request = RusticiSoftwareCloudV2::CredentialRequestSchema.new # CredentialRequestSchema | 
 
@@ -201,7 +201,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 
-child_app_id = "child_app_id_example" # String | 
+child_app_id = 'child_app_id_example' # String | 
 
 
 begin
@@ -254,9 +254,9 @@ end
 
 api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 
-child_app_id = "child_app_id_example" # String | 
+child_app_id = 'child_app_id_example' # String | 
 
-credential_id = "credential_id_example" # String | 
+credential_id = 'credential_id_example' # String | 
 
 
 begin
@@ -311,7 +311,7 @@ end
 api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 
 opts = { 
-  learning_standard: "learning_standard_example", # String | If specified, the request will be scoped to the provided learning standard.
+  learning_standard: 'learning_standard_example', # String | If specified, the request will be scoped to the provided learning standard.
   single_sco: true # BOOLEAN | Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
   include_metadata: false # BOOLEAN | 
 }
@@ -417,7 +417,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 
-child_app_id = "child_app_id_example" # String | 
+child_app_id = 'child_app_id_example' # String | 
 
 
 begin
@@ -474,7 +474,7 @@ api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 configuration_settings = RusticiSoftwareCloudV2::SettingsPostSchema.new # SettingsPostSchema | 
 
 opts = { 
-  learning_standard: "learning_standard_example", # String | If specified, the request will be scoped to the provided learning standard.
+  learning_standard: 'learning_standard_example', # String | If specified, the request will be scoped to the provided learning standard.
   single_sco: true # BOOLEAN | Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
 }
 
@@ -530,9 +530,9 @@ end
 
 api_instance = RusticiSoftwareCloudV2::ApplicationManagementApi.new
 
-child_app_id = "child_app_id_example" # String | 
+child_app_id = 'child_app_id_example' # String | 
 
-credential_id = "credential_id_example" # String | 
+credential_id = 'credential_id_example' # String | 
 
 credential_update = RusticiSoftwareCloudV2::CredentialRequestSchema.new # CredentialRequestSchema | 
 

@@ -1,6 +1,6 @@
 # RusticiSoftwareCloudV2::AuthenticationApi
 
-All URIs are relative to *https://dev.cloud.scorm.com/api/v2/*
+All URIs are relative to *https://cloud.scorm.com/api/v2/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,7 +25,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::AuthenticationApi.new
 
-scope = "scope_example" # String | 
+scope = 'scope_example' # String | 
 
 opts = { 
   expiration: 300 # Integer | 

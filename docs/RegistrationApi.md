@@ -1,6 +1,6 @@
 # RusticiSoftwareCloudV2::RegistrationApi
 
-All URIs are relative to *https://dev.cloud.scorm.com/api/v2/*
+All URIs are relative to *https://cloud.scorm.com/api/v2/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**delete_registration_configuration_setting**](RegistrationApi.md#delete_registration_configuration_setting) | **DELETE** /registrations/{registrationId}/configuration/{settingId} | Clears the &#x60;settingId&#x60; value for this registration
 [**delete_registration_instance_configuration_setting**](RegistrationApi.md#delete_registration_instance_configuration_setting) | **DELETE** /registrations/{registrationId}/instances/{instanceId}/configuration/{settingId} | Clears the &#x60;settingId&#x60; value for this registration instance
 [**delete_registration_progress**](RegistrationApi.md#delete_registration_progress) | **DELETE** /registrations/{registrationId}/progress | Delete registration progress (clear registration)
+[**delete_registration_tags**](RegistrationApi.md#delete_registration_tags) | **DELETE** /registrations/{registrationId}/tags | Delete tags for this registration
 [**delete_registrations_global_data**](RegistrationApi.md#delete_registrations_global_data) | **DELETE** /registrations/{registrationId}/globalData | Delete global data associated with &#x60;registrationId&#x60;
 [**get_registration_configuration**](RegistrationApi.md#get_registration_configuration) | **GET** /registrations/{registrationId}/configuration | Returns all configuration settings for this registration
 [**get_registration_instance_configuration**](RegistrationApi.md#get_registration_instance_configuration) | **GET** /registrations/{registrationId}/instances/{instanceId}/configuration | Returns all configuration settings for this registration instance
@@ -21,14 +22,17 @@ Method | HTTP request | Description
 [**get_registration_launch_link**](RegistrationApi.md#get_registration_launch_link) | **POST** /registrations/{registrationId}/launchLink | Returns the link to use to launch this registration
 [**get_registration_progress**](RegistrationApi.md#get_registration_progress) | **GET** /registrations/{registrationId} | Get registration progress for &#x60;registrationId&#x60;
 [**get_registration_statements**](RegistrationApi.md#get_registration_statements) | **GET** /registrations/{registrationId}/xAPIStatements | Get xAPI statements for &#x60;registrationId&#x60;
+[**get_registration_tags**](RegistrationApi.md#get_registration_tags) | **GET** /registrations/{registrationId}/tags | Get the tags for this registration
 [**get_registrations**](RegistrationApi.md#get_registrations) | **GET** /registrations | Gets a list of registrations including a summary of the status of each registration.
+[**put_registration_tags**](RegistrationApi.md#put_registration_tags) | **PUT** /registrations/{registrationId}/tags | Set the tags for this registration
+[**put_registration_tags_batch**](RegistrationApi.md#put_registration_tags_batch) | **PUT** /registrations/tags | Sets all of the provided tags on all of the provided registrations
 [**registration_exists**](RegistrationApi.md#registration_exists) | **HEAD** /registrations/{registrationId} | Does this registration exist?
 [**set_registration_configuration**](RegistrationApi.md#set_registration_configuration) | **POST** /registrations/{registrationId}/configuration | Set configuration settings for this registration.
 [**set_registration_instance_configuration**](RegistrationApi.md#set_registration_instance_configuration) | **POST** /registrations/{registrationId}/instances/{instanceId}/configuration | Set configuration settings for this registration instance.
 
 
 # **create_new_registration_instance**
-> create_new_registration_instance(registration_id)
+> create_new_registration_instance(registration_id, )
 
 Create a new instance for this registration specified by the registration ID
 
@@ -48,12 +52,12 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 
 begin
   #Create a new instance for this registration specified by the registration ID
-  api_instance.create_new_registration_instance(registration_id)
+  api_instance.create_new_registration_instance(registration_id, )
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->create_new_registration_instance: #{e}"
 end
@@ -138,7 +142,7 @@ nil (empty response body)
 
 
 # **delete_registration**
-> delete_registration(registration_id)
+> delete_registration(registration_id, )
 
 Delete `registrationId`
 
@@ -158,12 +162,12 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 
 begin
   #Delete `registrationId`
-  api_instance.delete_registration(registration_id)
+  api_instance.delete_registration(registration_id, )
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->delete_registration: #{e}"
 end
@@ -191,7 +195,7 @@ nil (empty response body)
 
 
 # **delete_registration_configuration_setting**
-> delete_registration_configuration_setting(registration_idsetting_id)
+> delete_registration_configuration_setting(registration_id, setting_id)
 
 Clears the `settingId` value for this registration
 
@@ -211,14 +215,14 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
-setting_id = "setting_id_example" # String | 
+setting_id = 'setting_id_example' # String | 
 
 
 begin
   #Clears the `settingId` value for this registration
-  api_instance.delete_registration_configuration_setting(registration_idsetting_id)
+  api_instance.delete_registration_configuration_setting(registration_id, setting_id)
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->delete_registration_configuration_setting: #{e}"
 end
@@ -247,7 +251,7 @@ nil (empty response body)
 
 
 # **delete_registration_instance_configuration_setting**
-> delete_registration_instance_configuration_setting(registration_idinstance_idsetting_id)
+> delete_registration_instance_configuration_setting(registration_id, instance_id, setting_id)
 
 Clears the `settingId` value for this registration instance
 
@@ -267,16 +271,16 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 instance_id = 56 # Integer | The instance of this registration
 
-setting_id = "setting_id_example" # String | 
+setting_id = 'setting_id_example' # String | 
 
 
 begin
   #Clears the `settingId` value for this registration instance
-  api_instance.delete_registration_instance_configuration_setting(registration_idinstance_idsetting_id)
+  api_instance.delete_registration_instance_configuration_setting(registration_id, instance_id, setting_id)
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->delete_registration_instance_configuration_setting: #{e}"
 end
@@ -306,7 +310,7 @@ nil (empty response body)
 
 
 # **delete_registration_progress**
-> delete_registration_progress(registration_id)
+> delete_registration_progress(registration_id, )
 
 Delete registration progress (clear registration)
 
@@ -326,12 +330,12 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 
 begin
   #Delete registration progress (clear registration)
-  api_instance.delete_registration_progress(registration_id)
+  api_instance.delete_registration_progress(registration_id, )
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->delete_registration_progress: #{e}"
 end
@@ -358,8 +362,64 @@ nil (empty response body)
 
 
 
+# **delete_registration_tags**
+> delete_registration_tags(registration_id, tags)
+
+Delete tags for this registration
+
+### Example
+```ruby
+# load the gem
+require 'rustici_software_cloud_v2'
+# setup authorization
+RusticiSoftwareCloudV2.configure do |config|
+  # Configure HTTP basic authorization: APP_NORMAL
+  config.username = 'YOUR USERNAME'
+  config.password = 'YOUR PASSWORD'
+
+  # Configure OAuth2 access token for authorization: OAUTH
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
+
+registration_id = 'registration_id_example' # String | id for this registration
+
+tags = RusticiSoftwareCloudV2::TagListSchema.new # TagListSchema | 
+
+
+begin
+  #Delete tags for this registration
+  api_instance.delete_registration_tags(registration_id, tags)
+rescue RusticiSoftwareCloudV2::ApiError => e
+  puts "Exception when calling RegistrationApi->delete_registration_tags: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **registration_id** | **String**| id for this registration | 
+ **tags** | [**TagListSchema**](TagListSchema.md)|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[APP_NORMAL](../README.md#APP_NORMAL), [OAUTH](../README.md#OAUTH)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **delete_registrations_global_data**
-> delete_registrations_global_data(registration_id)
+> delete_registrations_global_data(registration_id, )
 
 Delete global data associated with `registrationId`
 
@@ -379,12 +439,12 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 
 begin
   #Delete global data associated with `registrationId`
-  api_instance.delete_registrations_global_data(registration_id)
+  api_instance.delete_registrations_global_data(registration_id, )
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->delete_registrations_global_data: #{e}"
 end
@@ -412,7 +472,7 @@ nil (empty response body)
 
 
 # **get_registration_configuration**
-> SettingListSchema get_registration_configuration(registration_id, opts)
+> SettingListSchema get_registration_configuration(registration_id, , opts)
 
 Returns all configuration settings for this registration
 
@@ -432,7 +492,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 opts = { 
   include_metadata: false # BOOLEAN | 
@@ -440,7 +500,7 @@ opts = {
 
 begin
   #Returns all configuration settings for this registration
-  result = api_instance.get_registration_configuration(registration_id, opts)
+  result = api_instance.get_registration_configuration(registration_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_configuration: #{e}"
@@ -470,7 +530,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_instance_configuration**
-> SettingListSchema get_registration_instance_configuration(registration_idinstance_id, opts)
+> SettingListSchema get_registration_instance_configuration(registration_id, instance_id, , opts)
 
 Returns all configuration settings for this registration instance
 
@@ -490,7 +550,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 instance_id = 56 # Integer | The instance of this registration
 
@@ -500,7 +560,7 @@ opts = {
 
 begin
   #Returns all configuration settings for this registration instance
-  result = api_instance.get_registration_instance_configuration(registration_idinstance_id, opts)
+  result = api_instance.get_registration_instance_configuration(registration_id, instance_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_instance_configuration: #{e}"
@@ -531,7 +591,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_instance_launch_history**
-> LaunchHistoryListSchema get_registration_instance_launch_history(registration_idinstance_id, opts)
+> LaunchHistoryListSchema get_registration_instance_launch_history(registration_id, instance_id, , opts)
 
 Returns history of this registration's launches
 
@@ -551,7 +611,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 instance_id = 56 # Integer | The instance of this registration
 
@@ -561,7 +621,7 @@ opts = {
 
 begin
   #Returns history of this registration's launches
-  result = api_instance.get_registration_instance_launch_history(registration_idinstance_id, opts)
+  result = api_instance.get_registration_instance_launch_history(registration_id, instance_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_instance_launch_history: #{e}"
@@ -592,7 +652,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_instance_progress**
-> RegistrationSchema get_registration_instance_progress(registration_idinstance_id, opts)
+> RegistrationSchema get_registration_instance_progress(registration_id, instance_id, , opts)
 
 Get registration progress for instance `instanceId` of `registrationId`
 
@@ -612,7 +672,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 instance_id = 56 # Integer | The instance of this registration
 
@@ -624,7 +684,7 @@ opts = {
 
 begin
   #Get registration progress for instance `instanceId` of `registrationId`
-  result = api_instance.get_registration_instance_progress(registration_idinstance_id, opts)
+  result = api_instance.get_registration_instance_progress(registration_id, instance_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_instance_progress: #{e}"
@@ -657,7 +717,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_instance_statements**
-> XapiStatementResult get_registration_instance_statements(registration_idinstance_id, opts)
+> XapiStatementResult get_registration_instance_statements(registration_id, instance_id, , opts)
 
 Get xAPI statements for instance `instanceId` of `registrationId`
 
@@ -677,19 +737,19 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 instance_id = 56 # Integer | The instance of this registration
 
 opts = { 
-  since: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  _until: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  more: "more_example" # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+  since: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  _until: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  more: 'more_example', # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
 }
 
 begin
   #Get xAPI statements for instance `instanceId` of `registrationId`
-  result = api_instance.get_registration_instance_statements(registration_idinstance_id, opts)
+  result = api_instance.get_registration_instance_statements(registration_id, instance_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_instance_statements: #{e}"
@@ -722,7 +782,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_instances**
-> RegistrationListSchema get_registration_instances(registration_id, opts)
+> RegistrationListSchema get_registration_instances(registration_id, , opts)
 
 Get all the instances of this the registration specified by the registration ID
 
@@ -742,12 +802,12 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 opts = { 
-  _until: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  since: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  more: "more_example" # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+  _until: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  since: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  more: 'more_example', # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
   include_child_results: false, # BOOLEAN | Include information about each learning object, not just the top level in the results
   include_interactions_and_objectives: false, # BOOLEAN | Include interactions and objectives in the results
   include_runtime: false # BOOLEAN | Include runtime details in the results
@@ -755,7 +815,7 @@ opts = {
 
 begin
   #Get all the instances of this the registration specified by the registration ID
-  result = api_instance.get_registration_instances(registration_id, opts)
+  result = api_instance.get_registration_instances(registration_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_instances: #{e}"
@@ -790,7 +850,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_launch_history**
-> LaunchHistoryListSchema get_registration_launch_history(registration_id, opts)
+> LaunchHistoryListSchema get_registration_launch_history(registration_id, , opts)
 
 Returns history of this registration's launches
 
@@ -810,7 +870,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 opts = { 
   include_history_log: false # BOOLEAN | Whether to include the history log in the launch history
@@ -818,7 +878,7 @@ opts = {
 
 begin
   #Returns history of this registration's launches
-  result = api_instance.get_registration_launch_history(registration_id, opts)
+  result = api_instance.get_registration_launch_history(registration_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_launch_history: #{e}"
@@ -848,7 +908,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_launch_link**
-> LaunchLinkSchema get_registration_launch_link(registration_idlaunch_link_request)
+> LaunchLinkSchema get_registration_launch_link(registration_id, launch_link_request)
 
 Returns the link to use to launch this registration
 
@@ -868,14 +928,14 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 launch_link_request = RusticiSoftwareCloudV2::LaunchLinkRequestSchema.new # LaunchLinkRequestSchema | 
 
 
 begin
   #Returns the link to use to launch this registration
-  result = api_instance.get_registration_launch_link(registration_idlaunch_link_request)
+  result = api_instance.get_registration_launch_link(registration_id, launch_link_request)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_launch_link: #{e}"
@@ -905,7 +965,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_progress**
-> RegistrationSchema get_registration_progress(registration_id, opts)
+> RegistrationSchema get_registration_progress(registration_id, , opts)
 
 Get registration progress for `registrationId`
 
@@ -925,7 +985,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 opts = { 
   include_child_results: false, # BOOLEAN | Include information about each learning object, not just the top level in the results
@@ -935,7 +995,7 @@ opts = {
 
 begin
   #Get registration progress for `registrationId`
-  result = api_instance.get_registration_progress(registration_id, opts)
+  result = api_instance.get_registration_progress(registration_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_progress: #{e}"
@@ -967,7 +1027,7 @@ Name | Type | Description  | Notes
 
 
 # **get_registration_statements**
-> XapiStatementResult get_registration_statements(registration_id, opts)
+> XapiStatementResult get_registration_statements(registration_id, , opts)
 
 Get xAPI statements for `registrationId`
 
@@ -987,17 +1047,17 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 opts = { 
-  since: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  _until: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  more: "more_example" # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+  since: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  _until: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  more: 'more_example', # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
 }
 
 begin
   #Get xAPI statements for `registrationId`
-  result = api_instance.get_registration_statements(registration_id, opts)
+  result = api_instance.get_registration_statements(registration_id, , opts)
   p result
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->get_registration_statements: #{e}"
@@ -1016,6 +1076,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**XapiStatementResult**](XapiStatementResult.md)
+
+### Authorization
+
+[APP_NORMAL](../README.md#APP_NORMAL), [OAUTH](../README.md#OAUTH)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_registration_tags**
+> TagListSchema get_registration_tags(registration_id, )
+
+Get the tags for this registration
+
+### Example
+```ruby
+# load the gem
+require 'rustici_software_cloud_v2'
+# setup authorization
+RusticiSoftwareCloudV2.configure do |config|
+  # Configure HTTP basic authorization: APP_NORMAL
+  config.username = 'YOUR USERNAME'
+  config.password = 'YOUR PASSWORD'
+
+  # Configure OAuth2 access token for authorization: OAUTH
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
+
+registration_id = 'registration_id_example' # String | id for this registration
+
+
+begin
+  #Get the tags for this registration
+  result = api_instance.get_registration_tags(registration_id, )
+  p result
+rescue RusticiSoftwareCloudV2::ApiError => e
+  puts "Exception when calling RegistrationApi->get_registration_tags: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **registration_id** | **String**| id for this registration | 
+
+### Return type
+
+[**TagListSchema**](TagListSchema.md)
 
 ### Authorization
 
@@ -1050,11 +1164,11 @@ end
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
 opts = { 
-  course_id: "course_id_example", # String | Only registrations for the specified course id will be included.
-  learner_id: "learner_id_example", # String | Only registrations for the specified learner id will be included.
-  since: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  _until: DateTime.parse("2013-10-20T19:20:30+01:00"), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-  more: "more_example" # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+  course_id: 'course_id_example', # String | Only registrations for the specified course id will be included.
+  learner_id: 'learner_id_example', # String | Only registrations for the specified learner id will be included.
+  since: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  _until: DateTime.parse('2013-10-20T19:20:30+01:00'), # DateTime | Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+  more: 'more_example', # String | Value for this parameter will be provided in the 'more' property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
   include_child_results: false, # BOOLEAN | Include information about each learning object, not just the top level in the results
   include_interactions_and_objectives: false, # BOOLEAN | Include interactions and objectives in the results
   include_runtime: false # BOOLEAN | Include runtime details in the results
@@ -1097,8 +1211,117 @@ Name | Type | Description  | Notes
 
 
 
+# **put_registration_tags**
+> put_registration_tags(registration_id, tags)
+
+Set the tags for this registration
+
+### Example
+```ruby
+# load the gem
+require 'rustici_software_cloud_v2'
+# setup authorization
+RusticiSoftwareCloudV2.configure do |config|
+  # Configure HTTP basic authorization: APP_NORMAL
+  config.username = 'YOUR USERNAME'
+  config.password = 'YOUR PASSWORD'
+
+  # Configure OAuth2 access token for authorization: OAUTH
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
+
+registration_id = 'registration_id_example' # String | id for this registration
+
+tags = RusticiSoftwareCloudV2::TagListSchema.new # TagListSchema | 
+
+
+begin
+  #Set the tags for this registration
+  api_instance.put_registration_tags(registration_id, tags)
+rescue RusticiSoftwareCloudV2::ApiError => e
+  puts "Exception when calling RegistrationApi->put_registration_tags: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **registration_id** | **String**| id for this registration | 
+ **tags** | [**TagListSchema**](TagListSchema.md)|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[APP_NORMAL](../README.md#APP_NORMAL), [OAUTH](../README.md#OAUTH)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **put_registration_tags_batch**
+> put_registration_tags_batch(batch)
+
+Sets all of the provided tags on all of the provided registrations
+
+### Example
+```ruby
+# load the gem
+require 'rustici_software_cloud_v2'
+# setup authorization
+RusticiSoftwareCloudV2.configure do |config|
+  # Configure HTTP basic authorization: APP_NORMAL
+  config.username = 'YOUR USERNAME'
+  config.password = 'YOUR PASSWORD'
+
+  # Configure OAuth2 access token for authorization: OAUTH
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
+
+batch = RusticiSoftwareCloudV2::RegistrationTagsBatchSchema.new # RegistrationTagsBatchSchema | 
+
+
+begin
+  #Sets all of the provided tags on all of the provided registrations
+  api_instance.put_registration_tags_batch(batch)
+rescue RusticiSoftwareCloudV2::ApiError => e
+  puts "Exception when calling RegistrationApi->put_registration_tags_batch: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch** | [**RegistrationTagsBatchSchema**](RegistrationTagsBatchSchema.md)|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[APP_NORMAL](../README.md#APP_NORMAL), [OAUTH](../README.md#OAUTH)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **registration_exists**
-> registration_exists(registration_id)
+> registration_exists(registration_id, )
 
 Does this registration exist?
 
@@ -1118,12 +1341,12 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 
 begin
   #Does this registration exist?
-  api_instance.registration_exists(registration_id)
+  api_instance.registration_exists(registration_id, )
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->registration_exists: #{e}"
 end
@@ -1151,7 +1374,7 @@ nil (empty response body)
 
 
 # **set_registration_configuration**
-> set_registration_configuration(registration_idconfiguration_settings)
+> set_registration_configuration(registration_id, configuration_settings)
 
 Set configuration settings for this registration.
 
@@ -1171,14 +1394,14 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 configuration_settings = RusticiSoftwareCloudV2::SettingsPostSchema.new # SettingsPostSchema | 
 
 
 begin
   #Set configuration settings for this registration.
-  api_instance.set_registration_configuration(registration_idconfiguration_settings)
+  api_instance.set_registration_configuration(registration_id, configuration_settings)
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->set_registration_configuration: #{e}"
 end
@@ -1207,7 +1430,7 @@ nil (empty response body)
 
 
 # **set_registration_instance_configuration**
-> set_registration_instance_configuration(registration_idinstance_idconfiguration_settings)
+> set_registration_instance_configuration(registration_id, instance_id, configuration_settings)
 
 Set configuration settings for this registration instance.
 
@@ -1227,7 +1450,7 @@ end
 
 api_instance = RusticiSoftwareCloudV2::RegistrationApi.new
 
-registration_id = "registration_id_example" # String | id for this registration
+registration_id = 'registration_id_example' # String | id for this registration
 
 instance_id = 56 # Integer | The instance of this registration
 
@@ -1236,7 +1459,7 @@ configuration_settings = RusticiSoftwareCloudV2::SettingsPostSchema.new # Settin
 
 begin
   #Set configuration settings for this registration instance.
-  api_instance.set_registration_instance_configuration(registration_idinstance_idconfiguration_settings)
+  api_instance.set_registration_instance_configuration(registration_id, instance_id, configuration_settings)
 rescue RusticiSoftwareCloudV2::ApiError => e
   puts "Exception when calling RegistrationApi->set_registration_instance_configuration: #{e}"
 end

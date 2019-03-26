@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **first_score_scaled** | **Float** |  | [optional] 
 **progress_measure** | **Float** |  | [optional] 
 **first_success_time_stamp** | **String** |  | [optional] 
-**objective_completion** | **String** |  | [optional] [default to &quot;UNKNOWN&quot;]
-**objective_success** | **String** |  | [optional] [default to &quot;UNKNOWN&quot;]
-**previous_objective_success** | **String** |  | [optional] [default to &quot;UNKNOWN&quot;]
+**objective_completion** | **String** |  | [optional] [default to &#39;UNKNOWN&#39;]
+**objective_success** | **String** |  | [optional] [default to &#39;UNKNOWN&#39;]
+**previous_objective_success** | **String** |  | [optional] [default to &#39;UNKNOWN&#39;]
 
 
