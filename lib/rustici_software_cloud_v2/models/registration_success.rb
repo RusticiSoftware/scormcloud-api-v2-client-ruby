@@ -19,7 +19,11 @@ module RusticiSoftwareCloudV2
     FAILED = "FAILED".freeze
 
     def build_from_hash(value)
-      value
+      self.class.constants.each do |sym|
+        valid_enum_str = self.class.const_get sym
+        return valid_enum_str if value == valid_enum_str
+      end
+      raise "Encountered unexpected value #{value.inspect} in #{self.class}"
     end
   end
 
