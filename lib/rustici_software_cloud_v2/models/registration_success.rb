@@ -17,6 +17,10 @@ module RusticiSoftwareCloudV2
     UNKNOWN = "UNKNOWN".freeze
     PASSED = "PASSED".freeze
     FAILED = "FAILED".freeze
+
+    def build_from_hash(value)
+      value
+    end
   end
 
 end

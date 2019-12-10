@@ -17,6 +17,10 @@ module RusticiSoftwareCloudV2
     UNKNOWN = "UNKNOWN".freeze
     COMPLETED = "COMPLETED".freeze
     INCOMPLETE = "INCOMPLETE".freeze
+
+    def build_from_hash(value)
+      value
+    end
   end
 
 end
