@@ -57,12 +57,17 @@ module RusticiSoftwareCloudV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @target.nil?
+        invalid_properties.push("invalid value for 'target', target cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @target.nil?
       return true
     end
 

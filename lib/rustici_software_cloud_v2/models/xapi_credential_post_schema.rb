@@ -93,6 +93,10 @@ module RusticiSoftwareCloudV2
         invalid_properties.push("invalid value for 'name', name cannot be nil.")
       end
 
+      if @secret.nil?
+        invalid_properties.push("invalid value for 'secret', secret cannot be nil.")
+      end
+
       if @is_enabled.nil?
         invalid_properties.push("invalid value for 'is_enabled', is_enabled cannot be nil.")
       end
@@ -112,6 +116,7 @@ module RusticiSoftwareCloudV2
     # @return true if the model is valid
     def valid?
       return false if @name.nil?
+      return false if @secret.nil?
       return false if @is_enabled.nil?
       return false if @auth.nil?
       return false if @permissions_level.nil?

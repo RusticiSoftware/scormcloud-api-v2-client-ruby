@@ -13,41 +13,25 @@ require 'date'
 
 module RusticiSoftwareCloudV2
 
-  class DestinationSchema
-    # The destination's name.
-    attr_accessor :name
+  class XapiStatementPipePutSchema
+    attr_accessor :source
 
-    # Optional array of tags.
-    attr_accessor :tags
-
-    # SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm. 
-    attr_accessor :email
-
-    # Any provided notes about this Destination
-    attr_accessor :notes
-
-    attr_accessor :launch_auth
+    attr_accessor :target
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'tags' => :'tags',
-        :'email' => :'email',
-        :'notes' => :'notes',
-        :'launch_auth' => :'launchAuth'
+        :'source' => :'source',
+        :'target' => :'target'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'tags' => :'Array<String>',
-        :'email' => :'String',
-        :'notes' => :'String',
-        :'launch_auth' => :'LaunchAuthSchema'
+        :'source' => :'XapiEndpointSchema',
+        :'target' => :'XapiEndpointSchema'
       }
     end
 
@@ -59,26 +43,12 @@ module RusticiSoftwareCloudV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'source')
+        self.source = attributes[:'source']
       end
 
-      if attributes.has_key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Array)
-          self.tags = value
-        end
-      end
-
-      if attributes.has_key?(:'email')
-        self.email = attributes[:'email']
-      end
-
-      if attributes.has_key?(:'notes')
-        self.notes = attributes[:'notes']
-      end
-
-      if attributes.has_key?(:'launchAuth')
-        self.launch_auth = attributes[:'launchAuth']
+      if attributes.has_key?(:'target')
+        self.target = attributes[:'target']
       end
 
     end
@@ -101,11 +71,8 @@ module RusticiSoftwareCloudV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          tags == o.tags &&
-          email == o.email &&
-          notes == o.notes &&
-          launch_auth == o.launch_auth
+          source == o.source &&
+          target == o.target
     end
 
     # @see the `==` method
@@ -117,7 +84,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, tags, email, notes, launch_auth].hash
+      [source, target].hash
     end
 
     # Builds the object from hash
