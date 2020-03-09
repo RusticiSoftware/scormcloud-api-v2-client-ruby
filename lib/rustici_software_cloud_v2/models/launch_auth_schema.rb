@@ -13,41 +13,46 @@ require 'date'
 
 module RusticiSoftwareCloudV2
 
-  class DestinationSchema
-    # The destination's name.
-    attr_accessor :name
+  class LaunchAuthSchema
+    attr_accessor :type
 
-    # Optional array of tags.
-    attr_accessor :tags
+    attr_accessor :options
 
-    # SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm. 
-    attr_accessor :email
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Any provided notes about this Destination
-    attr_accessor :notes
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    attr_accessor :launch_auth
-
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'tags' => :'tags',
-        :'email' => :'email',
-        :'notes' => :'notes',
-        :'launch_auth' => :'launchAuth'
+        :'type' => :'type',
+        :'options' => :'options'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'tags' => :'Array<String>',
-        :'email' => :'String',
-        :'notes' => :'String',
-        :'launch_auth' => :'LaunchAuthSchema'
+        :'type' => :'String',
+        :'options' => :'LaunchAuthOptionsSchema'
       }
     end
 
@@ -59,26 +64,14 @@ module RusticiSoftwareCloudV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = "cookies"
       end
 
-      if attributes.has_key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Array)
-          self.tags = value
-        end
-      end
-
-      if attributes.has_key?(:'email')
-        self.email = attributes[:'email']
-      end
-
-      if attributes.has_key?(:'notes')
-        self.notes = attributes[:'notes']
-      end
-
-      if attributes.has_key?(:'launchAuth')
-        self.launch_auth = attributes[:'launchAuth']
+      if attributes.has_key?(:'options')
+        self.options = attributes[:'options']
       end
 
     end
@@ -93,7 +86,19 @@ module RusticiSoftwareCloudV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      type_validator = EnumAttributeValidator.new('String', ["cookies", "vault"])
+      return false unless type_validator.valid?(@type)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["cookies", "vault"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -101,11 +106,8 @@ module RusticiSoftwareCloudV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          tags == o.tags &&
-          email == o.email &&
-          notes == o.notes &&
-          launch_auth == o.launch_auth
+          type == o.type &&
+          options == o.options
     end
 
     # @see the `==` method
@@ -117,7 +119,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, tags, email, notes, launch_auth].hash
+      [type, options].hash
     end
 
     # Builds the object from hash

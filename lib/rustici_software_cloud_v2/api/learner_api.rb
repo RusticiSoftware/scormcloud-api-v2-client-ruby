@@ -292,5 +292,61 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
+
+    # Update a learner's info on all of their registrations.
+    # A learner in SCORM Cloud is not an entity on its own.  In fact, learners only exist as information on individual registrations. This method will update the information on each of the registrations that the provided `learnerId` is attached to.  You may update any of the values available in the LearnerSchema which is posted.  Any values you do not wish to alter, omit from the post.  Depending on the field, providing something like an empty string may have unintended consequences.  Lastly, it's important to note that this method is asynchronous.  A success status will be returned, and that signifies that a background process has been spun up to alter the learner's info.  As such, you may find a short period of delay in seeing the changes shown on all registrations. 
+    # @param learner_id The id of the learner to be updated
+    # @param learner_info 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_learner_info(learner_id, learner_info, opts = {})
+      update_learner_info_with_http_info(learner_id, learner_info, opts)
+      return nil
+    end
+
+    # Update a learner&#39;s info on all of their registrations.
+    # A learner in SCORM Cloud is not an entity on its own.  In fact, learners only exist as information on individual registrations. This method will update the information on each of the registrations that the provided &#x60;learnerId&#x60; is attached to.  You may update any of the values available in the LearnerSchema which is posted.  Any values you do not wish to alter, omit from the post.  Depending on the field, providing something like an empty string may have unintended consequences.  Lastly, it&#39;s important to note that this method is asynchronous.  A success status will be returned, and that signifies that a background process has been spun up to alter the learner&#39;s info.  As such, you may find a short period of delay in seeing the changes shown on all registrations. 
+    # @param learner_id The id of the learner to be updated
+    # @param learner_info 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def update_learner_info_with_http_info(learner_id, learner_info, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: LearnerApi.update_learner_info ..."
+      end
+      # verify the required parameter 'learner_id' is set
+      fail ArgumentError, "Missing the required parameter 'learner_id' when calling LearnerApi.update_learner_info" if learner_id.nil?
+      # verify the required parameter 'learner_info' is set
+      fail ArgumentError, "Missing the required parameter 'learner_info' when calling LearnerApi.update_learner_info" if learner_info.nil?
+      # resource path
+      local_var_path = "/learner/{learnerId}/updateInfo".sub('{format}','json').sub('{' + 'learnerId' + '}', learner_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(learner_info)
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LearnerApi#update_learner_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

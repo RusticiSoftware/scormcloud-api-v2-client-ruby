@@ -13,41 +13,45 @@ require 'date'
 
 module RusticiSoftwareCloudV2
 
-  class DestinationSchema
-    # The destination's name.
+  class XapiCredentialPutSchema
+    attr_accessor :id
+
     attr_accessor :name
 
-    # Optional array of tags.
-    attr_accessor :tags
+    attr_accessor :info
 
-    # SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm. 
-    attr_accessor :email
+    attr_accessor :secret
 
-    # Any provided notes about this Destination
-    attr_accessor :notes
+    attr_accessor :is_enabled
 
-    attr_accessor :launch_auth
+    attr_accessor :auth
+
+    attr_accessor :permissions_level
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
         :'name' => :'name',
-        :'tags' => :'tags',
-        :'email' => :'email',
-        :'notes' => :'notes',
-        :'launch_auth' => :'launchAuth'
+        :'info' => :'info',
+        :'secret' => :'secret',
+        :'is_enabled' => :'isEnabled',
+        :'auth' => :'auth',
+        :'permissions_level' => :'permissionsLevel'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'id' => :'String',
         :'name' => :'String',
-        :'tags' => :'Array<String>',
-        :'email' => :'String',
-        :'notes' => :'String',
-        :'launch_auth' => :'LaunchAuthSchema'
+        :'info' => :'String',
+        :'secret' => :'String',
+        :'is_enabled' => :'BOOLEAN',
+        :'auth' => :'XapiCredentialAuthTypeSchema',
+        :'permissions_level' => :'XapiCredentialPermissionsLevelSchema'
       }
     end
 
@@ -59,26 +63,32 @@ module RusticiSoftwareCloudV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
+      end
+
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Array)
-          self.tags = value
-        end
+      if attributes.has_key?(:'info')
+        self.info = attributes[:'info']
       end
 
-      if attributes.has_key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.has_key?(:'secret')
+        self.secret = attributes[:'secret']
       end
 
-      if attributes.has_key?(:'notes')
-        self.notes = attributes[:'notes']
+      if attributes.has_key?(:'isEnabled')
+        self.is_enabled = attributes[:'isEnabled']
       end
 
-      if attributes.has_key?(:'launchAuth')
-        self.launch_auth = attributes[:'launchAuth']
+      if attributes.has_key?(:'auth')
+        self.auth = attributes[:'auth']
+      end
+
+      if attributes.has_key?(:'permissionsLevel')
+        self.permissions_level = attributes[:'permissionsLevel']
       end
 
     end
@@ -101,11 +111,13 @@ module RusticiSoftwareCloudV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
           name == o.name &&
-          tags == o.tags &&
-          email == o.email &&
-          notes == o.notes &&
-          launch_auth == o.launch_auth
+          info == o.info &&
+          secret == o.secret &&
+          is_enabled == o.is_enabled &&
+          auth == o.auth &&
+          permissions_level == o.permissions_level
     end
 
     # @see the `==` method
@@ -117,7 +129,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, tags, email, notes, launch_auth].hash
+      [id, name, info, secret, is_enabled, auth, permissions_level].hash
     end
 
     # Builds the object from hash

@@ -40,6 +40,8 @@ module RusticiSoftwareCloudV2
 
     attr_accessor :additionalvalues
 
+    attr_accessor :launch_auth
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -53,7 +55,8 @@ module RusticiSoftwareCloudV2
         :'learner_tags' => :'learnerTags',
         :'course_tags' => :'courseTags',
         :'registration_tags' => :'registrationTags',
-        :'additionalvalues' => :'additionalvalues'
+        :'additionalvalues' => :'additionalvalues',
+        :'launch_auth' => :'launchAuth'
       }
     end
 
@@ -69,7 +72,8 @@ module RusticiSoftwareCloudV2
         :'learner_tags' => :'Array<String>',
         :'course_tags' => :'Array<String>',
         :'registration_tags' => :'Array<String>',
-        :'additionalvalues' => :'Array<ItemValuePairSchema>'
+        :'additionalvalues' => :'Array<ItemValuePairSchema>',
+        :'launch_auth' => :'LaunchAuthSchema'
       }
     end
 
@@ -133,6 +137,10 @@ module RusticiSoftwareCloudV2
         end
       end
 
+      if attributes.has_key?(:'launchAuth')
+        self.launch_auth = attributes[:'launchAuth']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -167,7 +175,8 @@ module RusticiSoftwareCloudV2
           learner_tags == o.learner_tags &&
           course_tags == o.course_tags &&
           registration_tags == o.registration_tags &&
-          additionalvalues == o.additionalvalues
+          additionalvalues == o.additionalvalues &&
+          launch_auth == o.launch_auth
     end
 
     # @see the `==` method
@@ -179,7 +188,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [expiry, redirect_on_exit_url, tracking, start_sco, culture, css_url, learner_tags, course_tags, registration_tags, additionalvalues].hash
+      [expiry, redirect_on_exit_url, tracking, start_sco, culture, css_url, learner_tags, course_tags, registration_tags, additionalvalues, launch_auth].hash
     end
 
     # Builds the object from hash
