@@ -29,28 +29,6 @@ module RusticiSoftwareCloudV2
 
     attr_accessor :member
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -131,18 +109,15 @@ module RusticiSoftwareCloudV2
     # @return true if the model is valid
     def valid?
       return false if @object_type.nil?
-      object_type_validator = EnumAttributeValidator.new('String', ['Agent', 'Group'])
-      return false unless object_type_validator.valid?(@object_type)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['Agent', 'Group']
+    #
     # @param [Object] object_type Object to be assigned
     def object_type=(object_type)
-      validator = EnumAttributeValidator.new('String', ['Agent', 'Group'])
-      unless validator.valid?(object_type)
-        fail ArgumentError, 'invalid value for "object_type", must be one of #{validator.allowable_values}.'
-      end
       @object_type = object_type
     end
 
@@ -179,7 +154,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -275,5 +250,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

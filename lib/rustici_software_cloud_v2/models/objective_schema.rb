@@ -40,28 +40,6 @@ module RusticiSoftwareCloudV2
 
     attr_accessor :previous_objective_success
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -177,42 +155,31 @@ module RusticiSoftwareCloudV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      objective_completion_validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'COMPLETED', 'INCOMPLETE'])
-      return false unless objective_completion_validator.valid?(@objective_completion)
-      objective_success_validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'PASSED', 'FAILED'])
-      return false unless objective_success_validator.valid?(@objective_success)
-      previous_objective_success_validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'PASSED', 'FAILED'])
-      return false unless previous_objective_success_validator.valid?(@previous_objective_success)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['UNKNOWN', 'COMPLETED', 'INCOMPLETE']
+    #
     # @param [Object] objective_completion Object to be assigned
     def objective_completion=(objective_completion)
-      validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'COMPLETED', 'INCOMPLETE'])
-      unless validator.valid?(objective_completion)
-        fail ArgumentError, 'invalid value for "objective_completion", must be one of #{validator.allowable_values}.'
-      end
       @objective_completion = objective_completion
     end
-
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['UNKNOWN', 'PASSED', 'FAILED']
+    #
     # @param [Object] objective_success Object to be assigned
     def objective_success=(objective_success)
-      validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'PASSED', 'FAILED'])
-      unless validator.valid?(objective_success)
-        fail ArgumentError, 'invalid value for "objective_success", must be one of #{validator.allowable_values}.'
-      end
       @objective_success = objective_success
     end
-
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['UNKNOWN', 'PASSED', 'FAILED']
+    #
     # @param [Object] previous_objective_success Object to be assigned
     def previous_objective_success=(previous_objective_success)
-      validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'PASSED', 'FAILED'])
-      unless validator.valid?(previous_objective_success)
-        fail ArgumentError, 'invalid value for "previous_objective_success", must be one of #{validator.allowable_values}.'
-      end
       @previous_objective_success = previous_objective_success
     end
 
@@ -255,7 +222,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -351,5 +318,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

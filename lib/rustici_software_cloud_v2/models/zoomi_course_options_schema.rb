@@ -55,14 +55,25 @@ module RusticiSoftwareCloudV2
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @nti.nil?
+        invalid_properties.push('invalid value for "nti", nti cannot be nil.')
+      end
+
+      if @cta.nil?
+        invalid_properties.push('invalid value for "cta", cta cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @nti.nil?
+      return false if @cta.nil?
       true
     end
+
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
@@ -92,7 +103,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -188,5 +199,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

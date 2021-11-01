@@ -19,35 +19,33 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Get a link to preview a course. 
-    # Returns the launch link to use to preview this course. 
+    # Get a launch link to preview a Course 
+    # Returns the launch link to use to preview the course.  Course preview does not require an underlying registration. As such, no interactions will be tracked during the preview launch.  Previews are meant to be a way to confirm the course looks and acts the way it should.  >**Note:** >The cmi5 standard does not support the ability to preview a course.  A launch link can be built for a cmi5 course, but visiting the link will result in an error page.  More details can be found in this [article explaining the complications behind cmi5 preview launches](https://support.scorm.com/hc/en-us/articles/1260805676710). 
     # @param course_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :css_url 
     # @return [LaunchLinkSchema]
     def build_course_preview_launch_link(course_id, launch_link_request, opts = {})
       data, _status_code, _headers = build_course_preview_launch_link_with_http_info(course_id, launch_link_request, opts)
       data
     end
 
-    # Get a link to preview a course. 
-    # Returns the launch link to use to preview this course. 
+    # Get a launch link to preview a Course 
+    # Returns the launch link to use to preview the course.  Course preview does not require an underlying registration. As such, no interactions will be tracked during the preview launch.  Previews are meant to be a way to confirm the course looks and acts the way it should.  &gt;**Note:** &gt;The cmi5 standard does not support the ability to preview a course.  A launch link can be built for a cmi5 course, but visiting the link will result in an error page.  More details can be found in this [article explaining the complications behind cmi5 preview launches](https://support.scorm.com/hc/en-us/articles/1260805676710). 
     # @param course_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :css_url 
     # @return [Array<(LaunchLinkSchema, Fixnum, Hash)>] LaunchLinkSchema data, response status code and response headers
     def build_course_preview_launch_link_with_http_info(course_id, launch_link_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.build_course_preview_launch_link ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.build_course_preview_launch_link"
       end
       # verify the required parameter 'launch_link_request' is set
-      if @api_client.config.client_side_validation && launch_link_request.nil?
+      if launch_link_request.nil?
         fail ArgumentError, "Missing the required parameter 'launch_link_request' when calling CourseApi.build_course_preview_launch_link"
       end
       # resource path
@@ -55,7 +53,6 @@ module RusticiSoftwareCloudV2
 
       # query parameters
       query_params = {}
-      query_params[:'cssUrl'] = opts[:'css_url'] if !opts[:'css_url'].nil?
 
       # header parameters
       header_params = {}
@@ -82,10 +79,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a link to preview a particular course version. 
-    # Returns the link to use to preview a particular version of a course. 
+    # Get a launch link to preview a Course Version 
+    # Returns the launch link to use to preview the course version.  Course preview does not require an underlying registration.  As such, no interactions will be tracked during the preview launch.  Previews are meant to be a way to confirm the course looks and acts the way it should.  >**Note:** >The cmi5 standard does not support the ability to preview a course.  A launch link can be built for a cmi5 course, but visiting the link will result in an error page.  More details can be found in this [article explaining the complications behind cmi5 preview launches](https://support.scorm.com/hc/en-us/articles/1260805676710). 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
     # @return [LaunchLinkSchema]
@@ -94,10 +91,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get a link to preview a particular course version. 
-    # Returns the link to use to preview a particular version of a course. 
+    # Get a launch link to preview a Course Version 
+    # Returns the launch link to use to preview the course version.  Course preview does not require an underlying registration.  As such, no interactions will be tracked during the preview launch.  Previews are meant to be a way to confirm the course looks and acts the way it should.  &gt;**Note:** &gt;The cmi5 standard does not support the ability to preview a course.  A launch link can be built for a cmi5 course, but visiting the link will result in an error page.  More details can be found in this [article explaining the complications behind cmi5 preview launches](https://support.scorm.com/hc/en-us/articles/1260805676710). 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LaunchLinkSchema, Fixnum, Hash)>] LaunchLinkSchema data, response status code and response headers
@@ -106,15 +103,15 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.build_course_preview_launch_link_with_version ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.build_course_preview_launch_link_with_version"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.build_course_preview_launch_link_with_version"
       end
       # verify the required parameter 'launch_link_request' is set
-      if @api_client.config.client_side_validation && launch_link_request.nil?
+      if launch_link_request.nil?
         fail ArgumentError, "Missing the required parameter 'launch_link_request' when calling CourseApi.build_course_preview_launch_link_with_version"
       end
       # resource path
@@ -148,8 +145,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Fetch and import a course. 
-    # An import job will be started to fetch and import the referenced file, and the import job ID will be returned. If the import is successful, the imported course will be registered using the courseId provided.  To check the progress of the import job, GetImportJobStatus should be called with the job ID returned from this call. 
+    # Create a Course from a package fetched from an external source 
+    # Creates a course from a package fetched and imported from the provided url.  The package will be downloaded from the url and stored in SCORM Cloud.  An import job ID will be returned, which can be used with GetImportJobStatus to view the status of the import.  Courses represent the learning material a learner will progress through.  >**Note:** >The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes. 
     # @param course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use.
     # @param import_request 
     # @param [Hash] opts the optional parameters
@@ -161,8 +158,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Fetch and import a course. 
-    # An import job will be started to fetch and import the referenced file, and the import job ID will be returned. If the import is successful, the imported course will be registered using the courseId provided.  To check the progress of the import job, GetImportJobStatus should be called with the job ID returned from this call. 
+    # Create a Course from a package fetched from an external source 
+    # Creates a course from a package fetched and imported from the provided url.  The package will be downloaded from the url and stored in SCORM Cloud.  An import job ID will be returned, which can be used with GetImportJobStatus to view the status of the import.  Courses represent the learning material a learner will progress through.  &gt;**Note:** &gt;The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes. 
     # @param course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use.
     # @param import_request 
     # @param [Hash] opts the optional parameters
@@ -174,11 +171,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.create_fetch_and_import_course_job ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.create_fetch_and_import_course_job"
       end
       # verify the required parameter 'import_request' is set
-      if @api_client.config.client_side_validation && import_request.nil?
+      if import_request.nil?
         fail ArgumentError, "Missing the required parameter 'import_request' when calling CourseApi.create_fetch_and_import_course_job"
       end
       # resource path
@@ -215,33 +212,104 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Upload and import a course.
-    # An import job will be started to import the posted file, and the import job ID will be returned. If the import is successful, the imported course will be registered using the courseId provided.  To check the progress of the import job, GetImportJobStatus should be called with the job ID returned from this call. 
+    # Create a Course from a fetched or referenced external media file 
+    # Creates a course from one of two methods, fetchRequest or mediaFileReferenceRequest.  In either case, an import job ID will be returned, which can be used with GetImportJobStatus to view the status of the import.  Courses represent the learning material a learner will progress through.  - A fetchRequest performs the same actions as CreateFetchAndImportCourseJob.  A course will be created from a package fetched from the provided url.  The package will be downloaded from the url and stored in SCORM Cloud. - A mediaFileReferenceRequest will not store the file in SCORM Cloud.  Instead it will reference the media file at the time the learner needs to view the file from the provided url.  >**Note:** >The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes.  >**Info:** >Unless working with media files, it is typical to use one of the other two import methods. >- CreateUploadAndImportCourseJob would be used if the course is in your local file system. >- CreateFetchAndImportCourseJob would be better suited for situations where the course is uploaded remotely but is accessible via a public url. 
+    # @param course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use.
+    # @param import_request 
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (default to false)
+    # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
+    # @return [StringResultSchema]
+    def create_no_upload_and_import_course_job(course_id, import_request, opts = {})
+      data, _status_code, _headers = create_no_upload_and_import_course_job_with_http_info(course_id, import_request, opts)
+      data
+    end
+
+    # Create a Course from a fetched or referenced external media file 
+    # Creates a course from one of two methods, fetchRequest or mediaFileReferenceRequest.  In either case, an import job ID will be returned, which can be used with GetImportJobStatus to view the status of the import.  Courses represent the learning material a learner will progress through.  - A fetchRequest performs the same actions as CreateFetchAndImportCourseJob.  A course will be created from a package fetched from the provided url.  The package will be downloaded from the url and stored in SCORM Cloud. - A mediaFileReferenceRequest will not store the file in SCORM Cloud.  Instead it will reference the media file at the time the learner needs to view the file from the provided url.  &gt;**Note:** &gt;The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes.  &gt;**Info:** &gt;Unless working with media files, it is typical to use one of the other two import methods. &gt;- CreateUploadAndImportCourseJob would be used if the course is in your local file system. &gt;- CreateFetchAndImportCourseJob would be better suited for situations where the course is uploaded remotely but is accessible via a public url. 
+    # @param course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use.
+    # @param import_request 
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist.
+    # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
+    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    def create_no_upload_and_import_course_job_with_http_info(course_id, import_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.create_no_upload_and_import_course_job ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.create_no_upload_and_import_course_job"
+      end
+      # verify the required parameter 'import_request' is set
+      if import_request.nil?
+        fail ArgumentError, "Missing the required parameter 'import_request' when calling CourseApi.create_no_upload_and_import_course_job"
+      end
+      # resource path
+      local_var_path = '/courses/importJobs/noUpload'
+
+      # query parameters
+      query_params = {}
+      query_params[:'courseId'] = course_id
+      query_params[:'mayCreateNewVersion'] = opts[:'may_create_new_version'] if !opts[:'may_create_new_version'].nil?
+      query_params[:'postbackUrl'] = opts[:'postback_url'] if !opts[:'postback_url'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(import_request)
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StringResultSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#create_no_upload_and_import_course_job\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Create a Course from an uploaded package 
+    # Creates a course from a package uploaded from your file system.  The package will be sent as part of the request and will be stored in SCORM Cloud.  An import job ID will be returned, which can be used with GetImportJobStatus to view the status of the import.  Courses represent the learning material a learner will progress through.  >**Note:** >The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes. 
     # @param course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use.
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (default to false)
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
-    # @option opts [File] :file The zip file of the course contents to import.
+    # @option opts [String] :uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4). (default to application/zip)
+    # @option opts [String] :content_metadata Serialized &#39;mediaFileMetadata&#39; schema.
+    # @option opts [File] :file The zip file of the course contents to import. 
     # @return [StringResultSchema]
     def create_upload_and_import_course_job(course_id, opts = {})
       data, _status_code, _headers = create_upload_and_import_course_job_with_http_info(course_id, opts)
       data
     end
 
-    # Upload and import a course.
-    # An import job will be started to import the posted file, and the import job ID will be returned. If the import is successful, the imported course will be registered using the courseId provided.  To check the progress of the import job, GetImportJobStatus should be called with the job ID returned from this call. 
+    # Create a Course from an uploaded package 
+    # Creates a course from a package uploaded from your file system.  The package will be sent as part of the request and will be stored in SCORM Cloud.  An import job ID will be returned, which can be used with GetImportJobStatus to view the status of the import.  Courses represent the learning material a learner will progress through.  &gt;**Note:** &gt;The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes. 
     # @param course_id A unique identifier your application will use to identify the course after import. Your application is responsible both for generating this unique ID and for keeping track of the ID for later use.
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist.
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
-    # @option opts [File] :file The zip file of the course contents to import.
+    # @option opts [String] :uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4).
+    # @option opts [String] :content_metadata Serialized &#39;mediaFileMetadata&#39; schema.
+    # @option opts [File] :file The zip file of the course contents to import. 
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
     def create_upload_and_import_course_job_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.create_upload_and_import_course_job ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.create_upload_and_import_course_job"
       end
       # resource path
@@ -259,9 +327,11 @@ module RusticiSoftwareCloudV2
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params[:'uploadedContentType'] = opts[:'uploaded_content_type'] if !opts[:'uploaded_content_type'].nil?
 
       # form parameters
       form_params = {}
+      form_params['contentMetadata'] = opts[:'content_metadata'] if !opts[:'content_metadata'].nil?
       form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
 
       # http body (model)
@@ -279,8 +349,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete a course. 
-    # Delete course identified by `courseId`.  When a course is deleted, so is everything connected to this course.  This includes:  - Registrations - Invitations - Dispatches - Debug Logs 
+    # Delete a Course 
+    # Deletes the specified course.  >**Caution:** >When a course is deleted, so is everything connected to the course.  This includes: >- Registrations >- Invitations >- Dispatches >- Debug Logs 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -289,8 +359,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete a course. 
-    # Delete course identified by &#x60;courseId&#x60;.  When a course is deleted, so is everything connected to this course.  This includes:  - Registrations - Invitations - Dispatches - Debug Logs 
+    # Delete a Course 
+    # Deletes the specified course.  &gt;**Caution:** &gt;When a course is deleted, so is everything connected to the course.  This includes: &gt;- Registrations &gt;- Invitations &gt;- Dispatches &gt;- Debug Logs 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -299,7 +369,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.delete_course"
       end
       # resource path
@@ -332,8 +402,68 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Clear a course configuration. 
-    # Clears the value of the given `settingId` for this course.  The effective setting value will become any value set at the application level (if this value is set at the application level) or the default setting. 
+    # Delete an asset file from a Course 
+    # Deletes the asset file at the specified relative path from the latest version of the course. GetCourseFileList can be used to find the relative path of the file.  >**Caution:** >This may have unintended consequences if the asset is still being linked to in other files in the course.  Make sure that other files relying on this asset are modified or removed as well.  This can be done with the ImportCourseAssetFile or UploadCourseAssetFile endpoints. 
+    # @param course_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_course_asset(course_id, relative_path, opts = {})
+      delete_course_asset_with_http_info(course_id, relative_path, opts)
+      nil
+    end
+
+    # Delete an asset file from a Course 
+    # Deletes the asset file at the specified relative path from the latest version of the course. GetCourseFileList can be used to find the relative path of the file.  &gt;**Caution:** &gt;This may have unintended consequences if the asset is still being linked to in other files in the course.  Make sure that other files relying on this asset are modified or removed as well.  This can be done with the ImportCourseAssetFile or UploadCourseAssetFile endpoints. 
+    # @param course_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_course_asset_with_http_info(course_id, relative_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_asset ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.delete_course_asset"
+      end
+      # verify the required parameter 'relative_path' is set
+      if relative_path.nil?
+        fail ArgumentError, "Missing the required parameter 'relative_path' when calling CourseApi.delete_course_asset"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/asset'.sub('{' + 'courseId' + '}', course_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'relativePath'] = relative_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#delete_course_asset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Delete a configuration setting explicitly set for a Course 
+    # Clears the specified setting from the course.  This causes the setting to inherit a value from a higher level (e.g. application).  If the configuration setting was not set at the course level it will continue to persist and will require deletion from the level it was set. 
     # @param course_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
@@ -343,8 +473,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Clear a course configuration. 
-    # Clears the value of the given &#x60;settingId&#x60; for this course.  The effective setting value will become any value set at the application level (if this value is set at the application level) or the default setting. 
+    # Delete a configuration setting explicitly set for a Course 
+    # Clears the specified setting from the course.  This causes the setting to inherit a value from a higher level (e.g. application).  If the configuration setting was not set at the course level it will continue to persist and will require deletion from the level it was set. 
     # @param course_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
@@ -354,11 +484,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_configuration_setting ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.delete_course_configuration_setting"
       end
       # verify the required parameter 'setting_id' is set
-      if @api_client.config.client_side_validation && setting_id.nil?
+      if setting_id.nil?
         fail ArgumentError, "Missing the required parameter 'setting_id' when calling CourseApi.delete_course_configuration_setting"
       end
       # resource path
@@ -391,8 +521,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete course tags. 
-    # Delete the provided tags from this course. 
+    # Delete tags from a Course 
+    # Deletes the specified tags from the course.  Deleting tags that do not exist will still result in a success. 
     # @param course_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
@@ -402,8 +532,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete course tags. 
-    # Delete the provided tags from this course. 
+    # Delete tags from a Course 
+    # Deletes the specified tags from the course.  Deleting tags that do not exist will still result in a success. 
     # @param course_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
@@ -413,11 +543,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_tags ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.delete_course_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling CourseApi.delete_course_tags"
       end
       # resource path
@@ -450,10 +580,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete a course version. 
-    # Delete `versionId` of `courseId`.  If this is the last remaining version of this course, the course itself will be deleted and no longer accessible. 
+    # Delete a Course Version 
+    # Deletes the specified version of the course.  If deleting the last remaining version of the course, the course itself will be deleted and no longer accessible.  >**Caution:** >When a course is deleted, so is everything connected to this course.  This includes: >- Registrations >- Invitations >- Dispatches >- Debug Logs 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_course_version(course_id, version_id, opts = {})
@@ -461,10 +591,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete a course version. 
-    # Delete &#x60;versionId&#x60; of &#x60;courseId&#x60;.  If this is the last remaining version of this course, the course itself will be deleted and no longer accessible. 
+    # Delete a Course Version 
+    # Deletes the specified version of the course.  If deleting the last remaining version of the course, the course itself will be deleted and no longer accessible.  &gt;**Caution:** &gt;When a course is deleted, so is everything connected to this course.  This includes: &gt;- Registrations &gt;- Invitations &gt;- Dispatches &gt;- Debug Logs 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_course_version_with_http_info(course_id, version_id, opts = {})
@@ -472,11 +602,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_version ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.delete_course_version"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.delete_course_version"
       end
       # resource path
@@ -509,10 +639,76 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Clear a configuration setting for a version of a course. 
-    # Clears the `settingId` value for this course and version. 
+    # Delete an asset file from a Course Version 
+    # Deletes the asset file at the specified relative path from the course version.  GetCourseVersionFileList can be used to find the relative path of the file.  >**Caution:** >This may have unintended consequences if the asset is still being linked to in other files in the course.  Make sure that other files relying on this asset are modified or removed as well.  This can be done with the ImportCourseVersionAssetFile or UploadCourseVersionAssetFile endpoints. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_course_version_asset(course_id, version_id, relative_path, opts = {})
+      delete_course_version_asset_with_http_info(course_id, version_id, relative_path, opts)
+      nil
+    end
+
+    # Delete an asset file from a Course Version 
+    # Deletes the asset file at the specified relative path from the course version.  GetCourseVersionFileList can be used to find the relative path of the file.  &gt;**Caution:** &gt;This may have unintended consequences if the asset is still being linked to in other files in the course.  Make sure that other files relying on this asset are modified or removed as well.  This can be done with the ImportCourseVersionAssetFile or UploadCourseVersionAssetFile endpoints. 
+    # @param course_id 
+    # @param version_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_course_version_asset_with_http_info(course_id, version_id, relative_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_version_asset ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.delete_course_version_asset"
+      end
+      # verify the required parameter 'version_id' is set
+      if version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.delete_course_version_asset"
+      end
+      # verify the required parameter 'relative_path' is set
+      if relative_path.nil?
+        fail ArgumentError, "Missing the required parameter 'relative_path' when calling CourseApi.delete_course_version_asset"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/versions/{versionId}/asset'.sub('{' + 'courseId' + '}', course_id.to_s).sub('{' + 'versionId' + '}', version_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'relativePath'] = relative_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#delete_course_version_asset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Delete a configuration setting explicitly set for a Course Version 
+    # Clears the specified setting from the course version.  This causes the setting to inherit a value from a higher level (e.g. application).  If the configuration setting was not set at the course level it will continue to persist and will require deletion from the level it was set. 
+    # @param course_id 
+    # @param version_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -521,10 +717,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Clear a configuration setting for a version of a course. 
-    # Clears the &#x60;settingId&#x60; value for this course and version. 
+    # Delete a configuration setting explicitly set for a Course Version 
+    # Clears the specified setting from the course version.  This causes the setting to inherit a value from a higher level (e.g. application).  If the configuration setting was not set at the course level it will continue to persist and will require deletion from the level it was set. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -533,15 +729,15 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_version_configuration_setting ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.delete_course_version_configuration_setting"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.delete_course_version_configuration_setting"
       end
       # verify the required parameter 'setting_id' is set
-      if @api_client.config.client_side_validation && setting_id.nil?
+      if setting_id.nil?
         fail ArgumentError, "Missing the required parameter 'setting_id' when calling CourseApi.delete_course_version_configuration_setting"
       end
       # resource path
@@ -574,8 +770,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get course details. 
-    # Get detailed information about `courseId`.  Futher detail can be obtained with the optional query parameters flags. 
+    # Get detailed information about a Course 
+    # Returns detailed information about the course.  This includes title, update date, learning standard, and version. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
@@ -586,8 +782,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get course details. 
-    # Get detailed information about &#x60;courseId&#x60;.  Futher detail can be obtained with the optional query parameters flags. 
+    # Get detailed information about a Course 
+    # Returns detailed information about the course.  This includes title, update date, learning standard, and version. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
@@ -598,7 +794,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course"
       end
       # resource path
@@ -634,8 +830,69 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get course configuration. 
-    # Returns all effective configuration settings for this course.  For any setting which is not explicitly set at the course level, the effective value will be either the value set at the application level (if there is one) or the default value for the setting. 
+    # Download an asset file from a Course 
+    # Downloads the asset file at the specified relative path from the latest version of the course. GetCourseFileList can be used to find the relative path of the file. 
+    # @param course_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def get_course_asset(course_id, relative_path, opts = {})
+      data, _status_code, _headers = get_course_asset_with_http_info(course_id, relative_path, opts)
+      data
+    end
+
+    # Download an asset file from a Course 
+    # Downloads the asset file at the specified relative path from the latest version of the course. GetCourseFileList can be used to find the relative path of the file. 
+    # @param course_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_course_asset_with_http_info(course_id, relative_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.get_course_asset ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_asset"
+      end
+      # verify the required parameter 'relative_path' is set
+      if relative_path.nil?
+        fail ArgumentError, "Missing the required parameter 'relative_path' when calling CourseApi.get_course_asset"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/asset'.sub('{' + 'courseId' + '}', course_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'relativePath'] = relative_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#get_course_asset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get effective configuration settings for a Course 
+    # Returns the effective configuration settings for the course.  If not set at the course level, the setting will inherit a value from a higher level (e.g. application).  If there is a configuration setting present at a more specific level, that setting will override the one set at the course level. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata  (default to false)
@@ -645,8 +902,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get course configuration. 
-    # Returns all effective configuration settings for this course.  For any setting which is not explicitly set at the course level, the effective value will be either the value set at the application level (if there is one) or the default value for the setting. 
+    # Get effective configuration settings for a Course 
+    # Returns the effective configuration settings for the course.  If not set at the course level, the setting will inherit a value from a higher level (e.g. application).  If there is a configuration setting present at a more specific level, that setting will override the one set at the course level. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
@@ -656,7 +913,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_configuration ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_configuration"
       end
       # resource path
@@ -691,35 +948,89 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get course xAPI statements. 
-    # Get xAPI statements for `courseId`. 
+    # Get a list of asset files in a Course 
+    # Returns a list of asset files in the course.  Included will be the relative path to use for the other course asset manipulation calls. 
+    # @param course_id 
+    # @param [Hash] opts the optional parameters
+    # @return [FileListSchema]
+    def get_course_file_list(course_id, opts = {})
+      data, _status_code, _headers = get_course_file_list_with_http_info(course_id, opts)
+      data
+    end
+
+    # Get a list of asset files in a Course 
+    # Returns a list of asset files in the course.  Included will be the relative path to use for the other course asset manipulation calls. 
+    # @param course_id 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FileListSchema, Fixnum, Hash)>] FileListSchema data, response status code and response headers
+    def get_course_file_list_with_http_info(course_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.get_course_file_list ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_file_list"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/asset/list'.sub('{' + 'courseId' + '}', course_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileListSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#get_course_file_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get xAPI statements for a Course 
+    # Returns xAPI statements for the course. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learner_id Only entries for the specified learner id will be included.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [XapiStatementResult]
     def get_course_statements(course_id, opts = {})
       data, _status_code, _headers = get_course_statements_with_http_info(course_id, opts)
       data
     end
 
-    # Get course xAPI statements. 
-    # Get xAPI statements for &#x60;courseId&#x60;. 
+    # Get xAPI statements for a Course 
+    # Returns xAPI statements for the course. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learner_id Only entries for the specified learner id will be included.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
     def get_course_statements_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_statements ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_statements"
       end
       # resource path
@@ -757,8 +1068,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get course tags. 
-    # Get a list of the tags for this course. 
+    # Get tags for a Course 
+    # Returns the tags for the course. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @return [TagListSchema]
@@ -767,8 +1078,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get course tags. 
-    # Get a list of the tags for this course. 
+    # Get tags for a Course 
+    # Returns the tags for the course. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
@@ -777,7 +1088,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_tags ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_tags"
       end
       # resource path
@@ -811,10 +1122,77 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get configuration for a version of a course. 
-    # Returns all configuration settings for this course and version. 
+    # Download an asset file from a specific Course Version 
+    # Downloads the asset file at the provided relative path from the course version.  GetCourseVersionFileList can be used to find the relative path of the file. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def get_course_version_asset(course_id, version_id, relative_path, opts = {})
+      data, _status_code, _headers = get_course_version_asset_with_http_info(course_id, version_id, relative_path, opts)
+      data
+    end
+
+    # Download an asset file from a specific Course Version 
+    # Downloads the asset file at the provided relative path from the course version.  GetCourseVersionFileList can be used to find the relative path of the file. 
+    # @param course_id 
+    # @param version_id 
+    # @param relative_path Relative path of the asset within the course. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_course_version_asset_with_http_info(course_id, version_id, relative_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_asset ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_version_asset"
+      end
+      # verify the required parameter 'version_id' is set
+      if version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.get_course_version_asset"
+      end
+      # verify the required parameter 'relative_path' is set
+      if relative_path.nil?
+        fail ArgumentError, "Missing the required parameter 'relative_path' when calling CourseApi.get_course_version_asset"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/versions/{versionId}/asset'.sub('{' + 'courseId' + '}', course_id.to_s).sub('{' + 'versionId' + '}', version_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'relativePath'] = relative_path
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#get_course_version_asset\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get effective configuration settings for a Course Version 
+    # Returns the effective configuration settings for the course version.  If not set at the course level, the setting will inherit a value from a higher level (e.g. application).  If there is a configuration setting present at a more specific level, that setting will override the one set at the course level. 
+    # @param course_id 
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata  (default to false)
     # @return [SettingListSchema]
@@ -823,10 +1201,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get configuration for a version of a course. 
-    # Returns all configuration settings for this course and version. 
+    # Get effective configuration settings for a Course Version 
+    # Returns the effective configuration settings for the course version.  If not set at the course level, the setting will inherit a value from a higher level (e.g. application).  If there is a configuration setting present at a more specific level, that setting will override the one set at the course level. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
     # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
@@ -835,11 +1213,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_configuration ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_version_configuration"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.get_course_version_configuration"
       end
       # resource path
@@ -874,10 +1252,70 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get details on a course version. 
-    # Get specific version `versionId` of `courseId` 
+    # Get a list of asset files in a Course Version 
+    # Returns a list of asset files in the course version.  Included will be the relative path to use for the other course asset manipulation calls. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
+    # @param [Hash] opts the optional parameters
+    # @return [FileListSchema]
+    def get_course_version_file_list(course_id, version_id, opts = {})
+      data, _status_code, _headers = get_course_version_file_list_with_http_info(course_id, version_id, opts)
+      data
+    end
+
+    # Get a list of asset files in a Course Version 
+    # Returns a list of asset files in the course version.  Included will be the relative path to use for the other course asset manipulation calls. 
+    # @param course_id 
+    # @param version_id 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FileListSchema, Fixnum, Hash)>] FileListSchema data, response status code and response headers
+    def get_course_version_file_list_with_http_info(course_id, version_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_file_list ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_version_file_list"
+      end
+      # verify the required parameter 'version_id' is set
+      if version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.get_course_version_file_list"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/versions/{versionId}/asset/list'.sub('{' + 'courseId' + '}', course_id.to_s).sub('{' + 'versionId' + '}', version_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileListSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#get_course_version_file_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get detailed information about a Course Version 
+    # Returns detailed information about the course version.  This includes update date and registration count (if optional value is passed in). 
+    # @param course_id 
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (default to false)
@@ -887,10 +1325,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get details on a course version. 
-    # Get specific version &#x60;versionId&#x60; of &#x60;courseId&#x60; 
+    # Get detailed information about a Course Version 
+    # Returns detailed information about the course version.  This includes update date and registration count (if optional value is passed in). 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect.
@@ -900,11 +1338,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_info ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_version_info"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.get_course_version_info"
       end
       # resource path
@@ -940,41 +1378,41 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get xAPI statements for a course version. 
-    # Get xAPI statements for version `versionId` of `courseId` 
+    # Get xAPI statements for a Course Version 
+    # Returns xAPI statements for the course version. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learner_id Only entries for the specified learner id will be included.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [XapiStatementResult]
     def get_course_version_statements(course_id, version_id, opts = {})
       data, _status_code, _headers = get_course_version_statements_with_http_info(course_id, version_id, opts)
       data
     end
 
-    # Get xAPI statements for a course version. 
-    # Get xAPI statements for version &#x60;versionId&#x60; of &#x60;courseId&#x60; 
+    # Get xAPI statements for a Course Version 
+    # Returns xAPI statements for the course version. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learner_id Only entries for the specified learner id will be included.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
     def get_course_version_statements_with_http_info(course_id, version_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_statements ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_version_statements"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.get_course_version_statements"
       end
       # resource path
@@ -1012,12 +1450,12 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get details on a course's versions. 
-    # Get information about all versions of `courseId`.  This can be useful to see information such as registration counts and modification times across the versions of a course. 
+    # Get a list of a Course's Versions 
+    # Returns information about all versions of the course.  This can be useful to see information such as registration counts and modification times across the versions of a course. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (default to false)
     # @return [CourseListNonPagedSchema]
@@ -1026,12 +1464,12 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get details on a course&#39;s versions. 
-    # Get information about all versions of &#x60;courseId&#x60;.  This can be useful to see information such as registration counts and modification times across the versions of a course. 
+    # Get a list of a Course&#39;s Versions 
+    # Returns information about all versions of the course.  This can be useful to see information such as registration counts and modification times across the versions of a course. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect.
     # @return [Array<(CourseListNonPagedSchema, Fixnum, Hash)>] CourseListNonPagedSchema data, response status code and response headers
@@ -1040,7 +1478,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_versions ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.get_course_versions"
       end
       # resource path
@@ -1078,61 +1516,58 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get all courses. 
-    # Get all courses for the `appId` which was used to authenticate this call. 
+    # Get a list of Courses 
+    # Returns a list of courses.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
     # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
-    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  Defaults to course_id.
-    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to creation_date_desc.
-    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to course_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to created_desc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect. (default to false)
-    # @option opts [Array<String>] :tags 
+    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
     # @return [CourseListSchema]
     def get_courses(opts = {})
       data, _status_code, _headers = get_courses_with_http_info(opts)
       data
     end
 
-    # Get all courses. 
-    # Get all courses for the &#x60;appId&#x60; which was used to authenticate this call. 
+    # Get a list of Courses 
+    # Returns a list of courses.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
     # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
-    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  Defaults to course_id.
-    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  Defaults to creation_date_desc.
-    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect.
-    # @option opts [Array<String>] :tags 
+    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @return [Array<(CourseListSchema, Fixnum, Hash)>] CourseListSchema data, response status code and response headers
     def get_courses_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_courses ...'
-      end
-      if @api_client.config.client_side_validation && opts[:'filter_by'] && !['title', 'course_id', 'tags'].include?(opts[:'filter_by'])
-        fail ArgumentError, 'invalid value for "filter_by", must be one of title, course_id, tags'
-      end
-      if @api_client.config.client_side_validation && opts[:'order_by'] && !['title_asc', 'title_desc', 'creation_date_asc', 'creation_date_desc'].include?(opts[:'order_by'])
-        fail ArgumentError, 'invalid value for "order_by", must be one of title_asc, title_desc, creation_date_asc, creation_date_desc'
       end
       # resource path
       local_var_path = '/courses'
 
       # query parameters
       query_params = {}
-      query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+      query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
+      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
       query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
       query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
       query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
-      query_params[:'includeRegistrationCount'] = opts[:'include_registration_count'] if !opts[:'include_registration_count'].nil?
+      query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
       query_params[:'includeCourseMetadata'] = opts[:'include_course_metadata'] if !opts[:'include_course_metadata'].nil?
-      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
+      query_params[:'includeRegistrationCount'] = opts[:'include_registration_count'] if !opts[:'include_registration_count'].nil?
 
       # header parameters
       header_params = {}
@@ -1159,8 +1594,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get course import job status. 
-    # Check the status of an import job.  This can be called incrementally to check to progress of a call to either of the import options. 
+    # Get import job status for a Course 
+    # Check the status of a course import.  This can be called incrementally to check the progress of a call to any of the import options.  >**Note:** >The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes. 
     # @param import_job_id Id received when the import job was submitted to the importJobs resource.
     # @param [Hash] opts the optional parameters
     # @return [ImportJobResultSchema]
@@ -1169,8 +1604,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get course import job status. 
-    # Check the status of an import job.  This can be called incrementally to check to progress of a call to either of the import options. 
+    # Get import job status for a Course 
+    # Check the status of a course import.  This can be called incrementally to check the progress of a call to any of the import options.  &gt;**Note:** &gt;The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes. 
     # @param import_job_id Id received when the import job was submitted to the importJobs resource.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ImportJobResultSchema, Fixnum, Hash)>] ImportJobResultSchema data, response status code and response headers
@@ -1179,7 +1614,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.get_import_job_status ...'
       end
       # verify the required parameter 'import_job_id' is set
-      if @api_client.config.client_side_validation && import_job_id.nil?
+      if import_job_id.nil?
         fail ArgumentError, "Missing the required parameter 'import_job_id' when calling CourseApi.get_import_job_status"
       end
       # resource path
@@ -1213,8 +1648,140 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set course tags. 
-    # Set the tags for this course.  Note: any tags currently on this course will be overwritten with the new array of tags. 
+    # Import an asset file for a Course 
+    # Creates or updates an asset file fetched from the provided url into the course.  The file will be downloaded from the url and stored in SCORM Cloud.  This is a useful way to modify the course structure without needing to reimport the whole course after you've made changes.  >**Info:** >If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for `mayCreateNewVersion`. 
+    # @param course_id 
+    # @param asset_schema 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases).  (default to lax)
+    # @return [AssetFileSchema]
+    def import_course_asset_file(course_id, asset_schema, opts = {})
+      data, _status_code, _headers = import_course_asset_file_with_http_info(course_id, asset_schema, opts)
+      data
+    end
+
+    # Import an asset file for a Course 
+    # Creates or updates an asset file fetched from the provided url into the course.  The file will be downloaded from the url and stored in SCORM Cloud.  This is a useful way to modify the course structure without needing to reimport the whole course after you&#39;ve made changes.  &gt;**Info:** &gt;If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for &#x60;mayCreateNewVersion&#x60;. 
+    # @param course_id 
+    # @param asset_schema 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
+    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    def import_course_asset_file_with_http_info(course_id, asset_schema, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.import_course_asset_file ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.import_course_asset_file"
+      end
+      # verify the required parameter 'asset_schema' is set
+      if asset_schema.nil?
+        fail ArgumentError, "Missing the required parameter 'asset_schema' when calling CourseApi.import_course_asset_file"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/asset'.sub('{' + 'courseId' + '}', course_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'updateAssetPolicy'] = opts[:'update_asset_policy'] if !opts[:'update_asset_policy'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(asset_schema)
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AssetFileSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#import_course_asset_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Import an asset file for a Course Version 
+    # Creates or updates an asset file fetched from the provided url into the course version.  The file will be downloaded from the url and stored in SCORM Cloud.  This is a useful way to modify the course structure without needing to reimport the whole course after you've made changes.  >**Info:** >If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for `mayCreateNewVersion`. 
+    # @param course_id 
+    # @param version_id 
+    # @param asset_schema 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases).  (default to lax)
+    # @return [AssetFileSchema]
+    def import_course_version_asset_file(course_id, version_id, asset_schema, opts = {})
+      data, _status_code, _headers = import_course_version_asset_file_with_http_info(course_id, version_id, asset_schema, opts)
+      data
+    end
+
+    # Import an asset file for a Course Version 
+    # Creates or updates an asset file fetched from the provided url into the course version.  The file will be downloaded from the url and stored in SCORM Cloud.  This is a useful way to modify the course structure without needing to reimport the whole course after you&#39;ve made changes.  &gt;**Info:** &gt;If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for &#x60;mayCreateNewVersion&#x60;. 
+    # @param course_id 
+    # @param version_id 
+    # @param asset_schema 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
+    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    def import_course_version_asset_file_with_http_info(course_id, version_id, asset_schema, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.import_course_version_asset_file ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.import_course_version_asset_file"
+      end
+      # verify the required parameter 'version_id' is set
+      if version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.import_course_version_asset_file"
+      end
+      # verify the required parameter 'asset_schema' is set
+      if asset_schema.nil?
+        fail ArgumentError, "Missing the required parameter 'asset_schema' when calling CourseApi.import_course_version_asset_file"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/versions/{versionId}/asset'.sub('{' + 'courseId' + '}', course_id.to_s).sub('{' + 'versionId' + '}', version_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'updateAssetPolicy'] = opts[:'update_asset_policy'] if !opts[:'update_asset_policy'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(asset_schema)
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AssetFileSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#import_course_version_asset_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Add tags to a Course 
+    # Applies the provided tags to the course.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetCourses). 
     # @param course_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
@@ -1224,8 +1791,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set course tags. 
-    # Set the tags for this course.  Note: any tags currently on this course will be overwritten with the new array of tags. 
+    # Add tags to a Course 
+    # Applies the provided tags to the course.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetCourses). 
     # @param course_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
@@ -1235,11 +1802,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.put_course_tags ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.put_course_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling CourseApi.put_course_tags"
       end
       # resource path
@@ -1272,9 +1839,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set tags on courses. 
-    # Sets all of the provided tags on all of the provided courses. 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of Courses 
+    # Applies all of the provided tags on all of the provided courses.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetCourses). 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def put_course_tags_batch(batch, opts = {})
@@ -1282,9 +1849,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set tags on courses. 
-    # Sets all of the provided tags on all of the provided courses. 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of Courses 
+    # Applies all of the provided tags on all of the provided courses.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetCourses). 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def put_course_tags_batch_with_http_info(batch, opts = {})
@@ -1292,7 +1859,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.put_course_tags_batch ...'
       end
       # verify the required parameter 'batch' is set
-      if @api_client.config.client_side_validation && batch.nil?
+      if batch.nil?
         fail ArgumentError, "Missing the required parameter 'batch' when calling CourseApi.put_course_tags_batch"
       end
       # resource path
@@ -1325,8 +1892,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set course configuration. 
-    # Set configuration settings for this course.  Setting a value at this level will override any value which is set at the application level. 
+    # Update configuration settings for a Course 
+    # Updates configuration settings at the course level.  This will explicitly set a value at the course level and override any settings from a higher level.  These settings will affect all items within the course which do not have their own explicit configuration set.  This can effectively be used to set course level defaults. 
     # @param course_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
@@ -1336,8 +1903,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set course configuration. 
-    # Set configuration settings for this course.  Setting a value at this level will override any value which is set at the application level. 
+    # Update configuration settings for a Course 
+    # Updates configuration settings at the course level.  This will explicitly set a value at the course level and override any settings from a higher level.  These settings will affect all items within the course which do not have their own explicit configuration set.  This can effectively be used to set course level defaults. 
     # @param course_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
@@ -1347,11 +1914,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.set_course_configuration ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.set_course_configuration"
       end
       # verify the required parameter 'configuration_settings' is set
-      if @api_client.config.client_side_validation && configuration_settings.nil?
+      if configuration_settings.nil?
         fail ArgumentError, "Missing the required parameter 'configuration_settings' when calling CourseApi.set_course_configuration"
       end
       # resource path
@@ -1384,8 +1951,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set the title of a course. 
-    # Sets the course title for the provided courseId. 
+    # Update title for a Course 
+    # Updates the title of the course. 
     # @param course_id 
     # @param title 
     # @param [Hash] opts the optional parameters
@@ -1395,8 +1962,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set the title of a course. 
-    # Sets the course title for the provided courseId. 
+    # Update title for a Course 
+    # Updates the title of the course. 
     # @param course_id 
     # @param title 
     # @param [Hash] opts the optional parameters
@@ -1406,11 +1973,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.set_course_title ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.set_course_title"
       end
       # verify the required parameter 'title' is set
-      if @api_client.config.client_side_validation && title.nil?
+      if title.nil?
         fail ArgumentError, "Missing the required parameter 'title' when calling CourseApi.set_course_title"
       end
       # resource path
@@ -1443,10 +2010,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set configuration for a version of a course. 
-    # Set configuration settings for this course and version. 
+    # Update configuration settings for a Course Version 
+    # Updates configuration settings at the course level.  This will explicitly set a value at the course level and override any settings from a higher level.  These settings will affect all items within the course which do not have their own explicit configuration set.  This can effectively be used to set course level defaults. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -1455,10 +2022,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set configuration for a version of a course. 
-    # Set configuration settings for this course and version. 
+    # Update configuration settings for a Course Version 
+    # Updates configuration settings at the course level.  This will explicitly set a value at the course level and override any settings from a higher level.  These settings will affect all items within the course which do not have their own explicit configuration set.  This can effectively be used to set course level defaults. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -1467,15 +2034,15 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: CourseApi.set_course_version_configuration ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.set_course_version_configuration"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.set_course_version_configuration"
       end
       # verify the required parameter 'configuration_settings' is set
-      if @api_client.config.client_side_validation && configuration_settings.nil?
+      if configuration_settings.nil?
         fail ArgumentError, "Missing the required parameter 'configuration_settings' when calling CourseApi.set_course_version_configuration"
       end
       # resource path
@@ -1505,6 +2072,146 @@ module RusticiSoftwareCloudV2
         :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CourseApi#set_course_version_configuration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Upload an asset file for a Course 
+    # Creates or updates an asset file uploaded from your file system into the course.  The file will be sent as part of the request and will be stored in SCORM Cloud alongside the course.  This is a useful way to modify the course structure without needing to reimport the whole course after you've made changes.  >**Info:** >If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for `mayCreateNewVersion`. 
+    # @param course_id 
+    # @param destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file The asset file to import into the course. 
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases).  (default to lax)
+    # @return [AssetFileSchema]
+    def upload_course_asset_file(course_id, destination, opts = {})
+      data, _status_code, _headers = upload_course_asset_file_with_http_info(course_id, destination, opts)
+      data
+    end
+
+    # Upload an asset file for a Course 
+    # Creates or updates an asset file uploaded from your file system into the course.  The file will be sent as part of the request and will be stored in SCORM Cloud alongside the course.  This is a useful way to modify the course structure without needing to reimport the whole course after you&#39;ve made changes.  &gt;**Info:** &gt;If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for &#x60;mayCreateNewVersion&#x60;. 
+    # @param course_id 
+    # @param destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file The asset file to import into the course. 
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
+    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    def upload_course_asset_file_with_http_info(course_id, destination, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.upload_course_asset_file ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.upload_course_asset_file"
+      end
+      # verify the required parameter 'destination' is set
+      if destination.nil?
+        fail ArgumentError, "Missing the required parameter 'destination' when calling CourseApi.upload_course_asset_file"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/asset/upload'.sub('{' + 'courseId' + '}', course_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'updateAssetPolicy'] = opts[:'update_asset_policy'] if !opts[:'update_asset_policy'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params['destination'] = destination
+      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AssetFileSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#upload_course_asset_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Upload an asset file for Course Version 
+    # Creates or updates an asset file uploaded from your file system into the course version.  The file will be sent as part of the request and will be stored in SCORM Cloud alongside the course.  This is a useful way to modify the course structure without needing to reimport the whole course after you've made changes.  >**Info:** >If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for `mayCreateNewVersion`. 
+    # @param course_id 
+    # @param version_id 
+    # @param destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file The asset file to import into the course. 
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases).  (default to lax)
+    # @return [AssetFileSchema]
+    def upload_course_version_asset_file(course_id, version_id, destination, opts = {})
+      data, _status_code, _headers = upload_course_version_asset_file_with_http_info(course_id, version_id, destination, opts)
+      data
+    end
+
+    # Upload an asset file for Course Version 
+    # Creates or updates an asset file uploaded from your file system into the course version.  The file will be sent as part of the request and will be stored in SCORM Cloud alongside the course.  This is a useful way to modify the course structure without needing to reimport the whole course after you&#39;ve made changes.  &gt;**Info:** &gt;If the course structure is being heavily modified, consider creating a new version instead.  This can be done by calling one of the course import jobs while passing true for &#x60;mayCreateNewVersion&#x60;. 
+    # @param course_id 
+    # @param version_id 
+    # @param destination Relative path from the course&#39;s base directory where the asset file will be uploaded. &#x60;/Etiquette/Course.html&#x60; will upload the file into the Etiquette folder of the course. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file The asset file to import into the course. 
+    # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
+    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    def upload_course_version_asset_file_with_http_info(course_id, version_id, destination, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CourseApi.upload_course_version_asset_file ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling CourseApi.upload_course_version_asset_file"
+      end
+      # verify the required parameter 'version_id' is set
+      if version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling CourseApi.upload_course_version_asset_file"
+      end
+      # verify the required parameter 'destination' is set
+      if destination.nil?
+        fail ArgumentError, "Missing the required parameter 'destination' when calling CourseApi.upload_course_version_asset_file"
+      end
+      # resource path
+      local_var_path = '/courses/{courseId}/versions/{versionId}/asset/upload'.sub('{' + 'courseId' + '}', course_id.to_s).sub('{' + 'versionId' + '}', version_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'updateAssetPolicy'] = opts[:'update_asset_policy'] if !opts[:'update_asset_policy'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+      form_params['destination'] = destination
+      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AssetFileSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CourseApi#upload_course_version_asset_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

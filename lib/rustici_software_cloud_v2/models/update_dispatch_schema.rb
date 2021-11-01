@@ -23,7 +23,10 @@ module RusticiSoftwareCloudV2
     # The maximum number of registrations that can be created for this dispatch, where '0' means 'unlimited registrations'. 
     attr_accessor :registration_cap
 
-    # The date after which this dispatch will be disabled as an ISO 8601 string, or not present for no expiration date. 
+    # The current number of registrations that have been created for this dispatch. 
+    attr_accessor :registration_count
+
+    # The ISO 8601 TimeStamp (defaults to UTC) after which this dispatch will be disabled. An empty value will represent no expiration date. 
     attr_accessor :expiration_date
 
     # If true, then this dispatch can be launched. 
@@ -44,6 +47,7 @@ module RusticiSoftwareCloudV2
         :'allow_new_registrations' => :'allowNewRegistrations',
         :'instanced' => :'instanced',
         :'registration_cap' => :'registrationCap',
+        :'registration_count' => :'registrationCount',
         :'expiration_date' => :'expirationDate',
         :'enabled' => :'enabled',
         :'email' => :'email',
@@ -58,6 +62,7 @@ module RusticiSoftwareCloudV2
         :'allow_new_registrations' => :'BOOLEAN',
         :'instanced' => :'BOOLEAN',
         :'registration_cap' => :'Integer',
+        :'registration_count' => :'Integer',
         :'expiration_date' => :'DateTime',
         :'enabled' => :'BOOLEAN',
         :'email' => :'String',
@@ -84,6 +89,10 @@ module RusticiSoftwareCloudV2
 
       if attributes.has_key?(:'registrationCap')
         self.registration_cap = attributes[:'registrationCap']
+      end
+
+      if attributes.has_key?(:'registrationCount')
+        self.registration_count = attributes[:'registrationCount']
       end
 
       if attributes.has_key?(:'expirationDate')
@@ -120,6 +129,7 @@ module RusticiSoftwareCloudV2
       true
     end
 
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -128,6 +138,7 @@ module RusticiSoftwareCloudV2
           allow_new_registrations == o.allow_new_registrations &&
           instanced == o.instanced &&
           registration_cap == o.registration_cap &&
+          registration_count == o.registration_count &&
           expiration_date == o.expiration_date &&
           enabled == o.enabled &&
           email == o.email &&
@@ -144,7 +155,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_new_registrations, instanced, registration_cap, expiration_date, enabled, email, notes, post_back].hash
+      [allow_new_registrations, instanced, registration_cap, registration_count, expiration_date, enabled, email, notes, post_back].hash
     end
 
     # Builds the object from hash
@@ -154,7 +165,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -250,5 +261,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

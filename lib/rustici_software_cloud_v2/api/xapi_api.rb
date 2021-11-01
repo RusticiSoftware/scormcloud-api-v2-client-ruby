@@ -19,8 +19,8 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create an xAPI statement pipe.
-    # Create an xAPI statement pipe.
+    # Create an xAPI Statement Pipe 
+    # Creates an xAPI statement pipe.  >**Note:** >This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the creation of the xAPI statement pipe takes place. 
     # @param xapi_statement_pipe 
     # @param [Hash] opts the optional parameters
     # @return [StringResultSchema]
@@ -29,8 +29,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Create an xAPI statement pipe.
-    # Create an xAPI statement pipe.
+    # Create an xAPI Statement Pipe 
+    # Creates an xAPI statement pipe.  &gt;**Note:** &gt;This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the creation of the xAPI statement pipe takes place. 
     # @param xapi_statement_pipe 
     # @param [Hash] opts the optional parameters
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
@@ -39,7 +39,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.create_statement_pipe ...'
       end
       # verify the required parameter 'xapi_statement_pipe' is set
-      if @api_client.config.client_side_validation && xapi_statement_pipe.nil?
+      if xapi_statement_pipe.nil?
         fail ArgumentError, "Missing the required parameter 'xapi_statement_pipe' when calling XapiApi.create_statement_pipe"
       end
       # resource path
@@ -73,8 +73,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Create a xAPI credential.
-    # Create a xAPI credential.
+    # Create xAPI Credentials 
+    # Creates an xAPI credential combination from the provided secret and a generated ID. 
     # @param xapi_credential 
     # @param [Hash] opts the optional parameters
     # @return [StringResultSchema]
@@ -83,8 +83,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Create a xAPI credential.
-    # Create a xAPI credential.
+    # Create xAPI Credentials 
+    # Creates an xAPI credential combination from the provided secret and a generated ID. 
     # @param xapi_credential 
     # @param [Hash] opts the optional parameters
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
@@ -93,7 +93,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.create_xapi_credential ...'
       end
       # verify the required parameter 'xapi_credential' is set
-      if @api_client.config.client_side_validation && xapi_credential.nil?
+      if xapi_credential.nil?
         fail ArgumentError, "Missing the required parameter 'xapi_credential' when calling XapiApi.create_xapi_credential"
       end
       # resource path
@@ -127,9 +127,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Deletes this xAPI pipe.
-    # Caution: avoid re-creating a pipe with the same ID quickly after a delete. The old version could still be processing, in which case the new pipe could be updated improperly by the processor. 
-    # @param statement_pipe_id id for this xAPI statement pipe
+    # Delete an xAPI Statement Pipe 
+    # Deletes the specified xAPI statement pipe  >**Note:** >This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the deletion takes place.  Recreating a statement pipe with the same ID too quickly could cause the statement pipe to end up in a faulty state. 
+    # @param statement_pipe_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_statement_pipe(statement_pipe_id, opts = {})
@@ -137,9 +137,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Deletes this xAPI pipe.
-    # Caution: avoid re-creating a pipe with the same ID quickly after a delete. The old version could still be processing, in which case the new pipe could be updated improperly by the processor. 
-    # @param statement_pipe_id id for this xAPI statement pipe
+    # Delete an xAPI Statement Pipe 
+    # Deletes the specified xAPI statement pipe  &gt;**Note:** &gt;This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the deletion takes place.  Recreating a statement pipe with the same ID too quickly could cause the statement pipe to end up in a faulty state. 
+    # @param statement_pipe_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_statement_pipe_with_http_info(statement_pipe_id, opts = {})
@@ -147,7 +147,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.delete_statement_pipe ...'
       end
       # verify the required parameter 'statement_pipe_id' is set
-      if @api_client.config.client_side_validation && statement_pipe_id.nil?
+      if statement_pipe_id.nil?
         fail ArgumentError, "Missing the required parameter 'statement_pipe_id' when calling XapiApi.delete_statement_pipe"
       end
       # resource path
@@ -180,9 +180,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Deletes the xAPI credentials specified by the xAPI credentials id
-    # Deletes the xAPI credentials specified by the xAPI credentials id
-    # @param xapi_credential_id id for this xAPI credential
+    # Delete xAPI Credentials 
+    # Deletes the specified xAPI credentials. 
+    # @param xapi_credential_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_xapi_credential(xapi_credential_id, opts = {})
@@ -190,9 +190,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Deletes the xAPI credentials specified by the xAPI credentials id
-    # Deletes the xAPI credentials specified by the xAPI credentials id
-    # @param xapi_credential_id id for this xAPI credential
+    # Delete xAPI Credentials 
+    # Deletes the specified xAPI credentials. 
+    # @param xapi_credential_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_xapi_credential_with_http_info(xapi_credential_id, opts = {})
@@ -200,7 +200,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.delete_xapi_credential ...'
       end
       # verify the required parameter 'xapi_credential_id' is set
-      if @api_client.config.client_side_validation && xapi_credential_id.nil?
+      if xapi_credential_id.nil?
         fail ArgumentError, "Missing the required parameter 'xapi_credential_id' when calling XapiApi.delete_xapi_credential"
       end
       # resource path
@@ -233,9 +233,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Retrieves xAPI pipe for `xapiPipeId`
-    # Retrieves xAPI pipe for `xapiPipeId`
-    # @param statement_pipe_id id for this xAPI statement pipe
+    # Get detailed information about an xAPI Statement Pipe 
+    # Returns detailed information about the xAPI pipe.  This includes source and target urls, the last time a statement was successfully forwarded, and how many attempts have been made to send data to the target url. 
+    # @param statement_pipe_id 
     # @param [Hash] opts the optional parameters
     # @return [XapiStatementPipeSchema]
     def get_statement_pipe(statement_pipe_id, opts = {})
@@ -243,9 +243,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Retrieves xAPI pipe for &#x60;xapiPipeId&#x60;
-    # Retrieves xAPI pipe for &#x60;xapiPipeId&#x60;
-    # @param statement_pipe_id id for this xAPI statement pipe
+    # Get detailed information about an xAPI Statement Pipe 
+    # Returns detailed information about the xAPI pipe.  This includes source and target urls, the last time a statement was successfully forwarded, and how many attempts have been made to send data to the target url. 
+    # @param statement_pipe_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(XapiStatementPipeSchema, Fixnum, Hash)>] XapiStatementPipeSchema data, response status code and response headers
     def get_statement_pipe_with_http_info(statement_pipe_id, opts = {})
@@ -253,7 +253,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.get_statement_pipe ...'
       end
       # verify the required parameter 'statement_pipe_id' is set
-      if @api_client.config.client_side_validation && statement_pipe_id.nil?
+      if statement_pipe_id.nil?
         fail ArgumentError, "Missing the required parameter 'statement_pipe_id' when calling XapiApi.get_statement_pipe"
       end
       # resource path
@@ -287,8 +287,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get all of the xapiPipes for `appId`
-    # Get all of the xapiPipes for `appId`
+    # Get a list of xAPI Statement Pipes 
+    # Returns a list of all xAPI statement pipes. 
     # @param [Hash] opts the optional parameters
     # @return [XapiStatementPipeListSchema]
     def get_statement_pipes(opts = {})
@@ -296,8 +296,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get all of the xapiPipes for &#x60;appId&#x60;
-    # Get all of the xapiPipes for &#x60;appId&#x60;
+    # Get a list of xAPI Statement Pipes 
+    # Returns a list of all xAPI statement pipes. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(XapiStatementPipeListSchema, Fixnum, Hash)>] XapiStatementPipeListSchema data, response status code and response headers
     def get_statement_pipes_with_http_info(opts = {})
@@ -335,9 +335,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Retrieves the xAPI credentials specified by the xAPI credentials id.
-    # Retrieves the xAPI credentials specified by the xAPI credentials id.
-    # @param xapi_credential_id id for this xAPI credential
+    # Get detailed information about the xAPI Credentials 
+    # Returns detailed information about the xAPI credentials.  This includes the id (username), secret (password), permissions, and whether or not the credentials are enabled. 
+    # @param xapi_credential_id 
     # @param [Hash] opts the optional parameters
     # @return [XapiCredentialSchema]
     def get_xapi_credential(xapi_credential_id, opts = {})
@@ -345,9 +345,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Retrieves the xAPI credentials specified by the xAPI credentials id.
-    # Retrieves the xAPI credentials specified by the xAPI credentials id.
-    # @param xapi_credential_id id for this xAPI credential
+    # Get detailed information about the xAPI Credentials 
+    # Returns detailed information about the xAPI credentials.  This includes the id (username), secret (password), permissions, and whether or not the credentials are enabled. 
+    # @param xapi_credential_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(XapiCredentialSchema, Fixnum, Hash)>] XapiCredentialSchema data, response status code and response headers
     def get_xapi_credential_with_http_info(xapi_credential_id, opts = {})
@@ -355,7 +355,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.get_xapi_credential ...'
       end
       # verify the required parameter 'xapi_credential_id' is set
-      if @api_client.config.client_side_validation && xapi_credential_id.nil?
+      if xapi_credential_id.nil?
         fail ArgumentError, "Missing the required parameter 'xapi_credential_id' when calling XapiApi.get_xapi_credential"
       end
       # resource path
@@ -389,22 +389,32 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get the list of xapiCredentials
-    # Get the list of xapiCredentials
+    # Get a list of xAPI Credentials 
+    # Returns a list of xAPI credentials.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only &lt;&lt;resourcePathName&gt;&gt; updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of &lt;&lt;resourcePathName&gt;&gt; lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to credential_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [XapiCredentialsListSchema]
     def get_xapi_credentials(opts = {})
       data, _status_code, _headers = get_xapi_credentials_with_http_info(opts)
       data
     end
 
-    # Get the list of xapiCredentials
-    # Get the list of xapiCredentials
+    # Get a list of xAPI Credentials 
+    # Returns a list of xAPI credentials.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only &lt;&lt;resourcePathName&gt;&gt; updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of &lt;&lt;resourcePathName&gt;&gt; lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(XapiCredentialsListSchema, Fixnum, Hash)>] XapiCredentialsListSchema data, response status code and response headers
     def get_xapi_credentials_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -416,6 +426,11 @@ module RusticiSoftwareCloudV2
       # query parameters
       query_params = {}
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+      query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
+      query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
 
       # header parameters
@@ -443,9 +458,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Edit an existing xAPI pipe or create a new one.
-    # Editing a pipe will cause it to start over and forward any statements it finds, even if the prior version of the pipe had already forwarded those statements. If the pipe being edited is currently being processed, the this request will fail with a status code of 409. 
-    # @param statement_pipe_id id for this xAPI statement pipe
+    # Create or update an xAPI Statement Pipe 
+    # Creates or updates information about the xAPI statement pipe.  - If the xAPI statement pipe is instead being updated, the pipe will start over and forward any statements it finds, even if it had already forwarded those statements.  If the pipe being edited is currently being processed, then this request will fail with a status code of 409.  >**Note:** >This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the creation of the xAPI statement pipe takes place. 
+    # @param statement_pipe_id 
     # @param xapi_statement_pipe 
     # @param [Hash] opts the optional parameters
     # @return [StringResultSchema]
@@ -454,9 +469,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Edit an existing xAPI pipe or create a new one.
-    # Editing a pipe will cause it to start over and forward any statements it finds, even if the prior version of the pipe had already forwarded those statements. If the pipe being edited is currently being processed, the this request will fail with a status code of 409. 
-    # @param statement_pipe_id id for this xAPI statement pipe
+    # Create or update an xAPI Statement Pipe 
+    # Creates or updates information about the xAPI statement pipe.  - If the xAPI statement pipe is instead being updated, the pipe will start over and forward any statements it finds, even if it had already forwarded those statements.  If the pipe being edited is currently being processed, then this request will fail with a status code of 409.  &gt;**Note:** &gt;This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the creation of the xAPI statement pipe takes place. 
+    # @param statement_pipe_id 
     # @param xapi_statement_pipe 
     # @param [Hash] opts the optional parameters
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
@@ -465,11 +480,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.set_statement_pipe ...'
       end
       # verify the required parameter 'statement_pipe_id' is set
-      if @api_client.config.client_side_validation && statement_pipe_id.nil?
+      if statement_pipe_id.nil?
         fail ArgumentError, "Missing the required parameter 'statement_pipe_id' when calling XapiApi.set_statement_pipe"
       end
       # verify the required parameter 'xapi_statement_pipe' is set
-      if @api_client.config.client_side_validation && xapi_statement_pipe.nil?
+      if xapi_statement_pipe.nil?
         fail ArgumentError, "Missing the required parameter 'xapi_statement_pipe' when calling XapiApi.set_statement_pipe"
       end
       # resource path
@@ -503,9 +518,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
-    # Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
-    # @param xapi_credential_id id for this xAPI credential
+    # Create or update xAPI Credentials 
+    # Creates or updates information about the xAPI credentials. 
+    # @param xapi_credential_id 
     # @param xapi_credential 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -514,9 +529,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
-    # Edit an existing xAPI credential or create a new one, specified by the xAPI credentials id
-    # @param xapi_credential_id id for this xAPI credential
+    # Create or update xAPI Credentials 
+    # Creates or updates information about the xAPI credentials. 
+    # @param xapi_credential_id 
     # @param xapi_credential 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -525,11 +540,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: XapiApi.set_xapi_credential ...'
       end
       # verify the required parameter 'xapi_credential_id' is set
-      if @api_client.config.client_side_validation && xapi_credential_id.nil?
+      if xapi_credential_id.nil?
         fail ArgumentError, "Missing the required parameter 'xapi_credential_id' when calling XapiApi.set_xapi_credential"
       end
       # verify the required parameter 'xapi_credential' is set
-      if @api_client.config.client_side_validation && xapi_credential.nil?
+      if xapi_credential.nil?
         fail ArgumentError, "Missing the required parameter 'xapi_credential' when calling XapiApi.set_xapi_credential"
       end
       # resource path

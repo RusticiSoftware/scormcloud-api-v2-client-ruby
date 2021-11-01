@@ -19,6 +19,7 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Ping the API 
     # Get back a message indicating that the API is working. 
     # @param [Hash] opts the optional parameters
     # @return [PingSchema]
@@ -27,6 +28,7 @@ module RusticiSoftwareCloudV2
       data
     end
 
+    # Ping the API 
     # Get back a message indicating that the API is working. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PingSchema, Fixnum, Hash)>] PingSchema data, response status code and response headers

@@ -17,8 +17,18 @@ module RusticiSoftwareCloudV2
     # Destination ID.
     attr_accessor :destination_id
 
+    # Name of the destination housing this dispatch
+    attr_accessor :destination_name
+
     # Serialized external package ID.
     attr_accessor :course_id
+
+    # Title of this dispatched course
+    attr_accessor :course_title
+
+    attr_accessor :updated
+
+    attr_accessor :created
 
     # If true, then new registrations can be created for this dispatch. 
     attr_accessor :allow_new_registrations
@@ -35,7 +45,7 @@ module RusticiSoftwareCloudV2
     # The current number of registrations that have been created for this dispatch. 
     attr_accessor :registration_count
 
-    # The date after which this dispatch will be disabled as an ISO 8601 string, or 'none' for no expiration date. 
+    # The ISO 8601 TimeStamp (defaults to UTC) after which this dispatch will be disabled. An empty value will represent no expiration date. 
     attr_accessor :expiration_date
 
     # The tags to associate with this Dispatch.
@@ -51,7 +61,11 @@ module RusticiSoftwareCloudV2
     def self.attribute_map
       {
         :'destination_id' => :'destinationId',
+        :'destination_name' => :'destinationName',
         :'course_id' => :'courseId',
+        :'course_title' => :'courseTitle',
+        :'updated' => :'updated',
+        :'created' => :'created',
         :'allow_new_registrations' => :'allowNewRegistrations',
         :'enabled' => :'enabled',
         :'instanced' => :'instanced',
@@ -68,7 +82,11 @@ module RusticiSoftwareCloudV2
     def self.swagger_types
       {
         :'destination_id' => :'String',
+        :'destination_name' => :'String',
         :'course_id' => :'String',
+        :'course_title' => :'String',
+        :'updated' => :'DateTime',
+        :'created' => :'DateTime',
         :'allow_new_registrations' => :'BOOLEAN',
         :'enabled' => :'BOOLEAN',
         :'instanced' => :'BOOLEAN',
@@ -93,8 +111,24 @@ module RusticiSoftwareCloudV2
         self.destination_id = attributes[:'destinationId']
       end
 
+      if attributes.has_key?(:'destinationName')
+        self.destination_name = attributes[:'destinationName']
+      end
+
       if attributes.has_key?(:'courseId')
         self.course_id = attributes[:'courseId']
+      end
+
+      if attributes.has_key?(:'courseTitle')
+        self.course_title = attributes[:'courseTitle']
+      end
+
+      if attributes.has_key?(:'updated')
+        self.updated = attributes[:'updated']
+      end
+
+      if attributes.has_key?(:'created')
+        self.created = attributes[:'created']
       end
 
       if attributes.has_key?(:'allowNewRegistrations')
@@ -149,13 +183,18 @@ module RusticiSoftwareCloudV2
       true
     end
 
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           destination_id == o.destination_id &&
+          destination_name == o.destination_name &&
           course_id == o.course_id &&
+          course_title == o.course_title &&
+          updated == o.updated &&
+          created == o.created &&
           allow_new_registrations == o.allow_new_registrations &&
           enabled == o.enabled &&
           instanced == o.instanced &&
@@ -176,7 +215,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [destination_id, course_id, allow_new_registrations, enabled, instanced, registration_cap, registration_count, expiration_date, tags, email, notes].hash
+      [destination_id, destination_name, course_id, course_title, updated, created, allow_new_registrations, enabled, instanced, registration_cap, registration_count, expiration_date, tags, email, notes].hash
     end
 
     # Builds the object from hash
@@ -186,7 +225,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -282,5 +321,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

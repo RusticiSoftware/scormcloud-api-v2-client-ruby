@@ -15,20 +15,29 @@ require 'date'
 module RusticiSoftwareCloudV2
   # Request to import a course by downloading it from a url
   class ImportFetchRequestSchema
-    # URL path to the .zip package to download to import this course
+    # URL path to the .zip package or media file to download to import this course
     attr_accessor :url
+
+    # MIME type of the content to be fetched
+    attr_accessor :content_type
+
+    attr_accessor :media_file_metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'url' => :'url'
+        :'url' => :'url',
+        :'content_type' => :'contentType',
+        :'media_file_metadata' => :'mediaFileMetadata'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'url' => :'String'
+        :'url' => :'String',
+        :'content_type' => :'String',
+        :'media_file_metadata' => :'MediaFileMetadataSchema'
       }
     end
 
@@ -42,6 +51,16 @@ module RusticiSoftwareCloudV2
 
       if attributes.has_key?(:'url')
         self.url = attributes[:'url']
+      end
+
+      if attributes.has_key?(:'contentType')
+        self.content_type = attributes[:'contentType']
+      else
+        self.content_type = 'application/zip'
+      end
+
+      if attributes.has_key?(:'mediaFileMetadata')
+        self.media_file_metadata = attributes[:'mediaFileMetadata']
       end
     end
 
@@ -63,12 +82,15 @@ module RusticiSoftwareCloudV2
       true
     end
 
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          url == o.url
+          url == o.url &&
+          content_type == o.content_type &&
+          media_file_metadata == o.media_file_metadata
     end
 
     # @see the `==` method
@@ -80,7 +102,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [url].hash
+      [url, content_type, media_file_metadata].hash
     end
 
     # Builds the object from hash
@@ -90,7 +112,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -186,5 +208,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

@@ -89,6 +89,23 @@ describe RusticiSoftwareCloudV2::ApiClient do
     end
   end
 
+  describe '#build_request' do
+    let(:config) { RusticiSoftwareCloudV2::Configuration.new }
+    let(:api_client) { RusticiSoftwareCloudV2::ApiClient.new(config) }
+
+    it 'does not send multipart to request' do
+      expect(Typhoeus::Request).to receive(:new).with(anything, hash_not_including(:multipart))
+      api_client.build_request(:get, '/test')
+    end
+
+    context 'when the content type is multipart' do
+      it 'sends multipart to request' do
+        expect(Typhoeus::Request).to receive(:new).with(anything, hash_including(multipart: true))
+        api_client.build_request(:get, '/test', {header_params: { 'Content-Type' => 'multipart/form-data'}})
+      end
+    end
+  end
+
   describe '#deserialize' do
     it "handles Array<Integer>" do
       api_client = RusticiSoftwareCloudV2::ApiClient.new
