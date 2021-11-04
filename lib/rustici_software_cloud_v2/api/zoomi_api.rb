@@ -19,8 +19,8 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Delete the keys for an application.
-    # Delete the keys for an application.
+    # Delete the Zoomi keys for an Application 
+    # Deletes the Zoomi keys for an application. 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_application_zoomi_keys(opts = {})
@@ -28,8 +28,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete the keys for an application.
-    # Delete the keys for an application.
+    # Delete the Zoomi keys for an Application 
+    # Deletes the Zoomi keys for an application. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_application_zoomi_keys_with_http_info(opts = {})
@@ -66,10 +66,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Deletes the course in zoomi
-    # Deletes the course in zoomi
+    # Delete the Course from Zoomi 
+    # Deletes the course from Zoomi, but the course will remain in SCORM Cloud. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_zoomi_course(course_id, version_id, opts = {})
@@ -77,10 +77,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Deletes the course in zoomi
-    # Deletes the course in zoomi
+    # Delete the Course from Zoomi 
+    # Deletes the course from Zoomi, but the course will remain in SCORM Cloud. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_zoomi_course_with_http_info(course_id, version_id, opts = {})
@@ -88,11 +88,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ZoomiApi.delete_zoomi_course ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling ZoomiApi.delete_zoomi_course"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling ZoomiApi.delete_zoomi_course"
       end
       # resource path
@@ -125,8 +125,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Gets the zoomi company id of an application.
-    # Gets the zoomi company id of an application.
+    # Get the Zoomi company ID of an Application 
+    # Returns the Zoomi company ID of an application. 
     # @param [Hash] opts the optional parameters
     # @return [StringResultSchema]
     def get_application_zoomi_company_id(opts = {})
@@ -134,8 +134,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Gets the zoomi company id of an application.
-    # Gets the zoomi company id of an application.
+    # Get the Zoomi company ID of an Application 
+    # Returns the Zoomi company ID of an application. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
     def get_application_zoomi_company_id_with_http_info(opts = {})
@@ -173,8 +173,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Gets the public key for an application.
-    # Gets the public key for an application.
+    # Get the Zoomi public key for an Application 
+    # Returns the Zoomi public key for an application. 
     # @param [Hash] opts the optional parameters
     # @return [StringResultSchema]
     def get_application_zoomi_public_key(opts = {})
@@ -182,8 +182,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Gets the public key for an application.
-    # Gets the public key for an application.
+    # Get the Zoomi public key for an Application 
+    # Returns the Zoomi public key for an application. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
     def get_application_zoomi_public_key_with_http_info(opts = {})
@@ -221,10 +221,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Gets the zoomi enabled value of a course
-    # Gets the zoomi enabled value of a course
+    # Get the Zoomi enabled value of a Course Version 
+    # Returns the Zoomi enabled value of a course version. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [EnabledSchema]
     def get_course_zoomi_enabled(course_id, version_id, opts = {})
@@ -232,10 +232,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Gets the zoomi enabled value of a course
-    # Gets the zoomi enabled value of a course
+    # Get the Zoomi enabled value of a Course Version 
+    # Returns the Zoomi enabled value of a course version. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EnabledSchema, Fixnum, Hash)>] EnabledSchema data, response status code and response headers
     def get_course_zoomi_enabled_with_http_info(course_id, version_id, opts = {})
@@ -243,11 +243,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ZoomiApi.get_course_zoomi_enabled ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling ZoomiApi.get_course_zoomi_enabled"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling ZoomiApi.get_course_zoomi_enabled"
       end
       # resource path
@@ -281,10 +281,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Gets the status for a course and imports to Zoomi
-    # Gets the status for a course and imports to Zoomi
+    # Get the status for a Course from Zoomi 
+    # Returns the status for a course and starts the upload process to Zoomi if not started. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [StringResultSchema]
     def get_zoomi_course_status(course_id, version_id, opts = {})
@@ -292,10 +292,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Gets the status for a course and imports to Zoomi
-    # Gets the status for a course and imports to Zoomi
+    # Get the status for a Course from Zoomi 
+    # Returns the status for a course and starts the upload process to Zoomi if not started. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
     def get_zoomi_course_status_with_http_info(course_id, version_id, opts = {})
@@ -303,11 +303,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ZoomiApi.get_zoomi_course_status ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling ZoomiApi.get_zoomi_course_status"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling ZoomiApi.get_zoomi_course_status"
       end
       # resource path
@@ -341,8 +341,73 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set the zoomi company id value of an application.
-    # Set the zoomi company id value of an application.
+    # Begin the import process with Zoomi 
+    # Begins the import process with Zoomi.  Must be followed up by a status call. 
+    # @param course_id 
+    # @param version_id 
+    # @param zoomi_course_options 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def import_course_version_to_zoomi(course_id, version_id, zoomi_course_options, opts = {})
+      import_course_version_to_zoomi_with_http_info(course_id, version_id, zoomi_course_options, opts)
+      nil
+    end
+
+    # Begin the import process with Zoomi 
+    # Begins the import process with Zoomi.  Must be followed up by a status call. 
+    # @param course_id 
+    # @param version_id 
+    # @param zoomi_course_options 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def import_course_version_to_zoomi_with_http_info(course_id, version_id, zoomi_course_options, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ZoomiApi.import_course_version_to_zoomi ...'
+      end
+      # verify the required parameter 'course_id' is set
+      if course_id.nil?
+        fail ArgumentError, "Missing the required parameter 'course_id' when calling ZoomiApi.import_course_version_to_zoomi"
+      end
+      # verify the required parameter 'version_id' is set
+      if version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling ZoomiApi.import_course_version_to_zoomi"
+      end
+      # verify the required parameter 'zoomi_course_options' is set
+      if zoomi_course_options.nil?
+        fail ArgumentError, "Missing the required parameter 'zoomi_course_options' when calling ZoomiApi.import_course_version_to_zoomi"
+      end
+      # resource path
+      local_var_path = '/zoomi/course/{courseId}/version/{versionId}/import'.sub('{' + 'courseId' + '}', course_id.to_s).sub('{' + 'versionId' + '}', version_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(zoomi_course_options)
+      auth_names = ['APP_NORMAL', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ZoomiApi#import_course_version_to_zoomi\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Set the Zoomi company ID of an Application 
+    # Sets the Zoomi company ID value of an application. 
     # @param zoomi_company_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -351,8 +416,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set the zoomi company id value of an application.
-    # Set the zoomi company id value of an application.
+    # Set the Zoomi company ID of an Application 
+    # Sets the Zoomi company ID value of an application. 
     # @param zoomi_company_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -361,7 +426,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ZoomiApi.set_application_zoomi_company_id ...'
       end
       # verify the required parameter 'zoomi_company_id' is set
-      if @api_client.config.client_side_validation && zoomi_company_id.nil?
+      if zoomi_company_id.nil?
         fail ArgumentError, "Missing the required parameter 'zoomi_company_id' when calling ZoomiApi.set_application_zoomi_company_id"
       end
       # resource path
@@ -394,36 +459,40 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set the zoomi enabled value of a course.
-    # Set the zoomi enabled value of a course.
+    # Set the Zoomi enabled value of a Course Version 
+    # Sets the Zoomi enabled value of a course version. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
+    # @param enabled 
     # @param [Hash] opts the optional parameters
-    # @option opts [ZoomiCourseOptionsSchema] :zoomi_course_options 
     # @return [nil]
-    def set_course_zoomi_enabled(course_id, version_id, opts = {})
-      set_course_zoomi_enabled_with_http_info(course_id, version_id, opts)
+    def set_course_zoomi_enabled(course_id, version_id, enabled, opts = {})
+      set_course_zoomi_enabled_with_http_info(course_id, version_id, enabled, opts)
       nil
     end
 
-    # Set the zoomi enabled value of a course.
-    # Set the zoomi enabled value of a course.
+    # Set the Zoomi enabled value of a Course Version 
+    # Sets the Zoomi enabled value of a course version. 
     # @param course_id 
-    # @param version_id The course version
+    # @param version_id 
+    # @param enabled 
     # @param [Hash] opts the optional parameters
-    # @option opts [ZoomiCourseOptionsSchema] :zoomi_course_options 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def set_course_zoomi_enabled_with_http_info(course_id, version_id, opts = {})
+    def set_course_zoomi_enabled_with_http_info(course_id, version_id, enabled, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ZoomiApi.set_course_zoomi_enabled ...'
       end
       # verify the required parameter 'course_id' is set
-      if @api_client.config.client_side_validation && course_id.nil?
+      if course_id.nil?
         fail ArgumentError, "Missing the required parameter 'course_id' when calling ZoomiApi.set_course_zoomi_enabled"
       end
       # verify the required parameter 'version_id' is set
-      if @api_client.config.client_side_validation && version_id.nil?
+      if version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling ZoomiApi.set_course_zoomi_enabled"
+      end
+      # verify the required parameter 'enabled' is set
+      if enabled.nil?
+        fail ArgumentError, "Missing the required parameter 'enabled' when calling ZoomiApi.set_course_zoomi_enabled"
       end
       # resource path
       local_var_path = '/zoomi/course/{courseId}/version/{versionId}/enabled'.sub('{' + 'courseId' + '}', course_id.to_s).sub('{' + 'versionId' + '}', version_id.to_s)
@@ -442,7 +511,7 @@ module RusticiSoftwareCloudV2
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'zoomi_course_options'])
+      post_body = @api_client.object_to_http_body(enabled)
       auth_names = ['APP_NORMAL', 'OAUTH']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,

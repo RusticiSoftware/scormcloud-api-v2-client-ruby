@@ -19,10 +19,10 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Deletes all of the information associated with a learner in an application, by learner id. 
-    # Deletes all of the information associated with a learner in an application, by learner id. This is meant for use with complying with GDPR requests from learners. 
-    # @param learner_id The id of the learner for which to remove all data from an application
-    # @param user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in.
+    # Deletes all PII for a learnerId 
+    # Deletes all of the PII information for the learner.  This is meant for use with complying with GDPR requests from learners.  >**Note:** >This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the deletion of PII information takes place. 
+    # @param learner_id The id of the learner
+    # @param user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_all_learner_data(learner_id, user_email, opts = {})
@@ -30,10 +30,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Deletes all of the information associated with a learner in an application, by learner id. 
-    # Deletes all of the information associated with a learner in an application, by learner id. This is meant for use with complying with GDPR requests from learners. 
-    # @param learner_id The id of the learner for which to remove all data from an application
-    # @param user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in.
+    # Deletes all PII for a learnerId 
+    # Deletes all of the PII information for the learner.  This is meant for use with complying with GDPR requests from learners.  &gt;**Note:** &gt;This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the deletion of PII information takes place. 
+    # @param learner_id The id of the learner
+    # @param user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_all_learner_data_with_http_info(learner_id, user_email, opts = {})
@@ -41,11 +41,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: LearnerApi.delete_all_learner_data ...'
       end
       # verify the required parameter 'learner_id' is set
-      if @api_client.config.client_side_validation && learner_id.nil?
+      if learner_id.nil?
         fail ArgumentError, "Missing the required parameter 'learner_id' when calling LearnerApi.delete_all_learner_data"
       end
       # verify the required parameter 'user_email' is set
-      if @api_client.config.client_side_validation && user_email.nil?
+      if user_email.nil?
         fail ArgumentError, "Missing the required parameter 'user_email' when calling LearnerApi.delete_all_learner_data"
       end
       # resource path
@@ -79,9 +79,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete the tags for this learner 
-    # Delete the tags for this learner 
-    # @param learner_id The id of the learner for which to remove all data from an application
+    # Delete tags from a learnerId 
+    # Delete the specified tags from the learner.  Deleting tags that do not exist will still result in a success. 
+    # @param learner_id The id of the learner
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -90,9 +90,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete the tags for this learner 
-    # Delete the tags for this learner 
-    # @param learner_id The id of the learner for which to remove all data from an application
+    # Delete tags from a learnerId 
+    # Delete the specified tags from the learner.  Deleting tags that do not exist will still result in a success. 
+    # @param learner_id The id of the learner
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -101,11 +101,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: LearnerApi.delete_learner_tags ...'
       end
       # verify the required parameter 'learner_id' is set
-      if @api_client.config.client_side_validation && learner_id.nil?
+      if learner_id.nil?
         fail ArgumentError, "Missing the required parameter 'learner_id' when calling LearnerApi.delete_learner_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling LearnerApi.delete_learner_tags"
       end
       # resource path
@@ -138,9 +138,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get the tags for this learner 
-    # Get the tags for this learner 
-    # @param learner_id The id of the learner for which to remove all data from an application
+    # Get tags for a learnerId 
+    # Returns the tags for the learner. 
+    # @param learner_id The id of the learner
     # @param [Hash] opts the optional parameters
     # @return [TagListSchema]
     def get_learner_tags(learner_id, opts = {})
@@ -148,9 +148,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get the tags for this learner 
-    # Get the tags for this learner 
-    # @param learner_id The id of the learner for which to remove all data from an application
+    # Get tags for a learnerId 
+    # Returns the tags for the learner. 
+    # @param learner_id The id of the learner
     # @param [Hash] opts the optional parameters
     # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
     def get_learner_tags_with_http_info(learner_id, opts = {})
@@ -158,7 +158,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: LearnerApi.get_learner_tags ...'
       end
       # verify the required parameter 'learner_id' is set
-      if @api_client.config.client_side_validation && learner_id.nil?
+      if learner_id.nil?
         fail ArgumentError, "Missing the required parameter 'learner_id' when calling LearnerApi.get_learner_tags"
       end
       # resource path
@@ -192,9 +192,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set the tags for this learner 
-    # Set the tags for this learner 
-    # @param learner_id The id of the learner for which to remove all data from an application
+    # Add tags to a learnerId 
+    # Applies the provided tags to the learner.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when working with Reportage. 
+    # @param learner_id The id of the learner
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -203,9 +203,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set the tags for this learner 
-    # Set the tags for this learner 
-    # @param learner_id The id of the learner for which to remove all data from an application
+    # Add tags to a learnerId 
+    # Applies the provided tags to the learner.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when working with Reportage. 
+    # @param learner_id The id of the learner
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -214,11 +214,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: LearnerApi.put_learner_tags ...'
       end
       # verify the required parameter 'learner_id' is set
-      if @api_client.config.client_side_validation && learner_id.nil?
+      if learner_id.nil?
         fail ArgumentError, "Missing the required parameter 'learner_id' when calling LearnerApi.put_learner_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling LearnerApi.put_learner_tags"
       end
       # resource path
@@ -251,9 +251,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Sets all of the provided tags on all of the provided learners
-    # Sets all of the provided tags on all of the provided learners 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of learnerIds 
+    # Applies all of the provided tags on all of the provided learners.  Tags are used to easily identify resources. Adding tags can enable more refined searches when working with Reportage. 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def put_learner_tags_batch(batch, opts = {})
@@ -261,9 +261,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Sets all of the provided tags on all of the provided learners
-    # Sets all of the provided tags on all of the provided learners 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of learnerIds 
+    # Applies all of the provided tags on all of the provided learners.  Tags are used to easily identify resources. Adding tags can enable more refined searches when working with Reportage. 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def put_learner_tags_batch_with_http_info(batch, opts = {})
@@ -271,7 +271,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: LearnerApi.put_learner_tags_batch ...'
       end
       # verify the required parameter 'batch' is set
-      if @api_client.config.client_side_validation && batch.nil?
+      if batch.nil?
         fail ArgumentError, "Missing the required parameter 'batch' when calling LearnerApi.put_learner_tags_batch"
       end
       # resource path
@@ -304,9 +304,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Update a learner's info on all of their registrations.
-    # A learner in SCORM Cloud is not an entity on its own.  In fact, learners only exist as information on individual registrations. This method will update the information on each of the registrations that the provided `learnerId` is attached to.  You may update any of the values available in the LearnerSchema which is posted.  Any values you do not wish to alter, omit from the post.  Depending on the field, providing something like an empty string may have unintended consequences.  Lastly, it's important to note that this method is asynchronous.  A success status will be returned, and that signifies that a background process has been spun up to alter the learner's info.  As such, you may find a short period of delay in seeing the changes shown on all registrations. 
-    # @param learner_id The id of the learner to be updated
+    # Update all Registrations for a learnerId 
+    # Updates information about a group of registrations, such as learner email and name.  A learner in SCORM Cloud is not an entity on its own.  In fact, learners only exist as information on individual registrations.  This method will update the information on each of the registrations that the provided `learnerId` is attached to.  >**Caution:** >Providing an empty string will cause the value in SCORM Cloud to be set to empty.  This may have unintended consequences with regards to functionality.  >**Note:** >This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the changes on the registrations take place. 
+    # @param learner_id The id of the learner
     # @param learner_info 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -315,9 +315,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Update a learner&#39;s info on all of their registrations.
-    # A learner in SCORM Cloud is not an entity on its own.  In fact, learners only exist as information on individual registrations. This method will update the information on each of the registrations that the provided &#x60;learnerId&#x60; is attached to.  You may update any of the values available in the LearnerSchema which is posted.  Any values you do not wish to alter, omit from the post.  Depending on the field, providing something like an empty string may have unintended consequences.  Lastly, it&#39;s important to note that this method is asynchronous.  A success status will be returned, and that signifies that a background process has been spun up to alter the learner&#39;s info.  As such, you may find a short period of delay in seeing the changes shown on all registrations. 
-    # @param learner_id The id of the learner to be updated
+    # Update all Registrations for a learnerId 
+    # Updates information about a group of registrations, such as learner email and name.  A learner in SCORM Cloud is not an entity on its own.  In fact, learners only exist as information on individual registrations.  This method will update the information on each of the registrations that the provided &#x60;learnerId&#x60; is attached to.  &gt;**Caution:** &gt;Providing an empty string will cause the value in SCORM Cloud to be set to empty.  This may have unintended consequences with regards to functionality.  &gt;**Note:** &gt;This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the changes on the registrations take place. 
+    # @param learner_id The id of the learner
     # @param learner_info 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -326,11 +326,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: LearnerApi.update_learner_info ...'
       end
       # verify the required parameter 'learner_id' is set
-      if @api_client.config.client_side_validation && learner_id.nil?
+      if learner_id.nil?
         fail ArgumentError, "Missing the required parameter 'learner_id' when calling LearnerApi.update_learner_info"
       end
       # verify the required parameter 'learner_info' is set
-      if @api_client.config.client_side_validation && learner_info.nil?
+      if learner_info.nil?
         fail ArgumentError, "Missing the required parameter 'learner_info' when calling LearnerApi.update_learner_info"
       end
       # resource path

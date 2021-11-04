@@ -19,39 +19,31 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Authenticates for a oauth token
-    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested.  >Note:  >The token is not stored and therefore can not be modified or deleted. The requested permissions are encoded in the token which is then signed. As long as the secret used to create it is not changed the token will be valid until it expires. 
-    # @param scope 
+    # Obtain an OAuth token for scoped access to an Application 
+    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested.  >**Note:** >The token is not stored and therefore can not be modified or deleted.  The requested permissions are encoded in the token which is then signed. 
+    # @param scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. 
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :expiration  (default to 300)
+    # @option opts [Integer] :expiration Amount of seconds until the OAuth token expires.  (default to 300)
     # @return [ApplicationToken]
     def get_app_token(scope, opts = {})
       data, _status_code, _headers = get_app_token_with_http_info(scope, opts)
       data
     end
 
-    # Authenticates for a oauth token
-    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested.  &gt;Note:  &gt;The token is not stored and therefore can not be modified or deleted. The requested permissions are encoded in the token which is then signed. As long as the secret used to create it is not changed the token will be valid until it expires. 
-    # @param scope 
+    # Obtain an OAuth token for scoped access to an Application 
+    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested.  &gt;**Note:** &gt;The token is not stored and therefore can not be modified or deleted.  The requested permissions are encoded in the token which is then signed. 
+    # @param scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. 
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :expiration 
+    # @option opts [Integer] :expiration Amount of seconds until the OAuth token expires. 
     # @return [Array<(ApplicationToken, Fixnum, Hash)>] ApplicationToken data, response status code and response headers
     def get_app_token_with_http_info(scope, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticationApi.get_app_token ...'
       end
       # verify the required parameter 'scope' is set
-      if @api_client.config.client_side_validation && scope.nil?
+      if scope.nil?
         fail ArgumentError, "Missing the required parameter 'scope' when calling AuthenticationApi.get_app_token"
       end
-      if @api_client.config.client_side_validation && !opts[:'expiration'].nil? && opts[:'expiration'] > 43200
-        fail ArgumentError, 'invalid value for "opts[:"expiration"]" when calling AuthenticationApi.get_app_token, must be smaller than or equal to 43200.'
-      end
-
-      if @api_client.config.client_side_validation && !opts[:'expiration'].nil? && opts[:'expiration'] < 60
-        fail ArgumentError, 'invalid value for "opts[:"expiration"]" when calling AuthenticationApi.get_app_token, must be greater than or equal to 60.'
-      end
-
       # resource path
       local_var_path = '/oauth/authenticate/application/token'
 

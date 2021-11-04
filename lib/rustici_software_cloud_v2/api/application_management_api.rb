@@ -19,26 +19,28 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # A call to this method will create a new application and return a basic object describing it.
-    # @param application_name 
+    # Use the Application Management App to create a new Application 
+    # Creates an application.  Applications are how resources are grouped together in SCORM Cloud.  Any courses, registrations, etc. will only be accessible via the credentials for the application they belong to.  >**Note:** >Application IDs are unique in that we do not allow the user to supply a custom value for this field.  The ID of the newly created application will be specified in the response from this method.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
+    # @param application_request 
     # @param [Hash] opts the optional parameters
     # @return [ApplicationSchema]
-    def create_application(application_name, opts = {})
-      data, _status_code, _headers = create_application_with_http_info(application_name, opts)
+    def create_application(application_request, opts = {})
+      data, _status_code, _headers = create_application_with_http_info(application_request, opts)
       data
     end
 
-    # A call to this method will create a new application and return a basic object describing it.
-    # @param application_name 
+    # Use the Application Management App to create a new Application 
+    # Creates an application.  Applications are how resources are grouped together in SCORM Cloud.  Any courses, registrations, etc. will only be accessible via the credentials for the application they belong to.  &gt;**Note:** &gt;Application IDs are unique in that we do not allow the user to supply a custom value for this field.  The ID of the newly created application will be specified in the response from this method.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
+    # @param application_request 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicationSchema, Fixnum, Hash)>] ApplicationSchema data, response status code and response headers
-    def create_application_with_http_info(application_name, opts = {})
+    def create_application_with_http_info(application_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.create_application ...'
       end
-      # verify the required parameter 'application_name' is set
-      if @api_client.config.client_side_validation && application_name.nil?
-        fail ArgumentError, "Missing the required parameter 'application_name' when calling ApplicationManagementApi.create_application"
+      # verify the required parameter 'application_request' is set
+      if application_request.nil?
+        fail ArgumentError, "Missing the required parameter 'application_request' when calling ApplicationManagementApi.create_application"
       end
       # resource path
       local_var_path = '/appManagement/applications'
@@ -57,7 +59,7 @@ module RusticiSoftwareCloudV2
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(application_name)
+      post_body = @api_client.object_to_http_body(application_request)
       auth_names = ['APP_MANAGEMENT', 'OAUTH']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -71,7 +73,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Create a new credential (aka secret key) for use with the `childAppId`. 
+    # Use the Application Manager App to create a new secret key for an Application 
+    # Creates a new credential (aka secret key) for use with the child application.  The credential will be used alongside the `childAppId` for basic auth requests.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param credential_request 
     # @param [Hash] opts the optional parameters
@@ -81,7 +84,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Create a new credential (aka secret key) for use with the &#x60;childAppId&#x60;. 
+    # Use the Application Manager App to create a new secret key for an Application 
+    # Creates a new credential (aka secret key) for use with the child application.  The credential will be used alongside the &#x60;childAppId&#x60; for basic auth requests.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param credential_request 
     # @param [Hash] opts the optional parameters
@@ -91,11 +95,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.create_credential ...'
       end
       # verify the required parameter 'child_app_id' is set
-      if @api_client.config.client_side_validation && child_app_id.nil?
+      if child_app_id.nil?
         fail ArgumentError, "Missing the required parameter 'child_app_id' when calling ApplicationManagementApi.create_credential"
       end
       # verify the required parameter 'credential_request' is set
-      if @api_client.config.client_side_validation && credential_request.nil?
+      if credential_request.nil?
         fail ArgumentError, "Missing the required parameter 'credential_request' when calling ApplicationManagementApi.create_credential"
       end
       # resource path
@@ -129,7 +133,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested. Note: the token is not stored and therefore can not be modified or deleted. The requested permissions are encoded in the token which is then signed. As long as the secret used to create it is not changed the token will be valid until it expires.
+    # Obtain an OAuth token for scoped access to an Application 
+    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested.  >**Note:** >The token is not stored and therefore can not be modified or deleted.  The requested permissions are encoded in the token which is then signed. 
     # @param token_request 
     # @param [Hash] opts the optional parameters
     # @return [StringResultSchema]
@@ -138,7 +143,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested. Note: the token is not stored and therefore can not be modified or deleted. The requested permissions are encoded in the token which is then signed. As long as the secret used to create it is not changed the token will be valid until it expires.
+    # Obtain an OAuth token for scoped access to an Application 
+    # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested.  &gt;**Note:** &gt;The token is not stored and therefore can not be modified or deleted.  The requested permissions are encoded in the token which is then signed. 
     # @param token_request 
     # @param [Hash] opts the optional parameters
     # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
@@ -147,7 +153,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.create_token ...'
       end
       # verify the required parameter 'token_request' is set
-      if @api_client.config.client_side_validation && token_request.nil?
+      if token_request.nil?
         fail ArgumentError, "Missing the required parameter 'token_request' when calling ApplicationManagementApi.create_token"
       end
       # resource path
@@ -181,7 +187,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete an application.  If the application contains content, it must first be manually removed before calling this method, else an error will be thrown.
+    # Use the Application Management App to delete an Application 
+    # Deletes the specified application.  All content within an application must be removed in order to allow deletion.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -190,7 +197,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete an application.  If the application contains content, it must first be manually removed before calling this method, else an error will be thrown.
+    # Use the Application Management App to delete an Application 
+    # Deletes the specified application.  All content within an application must be removed in order to allow deletion.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -199,7 +207,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.delete_application ...'
       end
       # verify the required parameter 'child_app_id' is set
-      if @api_client.config.client_side_validation && child_app_id.nil?
+      if child_app_id.nil?
         fail ArgumentError, "Missing the required parameter 'child_app_id' when calling ApplicationManagementApi.delete_application"
       end
       # resource path
@@ -232,35 +240,32 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Clears the `settingId` value for this level 
-    # Clears the setting value at this level.  This is effectively reverting the setting to the system level default. 
+    # Delete a configuration setting explicitly set for an Application 
+    # Clears the specified setting from the application.  This causes the setting to inherit a value from a higher level (e.g. system default if deleting from application, application level if deleting from learning standard). If the configuration setting was not set at the application level it will continue to persist and will require deletion from the level it was set. 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
-    # @option opts [BOOLEAN] :single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
+    # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
     # @return [nil]
     def delete_application_configuration_setting(setting_id, opts = {})
       delete_application_configuration_setting_with_http_info(setting_id, opts)
       nil
     end
 
-    # Clears the &#x60;settingId&#x60; value for this level 
-    # Clears the setting value at this level.  This is effectively reverting the setting to the system level default. 
+    # Delete a configuration setting explicitly set for an Application 
+    # Clears the specified setting from the application.  This causes the setting to inherit a value from a higher level (e.g. system default if deleting from application, application level if deleting from learning standard). If the configuration setting was not set at the application level it will continue to persist and will require deletion from the level it was set. 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
-    # @option opts [BOOLEAN] :single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
+    # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_application_configuration_setting_with_http_info(setting_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.delete_application_configuration_setting ...'
       end
       # verify the required parameter 'setting_id' is set
-      if @api_client.config.client_side_validation && setting_id.nil?
+      if setting_id.nil?
         fail ArgumentError, "Missing the required parameter 'setting_id' when calling ApplicationManagementApi.delete_application_configuration_setting"
-      end
-      if @api_client.config.client_side_validation && opts[:'learning_standard'] && !['SCORM_11', 'SCORM_12', 'SCORM_2004_2ND_EDITION', 'SCORM_2004_3RD_EDITION', 'SCORM_2004_4TH_EDITION', 'AICC', 'XAPI', 'CMI5'].include?(opts[:'learning_standard'])
-        fail ArgumentError, 'invalid value for "learning_standard", must be one of SCORM_11, SCORM_12, SCORM_2004_2ND_EDITION, SCORM_2004_3RD_EDITION, SCORM_2004_4TH_EDITION, AICC, XAPI, CMI5'
       end
       # resource path
       local_var_path = '/appManagement/configuration/{settingId}'.sub('{' + 'settingId' + '}', setting_id.to_s)
@@ -294,7 +299,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete `credentialId` from the system.  Note: if an application's last secret key is deleted it will not be able to use the SCORM Cloud api until another key is granted to it via `CreateCredential`.  Removing the last secret key may also disable some priviledges in the website. 
+    # Use the Application Management App to delete a secret key from an Application 
+    # Deletes a credential belonging to the child application.  >**Caution:** >If the last secret key for an application is deleted it will not be able to use the SCORM Cloud API until another key is granted to it via `CreateCredential`.  It may also disable some website privileges.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param credential_id 
     # @param [Hash] opts the optional parameters
@@ -304,7 +310,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete &#x60;credentialId&#x60; from the system.  Note: if an application&#39;s last secret key is deleted it will not be able to use the SCORM Cloud api until another key is granted to it via &#x60;CreateCredential&#x60;.  Removing the last secret key may also disable some priviledges in the website. 
+    # Use the Application Management App to delete a secret key from an Application 
+    # Deletes a credential belonging to the child application.  &gt;**Caution:** &gt;If the last secret key for an application is deleted it will not be able to use the SCORM Cloud API until another key is granted to it via &#x60;CreateCredential&#x60;.  It may also disable some website privileges.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param credential_id 
     # @param [Hash] opts the optional parameters
@@ -314,11 +321,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.delete_credential ...'
       end
       # verify the required parameter 'child_app_id' is set
-      if @api_client.config.client_side_validation && child_app_id.nil?
+      if child_app_id.nil?
         fail ArgumentError, "Missing the required parameter 'child_app_id' when calling ApplicationManagementApi.delete_credential"
       end
       # verify the required parameter 'credential_id' is set
-      if @api_client.config.client_side_validation && credential_id.nil?
+      if credential_id.nil?
         fail ArgumentError, "Missing the required parameter 'credential_id' when calling ApplicationManagementApi.delete_credential"
       end
       # resource path
@@ -351,10 +358,11 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Returns all configuration settings for this level. These settings will only affect items within this application which do not have that setting themselves.  >Note -----  >This resource actually represents 2 distinct levels which are:  >- ALL content in an application.  This is achieved by leaving `learningStandard` and `singleSco`   as `null`.  Anything set at the learningStandard/singleSco level will take precedence over these   settings. - Content falling into a learningStandard/singleSco category.  This allows setting more specific   defaults for a particular learningStandard/singleSco combination.  Note: both `learningStandard`   and `singleSco` must be provided, as this level is considered to be identified by those items   joined. 
+    # Get effective configuration settings for an Application 
+    # Returns the effective configuration settings for the application.  Configuration settings at the application level will apply to all items within that application (courses, registrations, etc.).  If there is a configuration setting present at a more specific level (course, registration, etc.), that setting will override the one set at the application level.  >**Note:** >This resource lists configuration for two groupings of content: >- ALL content in an application.  This is achieved by leaving `learningStandard` and   `singleSco` as `null`.  Anything set at the learningStandard/singleSco level will take precedence over these   settings. >- Content falling into a learningStandard/singleSco category.  This allows setting more specific   defaults for a particular learningStandard/singleSco combination.   _Note: both `learningStandard` and `singleSco` must be provided, as this level is considered to be   identified by those items joined._ 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
-    # @option opts [BOOLEAN] :single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
+    # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
     # @option opts [BOOLEAN] :include_metadata  (default to false)
     # @return [SettingListSchema]
     def get_application_configuration(opts = {})
@@ -362,18 +370,16 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Returns all configuration settings for this level. These settings will only affect items within this application which do not have that setting themselves.  &gt;Note -----  &gt;This resource actually represents 2 distinct levels which are:  &gt;- ALL content in an application.  This is achieved by leaving &#x60;learningStandard&#x60; and &#x60;singleSco&#x60;   as &#x60;null&#x60;.  Anything set at the learningStandard/singleSco level will take precedence over these   settings. - Content falling into a learningStandard/singleSco category.  This allows setting more specific   defaults for a particular learningStandard/singleSco combination.  Note: both &#x60;learningStandard&#x60;   and &#x60;singleSco&#x60; must be provided, as this level is considered to be identified by those items   joined. 
+    # Get effective configuration settings for an Application 
+    # Returns the effective configuration settings for the application.  Configuration settings at the application level will apply to all items within that application (courses, registrations, etc.).  If there is a configuration setting present at a more specific level (course, registration, etc.), that setting will override the one set at the application level.  &gt;**Note:** &gt;This resource lists configuration for two groupings of content: &gt;- ALL content in an application.  This is achieved by leaving &#x60;learningStandard&#x60; and   &#x60;singleSco&#x60; as &#x60;null&#x60;.  Anything set at the learningStandard/singleSco level will take precedence over these   settings. &gt;- Content falling into a learningStandard/singleSco category.  This allows setting more specific   defaults for a particular learningStandard/singleSco combination.   _Note: both &#x60;learningStandard&#x60; and &#x60;singleSco&#x60; must be provided, as this level is considered to be   identified by those items joined._ 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
-    # @option opts [BOOLEAN] :single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
+    # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
     # @option opts [BOOLEAN] :include_metadata 
     # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
     def get_application_configuration_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_application_configuration ...'
-      end
-      if @api_client.config.client_side_validation && opts[:'learning_standard'] && !['SCORM_11', 'SCORM_12', 'SCORM_2004_2ND_EDITION', 'SCORM_2004_3RD_EDITION', 'SCORM_2004_4TH_EDITION', 'AICC', 'XAPI', 'CMI5'].include?(opts[:'learning_standard'])
-        fail ArgumentError, 'invalid value for "learning_standard", must be one of SCORM_11, SCORM_12, SCORM_2004_2ND_EDITION, SCORM_2004_3RD_EDITION, SCORM_2004_4TH_EDITION, AICC, XAPI, CMI5'
       end
       # resource path
       local_var_path = '/appManagement/configuration'
@@ -409,8 +415,68 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a list of all applications for the realm.
-    # Get list of all applications in this realm.
+    # Use the Application Management App to get detailed information about an Application 
+    # Returns detailed information about the application.  This includes name, create date, and delete permissions.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
+    # @param child_app_id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :include_course_count Include a count of courses for the application. (default to false)
+    # @option opts [BOOLEAN] :include_registration_count Include a count of registrations created for the application during the current billing period. (default to false)
+    # @return [ApplicationInfoSchema]
+    def get_application_info(child_app_id, opts = {})
+      data, _status_code, _headers = get_application_info_with_http_info(child_app_id, opts)
+      data
+    end
+
+    # Use the Application Management App to get detailed information about an Application 
+    # Returns detailed information about the application.  This includes name, create date, and delete permissions.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
+    # @param child_app_id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :include_course_count Include a count of courses for the application.
+    # @option opts [BOOLEAN] :include_registration_count Include a count of registrations created for the application during the current billing period.
+    # @return [Array<(ApplicationInfoSchema, Fixnum, Hash)>] ApplicationInfoSchema data, response status code and response headers
+    def get_application_info_with_http_info(child_app_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_application_info ...'
+      end
+      # verify the required parameter 'child_app_id' is set
+      if child_app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'child_app_id' when calling ApplicationManagementApi.get_application_info"
+      end
+      # resource path
+      local_var_path = '/appManagement/applications/{childAppId}'.sub('{' + 'childAppId' + '}', child_app_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'includeCourseCount'] = opts[:'include_course_count'] if !opts[:'include_course_count'].nil?
+      query_params[:'includeRegistrationCount'] = opts[:'include_registration_count'] if !opts[:'include_registration_count'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APP_MANAGEMENT', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ApplicationInfoSchema')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ApplicationManagementApi#get_application_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Use the Application Management App to get a list of Applications 
+    # Returns a list of all applications which are in this Realm.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param [Hash] opts the optional parameters
     # @return [ApplicationListSchema]
     def get_application_list(opts = {})
@@ -418,8 +484,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get a list of all applications for the realm.
-    # Get list of all applications in this realm.
+    # Use the Application Management App to get a list of Applications 
+    # Returns a list of all applications which are in this Realm.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicationListSchema, Fixnum, Hash)>] ApplicationListSchema data, response status code and response headers
     def get_application_list_with_http_info(opts = {})
@@ -457,7 +523,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Retrieve a list of all credentials (aka secret keys) belonging to `childAppId` and their statuses. 
+    # Use the Application Manager App to get a list of secret keys for an Application 
+    # Returns a list of all the credentials (aka secret keys) belonging to the child application.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param [Hash] opts the optional parameters
     # @return [CredentialListSchema]
@@ -466,7 +533,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Retrieve a list of all credentials (aka secret keys) belonging to &#x60;childAppId&#x60; and their statuses. 
+    # Use the Application Manager App to get a list of secret keys for an Application 
+    # Returns a list of all the credentials (aka secret keys) belonging to the child application.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(CredentialListSchema, Fixnum, Hash)>] CredentialListSchema data, response status code and response headers
@@ -475,7 +543,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_credentials ...'
       end
       # verify the required parameter 'child_app_id' is set
-      if @api_client.config.client_side_validation && child_app_id.nil?
+      if child_app_id.nil?
         fail ArgumentError, "Missing the required parameter 'child_app_id' when calling ApplicationManagementApi.get_credentials"
       end
       # resource path
@@ -509,33 +577,32 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set configuration settings for the application level.  These settings will only affect items within the application which do not have their own configuration set.  This can be used to effectively set application level defaults. 
+    # Update configuration settings for an Application 
+    # Updates configuration settings at the application level.  This will explicitly set a value at the applicaiton level.  These settings will affect all items within the application which do not have their own explicit configuration set.  This can effectively be used to set application level defaults. 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
-    # @option opts [BOOLEAN] :single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
+    # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
     # @return [nil]
     def set_application_configuration(configuration_settings, opts = {})
       set_application_configuration_with_http_info(configuration_settings, opts)
       nil
     end
 
-    # Set configuration settings for the application level.  These settings will only affect items within the application which do not have their own configuration set.  This can be used to effectively set application level defaults. 
+    # Update configuration settings for an Application 
+    # Updates configuration settings at the application level.  This will explicitly set a value at the applicaiton level.  These settings will affect all items within the application which do not have their own explicit configuration set.  This can effectively be used to set application level defaults. 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
-    # @option opts [BOOLEAN] :single_sco Required if learningStandard is specified. Scopes settings to whether a package has only one SCO or assignable unit within it or not. To apply a configuration setting to a learning standard for single and multi-SCO content, it must be set for both scopes.
+    # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def set_application_configuration_with_http_info(configuration_settings, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.set_application_configuration ...'
       end
       # verify the required parameter 'configuration_settings' is set
-      if @api_client.config.client_side_validation && configuration_settings.nil?
+      if configuration_settings.nil?
         fail ArgumentError, "Missing the required parameter 'configuration_settings' when calling ApplicationManagementApi.set_application_configuration"
-      end
-      if @api_client.config.client_side_validation && opts[:'learning_standard'] && !['SCORM_11', 'SCORM_12', 'SCORM_2004_2ND_EDITION', 'SCORM_2004_3RD_EDITION', 'SCORM_2004_4TH_EDITION', 'AICC', 'XAPI', 'CMI5'].include?(opts[:'learning_standard'])
-        fail ArgumentError, 'invalid value for "learning_standard", must be one of SCORM_11, SCORM_12, SCORM_2004_2ND_EDITION, SCORM_2004_3RD_EDITION, SCORM_2004_4TH_EDITION, AICC, XAPI, CMI5'
       end
       # resource path
       local_var_path = '/appManagement/configuration'
@@ -569,7 +636,67 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Update the name or status associated with `credentialId`.  If the status is updated to disabled, the credential will no longer be valid for authorization through the API.  If the last (or only) key for an application is disabled it may affect some website priviledges 
+    # Use the Application Management App to update information about an Application 
+    # Updates information about the application, such as the name and enabling/ disabling deletion operations for the application.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
+    # @param child_app_id 
+    # @param application_properties 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_application(child_app_id, application_properties, opts = {})
+      update_application_with_http_info(child_app_id, application_properties, opts)
+      nil
+    end
+
+    # Use the Application Management App to update information about an Application 
+    # Updates information about the application, such as the name and enabling/ disabling deletion operations for the application.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
+    # @param child_app_id 
+    # @param application_properties 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def update_application_with_http_info(child_app_id, application_properties, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.update_application ...'
+      end
+      # verify the required parameter 'child_app_id' is set
+      if child_app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'child_app_id' when calling ApplicationManagementApi.update_application"
+      end
+      # verify the required parameter 'application_properties' is set
+      if application_properties.nil?
+        fail ArgumentError, "Missing the required parameter 'application_properties' when calling ApplicationManagementApi.update_application"
+      end
+      # resource path
+      local_var_path = '/appManagement/applications/{childAppId}'.sub('{' + 'childAppId' + '}', child_app_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(application_properties)
+      auth_names = ['APP_MANAGEMENT', 'OAUTH']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ApplicationManagementApi#update_application\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Use the Application Manager App to update an existing secret key for an Application 
+    # Updates the name or status associated with the credential.  Disabling a credential will cause it to no longer be valid for authorization through the API.  >**Caution:** >If the last (or only) key for an application is disabled it may affect some website privileges.  >**Note:** >Each Realm has a special application called the **Application Management Application**.  When using this special application's credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn't a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param credential_id 
     # @param credential_update 
@@ -580,7 +707,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Update the name or status associated with &#x60;credentialId&#x60;.  If the status is updated to disabled, the credential will no longer be valid for authorization through the API.  If the last (or only) key for an application is disabled it may affect some website priviledges 
+    # Use the Application Manager App to update an existing secret key for an Application 
+    # Updates the name or status associated with the credential.  Disabling a credential will cause it to no longer be valid for authorization through the API.  &gt;**Caution:** &gt;If the last (or only) key for an application is disabled it may affect some website privileges.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param credential_id 
     # @param credential_update 
@@ -591,15 +719,15 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.update_credential ...'
       end
       # verify the required parameter 'child_app_id' is set
-      if @api_client.config.client_side_validation && child_app_id.nil?
+      if child_app_id.nil?
         fail ArgumentError, "Missing the required parameter 'child_app_id' when calling ApplicationManagementApi.update_credential"
       end
       # verify the required parameter 'credential_id' is set
-      if @api_client.config.client_side_validation && credential_id.nil?
+      if credential_id.nil?
         fail ArgumentError, "Missing the required parameter 'credential_id' when calling ApplicationManagementApi.update_credential"
       end
       # verify the required parameter 'credential_update' is set
-      if @api_client.config.client_side_validation && credential_update.nil?
+      if credential_update.nil?
         fail ArgumentError, "Missing the required parameter 'credential_update' when calling ApplicationManagementApi.update_credential"
       end
       # resource path

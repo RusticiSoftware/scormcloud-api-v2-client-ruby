@@ -59,10 +59,6 @@ module RusticiSoftwareCloudV2
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @id.to_s.length < 9
-        invalid_properties.push('invalid value for "id", the character length must be great than or equal to 9.')
-      end
-
       if @data.nil?
         invalid_properties.push('invalid value for "data", data cannot be nil.')
       end
@@ -74,24 +70,10 @@ module RusticiSoftwareCloudV2
     # @return true if the model is valid
     def valid?
       return false if @id.nil?
-      return false if @id.to_s.length < 9
       return false if @data.nil?
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
-      end
-
-      if id.to_s.length < 9
-        fail ArgumentError, 'invalid value for "id", the character length must be great than or equal to 9.'
-      end
-
-      @id = id
-    end
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
@@ -121,7 +103,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -217,5 +199,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

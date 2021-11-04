@@ -20,7 +20,7 @@ module RusticiSoftwareCloudV2
     # Course Id for this Invitation.
     attr_accessor :course_id
 
-    # If true, then new registrations can be created for this dispatch.
+    # If true, then new registrations can be created for this invitation.
     attr_accessor :allow_launch
 
     attr_accessor :invitation_email
@@ -33,7 +33,7 @@ module RusticiSoftwareCloudV2
     # Specifies a URL for which to post activity and status data in real time as the course is completed
     attr_accessor :post_back
 
-    # The date this invitation will expire and can not be launched (formatted yyyyMMddHHmmss in UTC time).
+    # The ISO 8601 TimeStamp (defaults to UTC) after which this invitation will expire and can no longer be launched. An empty value will represent no expiration date. 
     attr_accessor :expiration_date
 
     # The count of registrations for this invitation
@@ -127,6 +127,7 @@ module RusticiSoftwareCloudV2
       true
     end
 
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -162,7 +163,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -258,5 +259,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

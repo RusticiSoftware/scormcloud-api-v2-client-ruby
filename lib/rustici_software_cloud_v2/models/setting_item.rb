@@ -27,28 +27,6 @@ module RusticiSoftwareCloudV2
 
     attr_accessor :metadata
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -110,18 +88,15 @@ module RusticiSoftwareCloudV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      effective_value_source_validator = EnumAttributeValidator.new('String', ['default', 'application', 'learningStandardForApplication', 'dispatchDestination', 'course', 'dispatch', 'registration'])
-      return false unless effective_value_source_validator.valid?(@effective_value_source)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['default', 'application', 'learningStandardForApplication', 'dispatchDestination', 'course', 'dispatch', 'registration']
+    #
     # @param [Object] effective_value_source Object to be assigned
     def effective_value_source=(effective_value_source)
-      validator = EnumAttributeValidator.new('String', ['default', 'application', 'learningStandardForApplication', 'dispatchDestination', 'course', 'dispatch', 'registration'])
-      unless validator.valid?(effective_value_source)
-        fail ArgumentError, 'invalid value for "effective_value_source", must be one of #{validator.allowable_values}.'
-      end
       @effective_value_source = effective_value_source
     end
 
@@ -156,7 +131,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -252,5 +227,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

@@ -19,8 +19,8 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create a private invitation to a course.
-    # Create a private invitation to a course.  The provided information will be used to create new registrations for all of the provided e-mail addresses, and send asynchronously send e-mails to those addresses inviting them to the course.  To check the status of this process, a subsequent call to `/invitations/private/{invitationId}/status` must be made.
+    # Create a Private Invitation to a Course 
+    # Creates a private invitation job which sends emails with a link to the course.  Invitations are meant as a way to provide access to your content.  Registrations will be created from the provided email addresses.  The email job will asynchronously send emails to those addresses inviting them to the course.  When the learners visit the link in the email, the course will be launched with the already created registration.  The private invitation ID can be used with GetPrivateInvitationJobStatus to view the status of the email job.  >**Info:** >While invitations are a way to provide access to your content, the majority of use cases would be better suited by creating a registration and building a launch link with the registration endpoints instead.  Invitations build upon registrations by grouping a set of registrations together and adding access control measures to said group. Invitations could be used to pass yearly compliance training to an entire company.  Invitations also have an associated expiration date which determines when the course will no longer be launchable. 
     # @param private_invitation_request 
     # @param [Hash] opts the optional parameters
     # @return [InvitationSummarySchema]
@@ -29,8 +29,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Create a private invitation to a course.
-    # Create a private invitation to a course.  The provided information will be used to create new registrations for all of the provided e-mail addresses, and send asynchronously send e-mails to those addresses inviting them to the course.  To check the status of this process, a subsequent call to &#x60;/invitations/private/{invitationId}/status&#x60; must be made.
+    # Create a Private Invitation to a Course 
+    # Creates a private invitation job which sends emails with a link to the course.  Invitations are meant as a way to provide access to your content.  Registrations will be created from the provided email addresses.  The email job will asynchronously send emails to those addresses inviting them to the course.  When the learners visit the link in the email, the course will be launched with the already created registration.  The private invitation ID can be used with GetPrivateInvitationJobStatus to view the status of the email job.  &gt;**Info:** &gt;While invitations are a way to provide access to your content, the majority of use cases would be better suited by creating a registration and building a launch link with the registration endpoints instead.  Invitations build upon registrations by grouping a set of registrations together and adding access control measures to said group. Invitations could be used to pass yearly compliance training to an entire company.  Invitations also have an associated expiration date which determines when the course will no longer be launchable. 
     # @param private_invitation_request 
     # @param [Hash] opts the optional parameters
     # @return [Array<(InvitationSummarySchema, Fixnum, Hash)>] InvitationSummarySchema data, response status code and response headers
@@ -39,7 +39,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.create_private_invitation ...'
       end
       # verify the required parameter 'private_invitation_request' is set
-      if @api_client.config.client_side_validation && private_invitation_request.nil?
+      if private_invitation_request.nil?
         fail ArgumentError, "Missing the required parameter 'private_invitation_request' when calling InvitationsApi.create_private_invitation"
       end
       # resource path
@@ -73,8 +73,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Create a publicly accessible invitation to a course.
-    # Create a publicly accessible invitation to a course.
+    # Create a Public Invitation to a Course 
+    # Creates an invitation link to the course which can then be publicly distributed.  Invitations are meant as a way to provide access to your content.  When a learner visits the link, they will be prompted for name and email, a registration will be created from the information provided, and they will be redirected to the course.  Since anyone visiting the link will create a registration, it is highly advised that you set the `registrationCap` parameter when calling this method.  >**Info:** >While invitations are a way to provide access to your content, the majority of use cases would be better suited by creating a registration and building a launch link with the registration endpoints instead.  Invitations build upon registrations by grouping a set of registrations together and adding access control measures to said group. Invitations could be used to pass yearly compliance training to an entire company.  Invitations also have an associated expiration date which determines when the course will no longer be launchable. 
     # @param public_invitation_request A description of the public invitation to be created.
     # @param [Hash] opts the optional parameters
     # @return [PublicInvitationSchema]
@@ -83,8 +83,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Create a publicly accessible invitation to a course.
-    # Create a publicly accessible invitation to a course.
+    # Create a Public Invitation to a Course 
+    # Creates an invitation link to the course which can then be publicly distributed.  Invitations are meant as a way to provide access to your content.  When a learner visits the link, they will be prompted for name and email, a registration will be created from the information provided, and they will be redirected to the course.  Since anyone visiting the link will create a registration, it is highly advised that you set the &#x60;registrationCap&#x60; parameter when calling this method.  &gt;**Info:** &gt;While invitations are a way to provide access to your content, the majority of use cases would be better suited by creating a registration and building a launch link with the registration endpoints instead.  Invitations build upon registrations by grouping a set of registrations together and adding access control measures to said group. Invitations could be used to pass yearly compliance training to an entire company.  Invitations also have an associated expiration date which determines when the course will no longer be launchable. 
     # @param public_invitation_request A description of the public invitation to be created.
     # @param [Hash] opts the optional parameters
     # @return [Array<(PublicInvitationSchema, Fixnum, Hash)>] PublicInvitationSchema data, response status code and response headers
@@ -93,7 +93,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.create_public_invitation ...'
       end
       # verify the required parameter 'public_invitation_request' is set
-      if @api_client.config.client_side_validation && public_invitation_request.nil?
+      if public_invitation_request.nil?
         fail ArgumentError, "Missing the required parameter 'public_invitation_request' when calling InvitationsApi.create_public_invitation"
       end
       # resource path
@@ -127,9 +127,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete the tags for this invitation 
-    # Delete the tags for this invitation 
-    # @param invitation_id invitation id
+    # Delete tags from an Invitation 
+    # Deletes the specified tags from the invitation.  Deleting tags that do not exist will still result in a success. 
+    # @param invitation_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -138,9 +138,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete the tags for this invitation 
-    # Delete the tags for this invitation 
-    # @param invitation_id invitation id
+    # Delete tags from an Invitation 
+    # Deletes the specified tags from the invitation.  Deleting tags that do not exist will still result in a success. 
+    # @param invitation_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -149,11 +149,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.delete_invitation_tags ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.delete_invitation_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling InvitationsApi.delete_invitation_tags"
       end
       # resource path
@@ -186,37 +186,40 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a list of invitation summaries.
-    # Get a summary of all the invitations for an appId, both public and private.
+    # Get a list of Invitations 
+    # Returns a list of invitations (both public and private).  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Limit the results to invitations with courseIds that match the filter.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (default to updated)
-    # @option opts [Array<String>] :tags 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to invitation_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [InvitationSummaryList]
     def get_all_invitations(opts = {})
       data, _status_code, _headers = get_all_invitations_with_http_info(opts)
       data
     end
 
-    # Get a list of invitation summaries.
-    # Get a summary of all the invitations for an appId, both public and private.
+    # Get a list of Invitations 
+    # Returns a list of invitations (both public and private).  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Limit the results to invitations with courseIds that match the filter.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;.
-    # @option opts [Array<String>] :tags 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(InvitationSummaryList, Fixnum, Hash)>] InvitationSummaryList data, response status code and response headers
     def get_all_invitations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_all_invitations ...'
-      end
-      if @api_client.config.client_side_validation && opts[:'datetime_filter'] && !['created', 'updated'].include?(opts[:'datetime_filter'])
-        fail ArgumentError, 'invalid value for "datetime_filter", must be one of created, updated'
       end
       # resource path
       local_var_path = '/invitations'
@@ -228,6 +231,9 @@ module RusticiSoftwareCloudV2
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
       query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
       query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
+      query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
 
       # header parameters
@@ -255,9 +261,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get the tags for this invitation 
-    # Get the tags for this invitation 
-    # @param invitation_id invitation id
+    # Get tags for an Invitation 
+    # Returns the tags for the invitation. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @return [TagListSchema]
     def get_invitation_tags(invitation_id, opts = {})
@@ -265,9 +271,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get the tags for this invitation 
-    # Get the tags for this invitation 
-    # @param invitation_id invitation id
+    # Get tags for an Invitation 
+    # Returns the tags for the invitation. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
     def get_invitation_tags_with_http_info(invitation_id, opts = {})
@@ -275,7 +281,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_invitation_tags ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.get_invitation_tags"
       end
       # resource path
@@ -309,9 +315,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a information about a private invitation.
-    # Get a information about a private invitation.
-    # @param invitation_id invitation id
+    # Get detailed information about a Private Invitation 
+    # Returns detailed information about the private invitation.  This includes the email sent, course ID, and whether new the invitation can still be launched or not. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
     # @return [PrivateInvitationSchema]
@@ -320,9 +326,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get a information about a private invitation.
-    # Get a information about a private invitation.
-    # @param invitation_id invitation id
+    # Get detailed information about a Private Invitation 
+    # Returns detailed information about the private invitation.  This includes the email sent, course ID, and whether new the invitation can still be launched or not. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @return [Array<(PrivateInvitationSchema, Fixnum, Hash)>] PrivateInvitationSchema data, response status code and response headers
@@ -331,7 +337,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_invitation ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.get_private_invitation"
       end
       # resource path
@@ -366,9 +372,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get the status of an invitation job.
-    # Get the status of a job to send out private invitations.
-    # @param invitation_id invitation id
+    # Get email job status for a Private Invitation 
+    # Check the status of a private invitation email job.  This can be called incrementally to check the progress of the emails. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @return [InvitationJobStatusSchema]
     def get_private_invitation_job_status(invitation_id, opts = {})
@@ -376,9 +382,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get the status of an invitation job.
-    # Get the status of a job to send out private invitations.
-    # @param invitation_id invitation id
+    # Get email job status for a Private Invitation 
+    # Check the status of a private invitation email job.  This can be called incrementally to check the progress of the emails. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(InvitationJobStatusSchema, Fixnum, Hash)>] InvitationJobStatusSchema data, response status code and response headers
     def get_private_invitation_job_status_with_http_info(invitation_id, opts = {})
@@ -386,7 +392,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_invitation_job_status ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.get_private_invitation_job_status"
       end
       # resource path
@@ -420,37 +426,40 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a list of all private invitations.
-    # Retrieves a list of all private invitations, optionally filtered by the given parameters.
+    # Get a list of Private Invitations 
+    # Returns a list of private invitations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Limit the results to invitations with courseIds that match the filter.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (default to updated)
-    # @option opts [Array<String>] :tags 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to invitation_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [PrivateInvitationList]
     def get_private_invitations(opts = {})
       data, _status_code, _headers = get_private_invitations_with_http_info(opts)
       data
     end
 
-    # Get a list of all private invitations.
-    # Retrieves a list of all private invitations, optionally filtered by the given parameters.
+    # Get a list of Private Invitations 
+    # Returns a list of private invitations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Limit the results to invitations with courseIds that match the filter.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;.
-    # @option opts [Array<String>] :tags 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(PrivateInvitationList, Fixnum, Hash)>] PrivateInvitationList data, response status code and response headers
     def get_private_invitations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_invitations ...'
-      end
-      if @api_client.config.client_side_validation && opts[:'datetime_filter'] && !['created', 'updated'].include?(opts[:'datetime_filter'])
-        fail ArgumentError, 'invalid value for "datetime_filter", must be one of created, updated'
       end
       # resource path
       local_var_path = '/invitations/private'
@@ -462,6 +471,9 @@ module RusticiSoftwareCloudV2
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
       query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
       query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
+      query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
 
       # header parameters
@@ -489,35 +501,43 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a list of user invitations.
-    # Get a list of objects which contain the specific information about each user to whom this invitation was sent.
-    # @param invitation_id invitation id
+    # Get a list of Private User Invitations 
+    # Get a list of user who were invited to view the course.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [BOOLEAN] :include_registration_report 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to registration_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_report Optional flag to include basic registration information
     # @return [UserInvitationList]
     def get_private_user_invitations(invitation_id, opts = {})
       data, _status_code, _headers = get_private_user_invitations_with_http_info(invitation_id, opts)
       data
     end
 
-    # Get a list of user invitations.
-    # Get a list of objects which contain the specific information about each user to whom this invitation was sent.
-    # @param invitation_id invitation id
+    # Get a list of Private User Invitations 
+    # Get a list of user who were invited to view the course.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [BOOLEAN] :include_registration_report 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_report Optional flag to include basic registration information
     # @return [Array<(UserInvitationList, Fixnum, Hash)>] UserInvitationList data, response status code and response headers
     def get_private_user_invitations_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_user_invitations ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.get_private_user_invitations"
       end
       # resource path
@@ -527,8 +547,12 @@ module RusticiSoftwareCloudV2
       query_params = {}
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
-      query_params[:'includeRegistrationReport'] = opts[:'include_registration_report'] if !opts[:'include_registration_report'].nil?
+      query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
+      query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
+      query_params[:'includeRegistrationReport'] = opts[:'include_registration_report'] if !opts[:'include_registration_report'].nil?
 
       # header parameters
       header_params = {}
@@ -555,9 +579,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a information about a public invitation.
-    # Get a information about a public invitation.
-    # @param invitation_id invitation id
+    # Get detailed information about a Public Invitation 
+    # Returns detailed information about the public invitation.  This includes url, registration cap, and whether new learners can accept the invitation or not. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
     # @return [PublicInvitationSchema]
@@ -566,9 +590,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get a information about a public invitation.
-    # Get a information about a public invitation.
-    # @param invitation_id invitation id
+    # Get detailed information about a Public Invitation 
+    # Returns detailed information about the public invitation.  This includes url, registration cap, and whether new learners can accept the invitation or not. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @return [Array<(PublicInvitationSchema, Fixnum, Hash)>] PublicInvitationSchema data, response status code and response headers
@@ -577,7 +601,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_public_invitation ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.get_public_invitation"
       end
       # resource path
@@ -612,37 +636,40 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a list of all public invitations.
-    # Retrieves a list of all public invitations, optionally filtered by the given parameters.
+    # Get a list of Public Invitations 
+    # Returns a list of public invitations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Limit the results to invitations with courseIds that match the filter.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;. (default to updated)
-    # @option opts [Array<String>] :tags 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to invitation_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [PublicInvitationList]
     def get_public_invitations(opts = {})
       data, _status_code, _headers = get_public_invitations_with_http_info(opts)
       data
     end
 
-    # Get a list of all public invitations.
-    # Retrieves a list of all public invitations, optionally filtered by the given parameters.
+    # Get a list of Public Invitations 
+    # Returns a list of public invitations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Limit the results to invitations with courseIds that match the filter.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :datetime_filter A string describing what the since/until parameters will be applied to. Options are: &#39;created&#39; or &#39;updated&#39;.  If not provided, it will default to &#x60;updated&#x60;.
-    # @option opts [Array<String>] :tags 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(PublicInvitationList, Fixnum, Hash)>] PublicInvitationList data, response status code and response headers
     def get_public_invitations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_public_invitations ...'
-      end
-      if @api_client.config.client_side_validation && opts[:'datetime_filter'] && !['created', 'updated'].include?(opts[:'datetime_filter'])
-        fail ArgumentError, 'invalid value for "datetime_filter", must be one of created, updated'
       end
       # resource path
       local_var_path = '/invitations/public'
@@ -654,6 +681,9 @@ module RusticiSoftwareCloudV2
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
       query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
       query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
+      query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
 
       # header parameters
@@ -681,35 +711,43 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a list of user invitations.
-    # Get a list of objects which contain the specific information about each user who visited the invitation link.
-    # @param invitation_id invitation id
+    # Get a list of Public User Invitations 
+    # Returns a list of users who have visited the public invitation link.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [BOOLEAN] :include_registration_report 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to registration_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_report Optional flag to include basic registration information
     # @return [UserInvitationList]
     def get_public_user_invitations(invitation_id, opts = {})
       data, _status_code, _headers = get_public_user_invitations_with_http_info(invitation_id, opts)
       data
     end
 
-    # Get a list of user invitations.
-    # Get a list of objects which contain the specific information about each user who visited the invitation link.
-    # @param invitation_id invitation id
+    # Get a list of Public User Invitations 
+    # Returns a list of users who have visited the public invitation link.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # @param invitation_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [BOOLEAN] :include_registration_report 
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_report Optional flag to include basic registration information
     # @return [Array<(UserInvitationList, Fixnum, Hash)>] UserInvitationList data, response status code and response headers
     def get_public_user_invitations_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_public_user_invitations ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.get_public_user_invitations"
       end
       # resource path
@@ -719,8 +757,12 @@ module RusticiSoftwareCloudV2
       query_params = {}
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
-      query_params[:'includeRegistrationReport'] = opts[:'include_registration_report'] if !opts[:'include_registration_report'].nil?
+      query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
+      query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
+      query_params[:'includeRegistrationReport'] = opts[:'include_registration_report'] if !opts[:'include_registration_report'].nil?
 
       # header parameters
       header_params = {}
@@ -747,9 +789,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set the tags for this invitation 
-    # Set the tags for this invitation 
-    # @param invitation_id invitation id
+    # Add tags to an Invitation 
+    # Applies the provided tags to the invitation.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetInvitations). 
+    # @param invitation_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -758,9 +800,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set the tags for this invitation 
-    # Set the tags for this invitation 
-    # @param invitation_id invitation id
+    # Add tags to an Invitation 
+    # Applies the provided tags to the invitation.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetInvitations). 
+    # @param invitation_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -769,11 +811,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.put_invitation_tags ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.put_invitation_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling InvitationsApi.put_invitation_tags"
       end
       # resource path
@@ -806,9 +848,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Sets all of the provided tags on all of the provided invitations 
-    # Sets all of the provided tags on all of the provided invitations 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of Invitations 
+    # Applies all of the provided tags on all of the provided invitations.  Both public and private invitations may be tagged via this operation.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetInvitations). 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def put_invitation_tags_batch(batch, opts = {})
@@ -816,9 +858,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Sets all of the provided tags on all of the provided invitations 
-    # Sets all of the provided tags on all of the provided invitations 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of Invitations 
+    # Applies all of the provided tags on all of the provided invitations.  Both public and private invitations may be tagged via this operation.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetInvitations). 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def put_invitation_tags_batch_with_http_info(batch, opts = {})
@@ -826,7 +868,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.put_invitation_tags_batch ...'
       end
       # verify the required parameter 'batch' is set
-      if @api_client.config.client_side_validation && batch.nil?
+      if batch.nil?
         fail ArgumentError, "Missing the required parameter 'batch' when calling InvitationsApi.put_invitation_tags_batch"
       end
       # resource path
@@ -859,10 +901,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Update attributes of this invitation.
-    # Updates certain attributes of this invitation, and returns the invitation its new state.  The following attributes can be updated: - allowLaunch - invitationEmail - postBack - expirationDate NOTE: Any attributes not in the above list will not be considered for update.
-    # @param invitation_id invitation id
-    # @param invitation_update_schema A PrivateInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored.
+    # Update information about a Private Invitation 
+    # Updates information about the private invitation, such as the expiration date and registration cap.  Only non-null values that are provided will be updated. 
+    # @param invitation_id 
+    # @param invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. 
     # @param [Hash] opts the optional parameters
     # @return [PrivateInvitationSchema]
     def update_private_invitation(invitation_id, invitation_update_schema, opts = {})
@@ -870,10 +912,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Update attributes of this invitation.
-    # Updates certain attributes of this invitation, and returns the invitation its new state.  The following attributes can be updated: - allowLaunch - invitationEmail - postBack - expirationDate NOTE: Any attributes not in the above list will not be considered for update.
-    # @param invitation_id invitation id
-    # @param invitation_update_schema A PrivateInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored.
+    # Update information about a Private Invitation 
+    # Updates information about the private invitation, such as the expiration date and registration cap.  Only non-null values that are provided will be updated. 
+    # @param invitation_id 
+    # @param invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PrivateInvitationSchema, Fixnum, Hash)>] PrivateInvitationSchema data, response status code and response headers
     def update_private_invitation_with_http_info(invitation_id, invitation_update_schema, opts = {})
@@ -881,11 +923,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.update_private_invitation ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.update_private_invitation"
       end
       # verify the required parameter 'invitation_update_schema' is set
-      if @api_client.config.client_side_validation && invitation_update_schema.nil?
+      if invitation_update_schema.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_update_schema' when calling InvitationsApi.update_private_invitation"
       end
       # resource path
@@ -919,10 +961,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Update attributes of this invitation.
-    # Updates certain attributes of this invitation, and returns the invitation its new state.  The following attributes can be updated: - allowLaunch - allowNewRegistrations - postBack - expirationDate - registrationCap NOTE: Any attributes not in the above list will not be considered for update.
-    # @param invitation_id invitation id
-    # @param invitation_update_schema A PublicInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored.
+    # Update information about a Public Invitation 
+    # Updates information about the public invitation, such as the expiration date and registration cap.  Only non-null values that are provided will be updated. 
+    # @param invitation_id 
+    # @param invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. 
     # @param [Hash] opts the optional parameters
     # @return [PublicInvitationSchema]
     def update_public_invitation(invitation_id, invitation_update_schema, opts = {})
@@ -930,10 +972,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Update attributes of this invitation.
-    # Updates certain attributes of this invitation, and returns the invitation its new state.  The following attributes can be updated: - allowLaunch - allowNewRegistrations - postBack - expirationDate - registrationCap NOTE: Any attributes not in the above list will not be considered for update.
-    # @param invitation_id invitation id
-    # @param invitation_update_schema A PublicInvitationSchema with values to update.  This can be a sparse schema only containing the values to be updated.  Any value not allowed for update will be ignored.
+    # Update information about a Public Invitation 
+    # Updates information about the public invitation, such as the expiration date and registration cap.  Only non-null values that are provided will be updated. 
+    # @param invitation_id 
+    # @param invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PublicInvitationSchema, Fixnum, Hash)>] PublicInvitationSchema data, response status code and response headers
     def update_public_invitation_with_http_info(invitation_id, invitation_update_schema, opts = {})
@@ -941,11 +983,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: InvitationsApi.update_public_invitation ...'
       end
       # verify the required parameter 'invitation_id' is set
-      if @api_client.config.client_side_validation && invitation_id.nil?
+      if invitation_id.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_id' when calling InvitationsApi.update_public_invitation"
       end
       # verify the required parameter 'invitation_update_schema' is set
-      if @api_client.config.client_side_validation && invitation_update_schema.nil?
+      if invitation_update_schema.nil?
         fail ArgumentError, "Missing the required parameter 'invitation_update_schema' when calling InvitationsApi.update_public_invitation"
       end
       # resource path

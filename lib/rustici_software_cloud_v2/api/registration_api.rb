@@ -19,9 +19,9 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Get registration launch link. 
-    # Returns the link to use to launch this registration. 
-    # @param registration_id id for this registration
+    # Get a launch link for a Registration 
+    # Returns the launch link to use to launch the course for the registration.   Launch links are meant as a way to provide access to your content.  When a learner visits the link, the course will be launched and registration progress will start to be tracked. 
+    # @param registration_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
     # @return [LaunchLinkSchema]
@@ -30,9 +30,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get registration launch link. 
-    # Returns the link to use to launch this registration. 
-    # @param registration_id id for this registration
+    # Get a launch link for a Registration 
+    # Returns the launch link to use to launch the course for the registration.   Launch links are meant as a way to provide access to your content.  When a learner visits the link, the course will be launched and registration progress will start to be tracked. 
+    # @param registration_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LaunchLinkSchema, Fixnum, Hash)>] LaunchLinkSchema data, response status code and response headers
@@ -41,11 +41,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.build_registration_launch_link ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.build_registration_launch_link"
       end
       # verify the required parameter 'launch_link_request' is set
-      if @api_client.config.client_side_validation && launch_link_request.nil?
+      if launch_link_request.nil?
         fail ArgumentError, "Missing the required parameter 'launch_link_request' when calling RegistrationApi.build_registration_launch_link"
       end
       # resource path
@@ -79,8 +79,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Create a new instance for this registration specified by the registration ID. 
-    # @param registration_id id for this registration
+    # Create a Registration Instance 
+    # Creates a new instance of the registration.  Registration instances will be automatically created when a learner launches a new version of the course.  This allows for tracking registration progress for each of the versions of the course the learner has taken.  When the created registration instance is \"launched\", the course specified at creation time will be launched. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def create_new_registration_instance(registration_id, opts = {})
@@ -88,8 +89,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Create a new instance for this registration specified by the registration ID. 
-    # @param registration_id id for this registration
+    # Create a Registration Instance 
+    # Creates a new instance of the registration.  Registration instances will be automatically created when a learner launches a new version of the course.  This allows for tracking registration progress for each of the versions of the course the learner has taken.  When the created registration instance is \&quot;launched\&quot;, the course specified at creation time will be launched. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def create_new_registration_instance_with_http_info(registration_id, opts = {})
@@ -97,7 +99,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.create_new_registration_instance ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.create_new_registration_instance"
       end
       # resource path
@@ -130,29 +132,29 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Create a registration. 
-    # This method is used to create a new registration. A registration will contain a few pieces of information such as a learner name, a learner id, and optionally, information about where activity data should be posted (for client consumption), as well as a way to specify simple authentication schemes for posting said data. A registration must be tied to a specific course at creation time. When the created registration is “launched”, the course specified at creation time will be launched. 
+    # Create a Registration 
+    # Creates a new registration.  Registrations are the billable unit in SCORM Cloud, and represent a link between a learner and a course.  A registration will contain a few pieces of information such as learner identifiers, the id of the course being registered for, and several other optional fields. A registration must be tied to a specific course at creation time.  When the created registration is \"launched\", the course specified at creation time will be launched. 
     # @param registration 
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to.
+    # @option opts [Integer] :course_version Unless you have a reason for using this you probably do not need to. 
     # @return [nil]
     def create_registration(registration, opts = {})
       create_registration_with_http_info(registration, opts)
       nil
     end
 
-    # Create a registration. 
-    # This method is used to create a new registration. A registration will contain a few pieces of information such as a learner name, a learner id, and optionally, information about where activity data should be posted (for client consumption), as well as a way to specify simple authentication schemes for posting said data. A registration must be tied to a specific course at creation time. When the created registration is “launched”, the course specified at creation time will be launched. 
+    # Create a Registration 
+    # Creates a new registration.  Registrations are the billable unit in SCORM Cloud, and represent a link between a learner and a course.  A registration will contain a few pieces of information such as learner identifiers, the id of the course being registered for, and several other optional fields. A registration must be tied to a specific course at creation time.  When the created registration is \&quot;launched\&quot;, the course specified at creation time will be launched. 
     # @param registration 
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :course_version The version of the course you want to create the registration for. Unless you have a reason for using this you probably do not need to.
+    # @option opts [Integer] :course_version Unless you have a reason for using this you probably do not need to. 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def create_registration_with_http_info(registration, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.create_registration ...'
       end
       # verify the required parameter 'registration' is set
-      if @api_client.config.client_side_validation && registration.nil?
+      if registration.nil?
         fail ArgumentError, "Missing the required parameter 'registration' when calling RegistrationApi.create_registration"
       end
       # resource path
@@ -186,9 +188,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete a registration. 
-    # Delete `registrationId`.  This includes all instances of this registration. 
-    # @param registration_id id for this registration
+    # Delete a Registration 
+    # Deletes the specified registration.  >**Caution:** >This will also delete all instances of the registration. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_registration(registration_id, opts = {})
@@ -196,9 +198,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete a registration. 
-    # Delete &#x60;registrationId&#x60;.  This includes all instances of this registration. 
-    # @param registration_id id for this registration
+    # Delete a Registration 
+    # Deletes the specified registration.  &gt;**Caution:** &gt;This will also delete all instances of the registration. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_registration_with_http_info(registration_id, opts = {})
@@ -206,7 +208,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.delete_registration"
       end
       # resource path
@@ -239,9 +241,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Clear a registration configuration. 
-    # Clears the `settingId` value for this registration. The effective value will become the value at the next level which has an explicit value set.  Possibilities are course, application, or default. 
-    # @param registration_id id for this registration
+    # Delete a configuration setting explicitly set for a Registration 
+    # Clears the specified setting from the registration.  This causes the setting to inherit a value from a higher level (e.g. course).  If the configuration setting was not set at the registration level it will continue to persist and will require deletion from the level it was set. 
+    # @param registration_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -250,9 +252,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Clear a registration configuration. 
-    # Clears the &#x60;settingId&#x60; value for this registration. The effective value will become the value at the next level which has an explicit value set.  Possibilities are course, application, or default. 
-    # @param registration_id id for this registration
+    # Delete a configuration setting explicitly set for a Registration 
+    # Clears the specified setting from the registration.  This causes the setting to inherit a value from a higher level (e.g. course).  If the configuration setting was not set at the registration level it will continue to persist and will require deletion from the level it was set. 
+    # @param registration_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -261,11 +263,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_configuration_setting ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.delete_registration_configuration_setting"
       end
       # verify the required parameter 'setting_id' is set
-      if @api_client.config.client_side_validation && setting_id.nil?
+      if setting_id.nil?
         fail ArgumentError, "Missing the required parameter 'setting_id' when calling RegistrationApi.delete_registration_configuration_setting"
       end
       # resource path
@@ -298,9 +300,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete the global data of a registration. 
-    # Delete global data associated with `registrationId`'.  Calling this method will reset all global objectives associated with this registration, if any exist. 
-    # @param registration_id id for this registration
+    # Reset global data for a Registration 
+    # Deletes the global data associated with the registration, but the registration itself will remain.  This means any progress towards the global objectives will be removed. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_registration_global_data(registration_id, opts = {})
@@ -308,9 +310,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete the global data of a registration. 
-    # Delete global data associated with &#x60;registrationId&#x60;&#39;.  Calling this method will reset all global objectives associated with this registration, if any exist. 
-    # @param registration_id id for this registration
+    # Reset global data for a Registration 
+    # Deletes the global data associated with the registration, but the registration itself will remain.  This means any progress towards the global objectives will be removed. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_registration_global_data_with_http_info(registration_id, opts = {})
@@ -318,7 +320,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_global_data ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.delete_registration_global_data"
       end
       # resource path
@@ -351,10 +353,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete instance `instanceId` of `registrationId`. 
-    # Delete instance `instanceId` of `registrationId`.  If this is the only existing instance of this registration, the registration will be deleted in its entirety along with any associated data. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Delete a Registration Instance 
+    # Deletes the specified instance of the registration.  If deleting the last remaining instance of the registration, the registration itself will be deleted along with any associated data. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_registration_instance(registration_id, instance_id, opts = {})
@@ -362,10 +364,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete instance &#x60;instanceId&#x60; of &#x60;registrationId&#x60;. 
-    # Delete instance &#x60;instanceId&#x60; of &#x60;registrationId&#x60;.  If this is the only existing instance of this registration, the registration will be deleted in its entirety along with any associated data. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Delete a Registration Instance 
+    # Deletes the specified instance of the registration.  If deleting the last remaining instance of the registration, the registration itself will be deleted along with any associated data. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_registration_instance_with_http_info(registration_id, instance_id, opts = {})
@@ -373,17 +375,13 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_instance ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.delete_registration_instance"
       end
       # verify the required parameter 'instance_id' is set
-      if @api_client.config.client_side_validation && instance_id.nil?
+      if instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'instance_id' when calling RegistrationApi.delete_registration_instance"
       end
-      if @api_client.config.client_side_validation && instance_id < 0
-        fail ArgumentError, 'invalid value for "instance_id" when calling RegistrationApi.delete_registration_instance, must be greater than or equal to 0.'
-      end
-
       # resource path
       local_var_path = '/registrations/{registrationId}/instances/{instanceId}'.sub('{' + 'registrationId' + '}', registration_id.to_s).sub('{' + 'instanceId' + '}', instance_id.to_s)
 
@@ -414,10 +412,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Clear a configuration for an instance of a registration. 
-    # Clears the `settingId` value for this registration instance. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Delete a configuration setting explicitly set for a Registration Instance 
+    # Clears the specified setting from the registration instance.  This causes the setting to inherit a value from a higher level (e.g. course).  If the configuration setting was not set at the registration level it will continue to persist and will require deletion from the level it was set. 
+    # @param registration_id 
+    # @param instance_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -426,10 +424,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Clear a configuration for an instance of a registration. 
-    # Clears the &#x60;settingId&#x60; value for this registration instance. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Delete a configuration setting explicitly set for a Registration Instance 
+    # Clears the specified setting from the registration instance.  This causes the setting to inherit a value from a higher level (e.g. course).  If the configuration setting was not set at the registration level it will continue to persist and will require deletion from the level it was set. 
+    # @param registration_id 
+    # @param instance_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -438,19 +436,15 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_instance_configuration_setting ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.delete_registration_instance_configuration_setting"
       end
       # verify the required parameter 'instance_id' is set
-      if @api_client.config.client_side_validation && instance_id.nil?
+      if instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'instance_id' when calling RegistrationApi.delete_registration_instance_configuration_setting"
       end
-      if @api_client.config.client_side_validation && instance_id < 0
-        fail ArgumentError, 'invalid value for "instance_id" when calling RegistrationApi.delete_registration_instance_configuration_setting, must be greater than or equal to 0.'
-      end
-
       # verify the required parameter 'setting_id' is set
-      if @api_client.config.client_side_validation && setting_id.nil?
+      if setting_id.nil?
         fail ArgumentError, "Missing the required parameter 'setting_id' when calling RegistrationApi.delete_registration_instance_configuration_setting"
       end
       # resource path
@@ -483,9 +477,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Reset a registration. 
-    # This method will reset the specified registration. This is essentially the same as deleting and recreating the registration, and as such, will delete all the data associated with the registration (including launch history, etc.). If the course for which the registration is registered has multiple versions, the registration being reset will automatically be registered for the latest version. 
-    # @param registration_id id for this registration
+    # Reset a Registration 
+    # Deletes the data associated with the registration, but the registration itself will remain.  This means any of the launch history, and progress will be removed.  After the data has been deleted, the registration will automatically register itself for the latest version of the course. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def delete_registration_progress(registration_id, opts = {})
@@ -493,9 +487,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Reset a registration. 
-    # This method will reset the specified registration. This is essentially the same as deleting and recreating the registration, and as such, will delete all the data associated with the registration (including launch history, etc.). If the course for which the registration is registered has multiple versions, the registration being reset will automatically be registered for the latest version. 
-    # @param registration_id id for this registration
+    # Reset a Registration 
+    # Deletes the data associated with the registration, but the registration itself will remain.  This means any of the launch history, and progress will be removed.  After the data has been deleted, the registration will automatically register itself for the latest version of the course. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_registration_progress_with_http_info(registration_id, opts = {})
@@ -503,7 +497,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_progress ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.delete_registration_progress"
       end
       # resource path
@@ -536,9 +530,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Delete tags from a registration. 
-    # Delete the provided tags for this registration. 
-    # @param registration_id id for this registration
+    # Delete tags from a Registration 
+    # Deletes the specified tags from the registration.  Deleting tags that do not exist will still result in a success. 
+    # @param registration_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -547,9 +541,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Delete tags from a registration. 
-    # Delete the provided tags for this registration. 
-    # @param registration_id id for this registration
+    # Delete tags from a Registration 
+    # Deletes the specified tags from the registration.  Deleting tags that do not exist will still result in a success. 
+    # @param registration_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -558,11 +552,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_tags ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.delete_registration_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling RegistrationApi.delete_registration_tags"
       end
       # resource path
@@ -595,9 +589,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # See if a registration exists. 
-    # This method is meant to check if a registration with `registrationId` exists in the system. 
-    # @param registration_id id for this registration
+    # Check that a Registration exists 
+    # Checks that the registration exists within SCORM Cloud.  >**Info:** >No registration data will be returned for this call. A successful `200` response indicates that the registration exists. If the registration does not exist, a `404` error will be returned instead. If you are looking for information about the registration, try calling `GetRegistrationProgress` instead. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def get_registration(registration_id, opts = {})
@@ -605,9 +599,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # See if a registration exists. 
-    # This method is meant to check if a registration with &#x60;registrationId&#x60; exists in the system. 
-    # @param registration_id id for this registration
+    # Check that a Registration exists 
+    # Checks that the registration exists within SCORM Cloud.  &gt;**Info:** &gt;No registration data will be returned for this call. A successful &#x60;200&#x60; response indicates that the registration exists. If the registration does not exist, a &#x60;404&#x60; error will be returned instead. If you are looking for information about the registration, try calling &#x60;GetRegistrationProgress&#x60; instead. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def get_registration_with_http_info(registration_id, opts = {})
@@ -615,7 +609,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration"
       end
       # resource path
@@ -648,9 +642,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get registration configuration. 
-    # Returns all configuration settings for this registration. 
-    # @param registration_id id for this registration
+    # Get effective configuration settings for a Registration 
+    # Returns the effective configuration settings for the registration.  If not set at the registration level, the setting will inherit a value from a higher level (e.g. course).  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata  (default to false)
     # @return [SettingListSchema]
@@ -659,9 +653,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get registration configuration. 
-    # Returns all configuration settings for this registration. 
-    # @param registration_id id for this registration
+    # Get effective configuration settings for a Registration 
+    # Returns the effective configuration settings for the registration.  If not set at the registration level, the setting will inherit a value from a higher level (e.g. course).  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
     # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
@@ -670,7 +664,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_configuration ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_configuration"
       end
       # resource path
@@ -705,10 +699,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get configuration for instance of registration. 
-    # Returns all configuration settings for this registration instance. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get effective configuration settings for a Registration Instance 
+    # Returns the effective configuration settings for the registration instance.  If not set at the registration level, the setting will inherit a value from a higher level (e.g. course).  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata  (default to false)
     # @return [SettingListSchema]
@@ -717,10 +711,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get configuration for instance of registration. 
-    # Returns all configuration settings for this registration instance. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get effective configuration settings for a Registration Instance 
+    # Returns the effective configuration settings for the registration instance.  If not set at the registration level, the setting will inherit a value from a higher level (e.g. course).  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
     # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
@@ -729,17 +723,13 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_configuration ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_instance_configuration"
       end
       # verify the required parameter 'instance_id' is set
-      if @api_client.config.client_side_validation && instance_id.nil?
+      if instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'instance_id' when calling RegistrationApi.get_registration_instance_configuration"
       end
-      if @api_client.config.client_side_validation && instance_id < 0
-        fail ArgumentError, 'invalid value for "instance_id" when calling RegistrationApi.get_registration_instance_configuration, must be greater than or equal to 0.'
-      end
-
       # resource path
       local_var_path = '/registrations/{registrationId}/instances/{instanceId}/configuration'.sub('{' + 'registrationId' + '}', registration_id.to_s).sub('{' + 'instanceId' + '}', instance_id.to_s)
 
@@ -772,10 +762,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get launch history for an instance of a registration. 
-    # Returns history of the launches of the specified instance of this registration. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get launch history for a Registration Instance 
+    # Returns the launch history of the registration instance.  This includes completion status, time taken, and pass/fail status. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_history_log Whether to include the history log in the launch history (default to false)
     # @return [LaunchHistoryListSchema]
@@ -784,10 +774,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get launch history for an instance of a registration. 
-    # Returns history of the launches of the specified instance of this registration. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get launch history for a Registration Instance 
+    # Returns the launch history of the registration instance.  This includes completion status, time taken, and pass/fail status. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_history_log Whether to include the history log in the launch history
     # @return [Array<(LaunchHistoryListSchema, Fixnum, Hash)>] LaunchHistoryListSchema data, response status code and response headers
@@ -796,17 +786,13 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_launch_history ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_instance_launch_history"
       end
       # verify the required parameter 'instance_id' is set
-      if @api_client.config.client_side_validation && instance_id.nil?
+      if instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'instance_id' when calling RegistrationApi.get_registration_instance_launch_history"
       end
-      if @api_client.config.client_side_validation && instance_id < 0
-        fail ArgumentError, 'invalid value for "instance_id" when calling RegistrationApi.get_registration_instance_launch_history, must be greater than or equal to 0.'
-      end
-
       # resource path
       local_var_path = '/registrations/{registrationId}/instances/{instanceId}/launchHistory'.sub('{' + 'registrationId' + '}', registration_id.to_s).sub('{' + 'instanceId' + '}', instance_id.to_s)
 
@@ -839,10 +825,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get details of an instance of a registration. 
-    # Get registration progress for instance `instanceId` of `registrationId`' 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get detailed information about a Registration Instance 
+    # Returns detailed information about the registration instance.  This includes completion status, time taken, score, and pass/fail status. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results (default to false)
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results (default to false)
@@ -853,10 +839,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get details of an instance of a registration. 
-    # Get registration progress for instance &#x60;instanceId&#x60; of &#x60;registrationId&#x60;&#39; 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get detailed information about a Registration Instance 
+    # Returns detailed information about the registration instance.  This includes completion status, time taken, score, and pass/fail status. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
@@ -867,17 +853,13 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_progress ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_instance_progress"
       end
       # verify the required parameter 'instance_id' is set
-      if @api_client.config.client_side_validation && instance_id.nil?
+      if instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'instance_id' when calling RegistrationApi.get_registration_instance_progress"
       end
-      if @api_client.config.client_side_validation && instance_id < 0
-        fail ArgumentError, 'invalid value for "instance_id" when calling RegistrationApi.get_registration_instance_progress, must be greater than or equal to 0.'
-      end
-
       # resource path
       local_var_path = '/registrations/{registrationId}/instances/{instanceId}'.sub('{' + 'registrationId' + '}', registration_id.to_s).sub('{' + 'instanceId' + '}', instance_id.to_s)
 
@@ -912,45 +894,41 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get xAPI statements for an instance of a registration. 
-    # Get xAPI statements for instance `instanceId` of `registrationId`. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get xAPI statements for a Registration Instance 
+    # Returns xAPI statements for the registration instance. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [XapiStatementResult]
     def get_registration_instance_statements(registration_id, instance_id, opts = {})
       data, _status_code, _headers = get_registration_instance_statements_with_http_info(registration_id, instance_id, opts)
       data
     end
 
-    # Get xAPI statements for an instance of a registration. 
-    # Get xAPI statements for instance &#x60;instanceId&#x60; of &#x60;registrationId&#x60;. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Get xAPI statements for a Registration Instance 
+    # Returns xAPI statements for the registration instance. 
+    # @param registration_id 
+    # @param instance_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
     def get_registration_instance_statements_with_http_info(registration_id, instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_statements ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_instance_statements"
       end
       # verify the required parameter 'instance_id' is set
-      if @api_client.config.client_side_validation && instance_id.nil?
+      if instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'instance_id' when calling RegistrationApi.get_registration_instance_statements"
       end
-      if @api_client.config.client_side_validation && instance_id < 0
-        fail ArgumentError, 'invalid value for "instance_id" when calling RegistrationApi.get_registration_instance_statements, must be greater than or equal to 0.'
-      end
-
       # resource path
       local_var_path = '/registrations/{registrationId}/instances/{instanceId}/xAPIStatements'.sub('{' + 'registrationId' + '}', registration_id.to_s).sub('{' + 'instanceId' + '}', instance_id.to_s)
 
@@ -985,13 +963,13 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get all instances of a registration. 
-    # Get all the instances of this the registration specified by the registration ID 
-    # @param registration_id id for this registration
+    # Get a list of a Registration's Instances 
+    # Returns information about all instances of the registration.  This can be useful to see information such as registration progress across versions of a course. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results (default to false)
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results (default to false)
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results (default to false)
@@ -1001,13 +979,13 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get all instances of a registration. 
-    # Get all the instances of this the registration specified by the registration ID 
-    # @param registration_id id for this registration
+    # Get a list of a Registration&#39;s Instances 
+    # Returns information about all instances of the registration.  This can be useful to see information such as registration progress across versions of a course. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results
@@ -1017,7 +995,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instances ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_instances"
       end
       # resource path
@@ -1057,9 +1035,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get launch history for a registration. 
-    # Returns history of this registration's launches. 
-    # @param registration_id id for this registration
+    # Get launch history for a Registration 
+    # Returns the launch history of the registration.  This includes completion status, time taken, and pass/fail status. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_history_log Whether to include the history log in the launch history (default to false)
     # @return [LaunchHistoryListSchema]
@@ -1068,9 +1046,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get launch history for a registration. 
-    # Returns history of this registration&#39;s launches. 
-    # @param registration_id id for this registration
+    # Get launch history for a Registration 
+    # Returns the launch history of the registration.  This includes completion status, time taken, and pass/fail status. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_history_log Whether to include the history log in the launch history
     # @return [Array<(LaunchHistoryListSchema, Fixnum, Hash)>] LaunchHistoryListSchema data, response status code and response headers
@@ -1079,7 +1057,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_launch_history ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_launch_history"
       end
       # resource path
@@ -1114,9 +1092,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get details of a registration. 
-    # Get detailed information about the latest instance of `registrationId`. Additional detail may be obtained by using the optional query parameters. 
-    # @param registration_id id for this registration
+    # Get detailed information about a Registration 
+    # Returns detailed information about the registration.  This includes completion status, time taken, score, and pass/fail status.  >**Info:** >If you find yourself making multiple calls to this endpoint, it may be worthwhile to utilize our [postback mechanism](https://cloud.scorm.com/docs/v2/guides/postback/) instead.  The main premise is that you would set up an endpoint on your end, and when we detect a change to the registration progress: completion status, time taken, score, or pass/fail status, we would send a message to your system with the registration progress. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results (default to false)
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results (default to false)
@@ -1127,9 +1105,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get details of a registration. 
-    # Get detailed information about the latest instance of &#x60;registrationId&#x60;. Additional detail may be obtained by using the optional query parameters. 
-    # @param registration_id id for this registration
+    # Get detailed information about a Registration 
+    # Returns detailed information about the registration.  This includes completion status, time taken, score, and pass/fail status.  &gt;**Info:** &gt;If you find yourself making multiple calls to this endpoint, it may be worthwhile to utilize our [postback mechanism](https://cloud.scorm.com/docs/v2/guides/postback/) instead.  The main premise is that you would set up an endpoint on your end, and when we detect a change to the registration progress: completion status, time taken, score, or pass/fail status, we would send a message to your system with the registration progress. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
@@ -1140,7 +1118,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_progress ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_progress"
       end
       # resource path
@@ -1177,33 +1155,33 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get xAPI statements for a registration. 
-    # Get xAPI statements for `registrationId`. 
-    # @param registration_id id for this registration
+    # Get xAPI statements for a Registration 
+    # Returns xAPI statements for the registration. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [XapiStatementResult]
     def get_registration_statements(registration_id, opts = {})
       data, _status_code, _headers = get_registration_statements_with_http_info(registration_id, opts)
       data
     end
 
-    # Get xAPI statements for a registration. 
-    # Get xAPI statements for &#x60;registrationId&#x60;. 
-    # @param registration_id id for this registration
+    # Get xAPI statements for a Registration 
+    # Returns xAPI statements for the registration. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
     def get_registration_statements_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_statements ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_statements"
       end
       # resource path
@@ -1240,9 +1218,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get tags for a registration. 
-    # Get a list of the tags applied to this registration. 
-    # @param registration_id id for this registration
+    # Get tags for a Registration 
+    # Returns the tags for the registration. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [TagListSchema]
     def get_registration_tags(registration_id, opts = {})
@@ -1250,9 +1228,9 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get tags for a registration. 
-    # Get a list of the tags applied to this registration. 
-    # @param registration_id id for this registration
+    # Get tags for a Registration 
+    # Returns the tags for the registration. 
+    # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
     def get_registration_tags_with_http_info(registration_id, opts = {})
@@ -1260,7 +1238,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_tags ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.get_registration_tags"
       end
       # resource path
@@ -1294,36 +1272,44 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a list of all registrations. 
-    # Gets a list of registrations including a summary of the status of each registration. 
+    # Get a list of Registrations 
+    # Returns a list of registrations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  >**Info:** >If you find yourself making multiple calls to this endpoint, it may be worthwhile to utilize our [postback mechanism](https://cloud.scorm.com/docs/v2/guides/postback/) instead.  The main premise is that you would set up an endpoint on your end, and when we detect a change to the registration progress: completion status, time taken, score, or pass/fail status, we would send a message to your system with the registration progress. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Only registrations for the specified course id will be included.
-    # @option opts [String] :learner_id Only registrations for the specified learner id will be included.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [String] :learner_id Only retrieve resources having &#x60;learnerId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to created)
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to registration_id)
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to created_desc)
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results (default to false)
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results (default to false)
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results (default to false)
-    # @option opts [Array<String>] :tags 
     # @return [RegistrationListSchema]
     def get_registrations(opts = {})
       data, _status_code, _headers = get_registrations_with_http_info(opts)
       data
     end
 
-    # Get a list of all registrations. 
-    # Gets a list of registrations including a summary of the status of each registration. 
+    # Get a list of Registrations 
+    # Returns a list of registrations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  &gt;**Info:** &gt;If you find yourself making multiple calls to this endpoint, it may be worthwhile to utilize our [postback mechanism](https://cloud.scorm.com/docs/v2/guides/postback/) instead.  The main premise is that you would set up an endpoint on your end, and when we detect a change to the registration progress: completion status, time taken, score, or pass/fail status, we would send a message to your system with the registration progress. 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :course_id Only registrations for the specified course id will be included.
-    # @option opts [String] :learner_id Only registrations for the specified learner id will be included.
-    # @option opts [DateTime] :since Only items updated since the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [DateTime] :_until Only items updated before the specified ISO 8601 TimeStamp (inclusive) are included. If a time zone is not specified, UTC time zone will be used.
-    # @option opts [String] :more Value for this parameter will be provided in the &#39;more&#39; property of registration lists, where needed. An opaque value, construction and parsing may change without notice.
+    # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [String] :learner_id Only retrieve resources having &#x60;learnerId&#x60;
+    # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
+    # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
+    # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
+    # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
+    # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
+    # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
+    # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results
-    # @option opts [Array<String>] :tags 
     # @return [Array<(RegistrationListSchema, Fixnum, Hash)>] RegistrationListSchema data, response status code and response headers
     def get_registrations_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -1338,11 +1324,15 @@ module RusticiSoftwareCloudV2
       query_params[:'learnerId'] = opts[:'learner_id'] if !opts[:'learner_id'].nil?
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+      query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
+      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+      query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
+      query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
       query_params[:'includeChildResults'] = opts[:'include_child_results'] if !opts[:'include_child_results'].nil?
       query_params[:'includeInteractionsAndObjectives'] = opts[:'include_interactions_and_objectives'] if !opts[:'include_interactions_and_objectives'].nil?
       query_params[:'includeRuntime'] = opts[:'include_runtime'] if !opts[:'include_runtime'].nil?
-      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
 
       # header parameters
       header_params = {}
@@ -1369,9 +1359,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set tags on a registration. 
-    # Set the tags for this registration. Note: any tags currently on this registration will be overwritten with the new array of tags. 
-    # @param registration_id id for this registration
+    # Add tags to a Registration 
+    # Applies the provided tags to the registration.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetRegistrations). 
+    # @param registration_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -1380,9 +1370,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set tags on a registration. 
-    # Set the tags for this registration. Note: any tags currently on this registration will be overwritten with the new array of tags. 
-    # @param registration_id id for this registration
+    # Add tags to a Registration 
+    # Applies the provided tags to the registration.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetRegistrations). 
+    # @param registration_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -1391,11 +1381,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.put_registration_tags ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.put_registration_tags"
       end
       # verify the required parameter 'tags' is set
-      if @api_client.config.client_side_validation && tags.nil?
+      if tags.nil?
         fail ArgumentError, "Missing the required parameter 'tags' when calling RegistrationApi.put_registration_tags"
       end
       # resource path
@@ -1428,9 +1418,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set tags on registrations. 
-    # Sets all of the provided tags on all of the provided registrations. 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of Registrations 
+    # Applies all of the provided tags on all of the provided registrations.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetRegistrations). 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def put_registration_tags_batch(batch, opts = {})
@@ -1438,9 +1428,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set tags on registrations. 
-    # Sets all of the provided tags on all of the provided registrations. 
-    # @param batch Object representing an array of ids to apply an array of tags to.
+    # Add a group of tags to a group of Registrations 
+    # Applies all of the provided tags on all of the provided registrations.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetRegistrations). 
+    # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def put_registration_tags_batch_with_http_info(batch, opts = {})
@@ -1448,7 +1438,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.put_registration_tags_batch ...'
       end
       # verify the required parameter 'batch' is set
-      if @api_client.config.client_side_validation && batch.nil?
+      if batch.nil?
         fail ArgumentError, "Missing the required parameter 'batch' when calling RegistrationApi.put_registration_tags_batch"
       end
       # resource path
@@ -1481,9 +1471,9 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set registration configuration. 
-    # Set configuration settings for this registration. 
-    # @param registration_id id for this registration
+    # Update configuration settings for a Registration 
+    # Updates configuration settings at the registration level.  This will explicitly set a value at the registration level and override any settings from a higher level.  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -1492,9 +1482,9 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set registration configuration. 
-    # Set configuration settings for this registration. 
-    # @param registration_id id for this registration
+    # Update configuration settings for a Registration 
+    # Updates configuration settings at the registration level.  This will explicitly set a value at the registration level and override any settings from a higher level.  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -1503,11 +1493,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.set_registration_configuration ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.set_registration_configuration"
       end
       # verify the required parameter 'configuration_settings' is set
-      if @api_client.config.client_side_validation && configuration_settings.nil?
+      if configuration_settings.nil?
         fail ArgumentError, "Missing the required parameter 'configuration_settings' when calling RegistrationApi.set_registration_configuration"
       end
       # resource path
@@ -1540,10 +1530,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Set configuration for instance of registration. 
-    # Set configuration settings for this registration instance. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Update configuration settings for a Registration Instance 
+    # Updates configuration settings at the registration level.  This will explicitly set a value at the registration level and override any settings from a higher level.  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
+    # @param instance_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -1552,10 +1542,10 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Set configuration for instance of registration. 
-    # Set configuration settings for this registration instance. 
-    # @param registration_id id for this registration
-    # @param instance_id The instance of this registration
+    # Update configuration settings for a Registration Instance 
+    # Updates configuration settings at the registration level.  This will explicitly set a value at the registration level and override any settings from a higher level.  Registrations are the bottom most level in the configuration hierarchy, so the values present at the registration level will be what are used when a course is launched. 
+    # @param registration_id 
+    # @param instance_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -1564,19 +1554,15 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.set_registration_instance_configuration ...'
       end
       # verify the required parameter 'registration_id' is set
-      if @api_client.config.client_side_validation && registration_id.nil?
+      if registration_id.nil?
         fail ArgumentError, "Missing the required parameter 'registration_id' when calling RegistrationApi.set_registration_instance_configuration"
       end
       # verify the required parameter 'instance_id' is set
-      if @api_client.config.client_side_validation && instance_id.nil?
+      if instance_id.nil?
         fail ArgumentError, "Missing the required parameter 'instance_id' when calling RegistrationApi.set_registration_instance_configuration"
       end
-      if @api_client.config.client_side_validation && instance_id < 0
-        fail ArgumentError, 'invalid value for "instance_id" when calling RegistrationApi.set_registration_instance_configuration, must be greater than or equal to 0.'
-      end
-
       # verify the required parameter 'configuration_settings' is set
-      if @api_client.config.client_side_validation && configuration_settings.nil?
+      if configuration_settings.nil?
         fail ArgumentError, "Missing the required parameter 'configuration_settings' when calling RegistrationApi.set_registration_instance_configuration"
       end
       # resource path
@@ -1609,8 +1595,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Send a test postback with a provided configuration. 
-    # This method will allow testing a postback configuration that you provide by sending dummy data to the url specified, with the format you specify. 
+    # Send a test postback with the provided configuration 
+    # Sends a postback with dummy data to the url specified.  The postback will use additional information from the configuration provided with the request (e.g. a provided username/password will be sent along with the postback to allow for logging in to a secure page.  The format of the data sent will differ depending on whether `httpbasic` or `form` is passed for `authType`.  - With httpbasic, an authorization header will be sent with the base64 encoded credentials.  The body will be JSON formatted data. - With form, the username and password will be sent in the body of the request along with the data.  The whole body will be url encoded.  >**Note:** >The data that will be sent to the provided url is the same format as the output of the GetRegistrationProgress endpoint. 
     # @param post_back 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -1619,8 +1605,8 @@ module RusticiSoftwareCloudV2
       nil
     end
 
-    # Send a test postback with a provided configuration. 
-    # This method will allow testing a postback configuration that you provide by sending dummy data to the url specified, with the format you specify. 
+    # Send a test postback with the provided configuration 
+    # Sends a postback with dummy data to the url specified.  The postback will use additional information from the configuration provided with the request (e.g. a provided username/password will be sent along with the postback to allow for logging in to a secure page.  The format of the data sent will differ depending on whether &#x60;httpbasic&#x60; or &#x60;form&#x60; is passed for &#x60;authType&#x60;.  - With httpbasic, an authorization header will be sent with the base64 encoded credentials.  The body will be JSON formatted data. - With form, the username and password will be sent in the body of the request along with the data.  The whole body will be url encoded.  &gt;**Note:** &gt;The data that will be sent to the provided url is the same format as the output of the GetRegistrationProgress endpoint. 
     # @param post_back 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
@@ -1629,7 +1615,7 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: RegistrationApi.test_registration_postback ...'
       end
       # verify the required parameter 'post_back' is set
-      if @api_client.config.client_side_validation && post_back.nil?
+      if post_back.nil?
         fail ArgumentError, "Missing the required parameter 'post_back' when calling RegistrationApi.test_registration_postback"
       end
       # resource path

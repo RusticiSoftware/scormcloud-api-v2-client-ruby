@@ -24,7 +24,7 @@ module RusticiSoftwareCloudV2
 
     attr_accessor :duration
 
-    attr_accessor :typicaltime
+    attr_accessor :typical_time
 
     attr_accessor :keywords
 
@@ -36,7 +36,7 @@ module RusticiSoftwareCloudV2
         :'description' => :'description',
         :'description_language' => :'descriptionLanguage',
         :'duration' => :'duration',
-        :'typicaltime' => :'typicaltime',
+        :'typical_time' => :'typicalTime',
         :'keywords' => :'keywords'
       }
     end
@@ -49,7 +49,7 @@ module RusticiSoftwareCloudV2
         :'description' => :'String',
         :'description_language' => :'String',
         :'duration' => :'String',
-        :'typicaltime' => :'String',
+        :'typical_time' => :'String',
         :'keywords' => :'Array<String>'
       }
     end
@@ -82,8 +82,8 @@ module RusticiSoftwareCloudV2
         self.duration = attributes[:'duration']
       end
 
-      if attributes.has_key?(:'typicaltime')
-        self.typicaltime = attributes[:'typicaltime']
+      if attributes.has_key?(:'typicalTime')
+        self.typical_time = attributes[:'typicalTime']
       end
 
       if attributes.has_key?(:'keywords')
@@ -106,6 +106,7 @@ module RusticiSoftwareCloudV2
       true
     end
 
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -116,7 +117,7 @@ module RusticiSoftwareCloudV2
           description == o.description &&
           description_language == o.description_language &&
           duration == o.duration &&
-          typicaltime == o.typicaltime &&
+          typical_time == o.typical_time &&
           keywords == o.keywords
     end
 
@@ -129,7 +130,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [title, title_language, description, description_language, duration, typicaltime, keywords].hash
+      [title, title_language, description, description_language, duration, typical_time, keywords].hash
     end
 
     # Builds the object from hash
@@ -139,7 +140,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -235,5 +236,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

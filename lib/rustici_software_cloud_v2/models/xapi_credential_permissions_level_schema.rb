@@ -16,28 +16,6 @@ module RusticiSoftwareCloudV2
   class XapiCredentialPermissionsLevelSchema
     attr_accessor :xapi_credential_permissions_level
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -75,18 +53,15 @@ module RusticiSoftwareCloudV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      xapi_credential_permissions_level_validator = EnumAttributeValidator.new('String', ['DEFAULT', 'USER', 'ROOT', 'READONLY', 'WRITEONLY'])
-      return false unless xapi_credential_permissions_level_validator.valid?(@xapi_credential_permissions_level)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['DEFAULT', 'USER', 'ROOT', 'READONLY', 'WRITEONLY']
+    #
     # @param [Object] xapi_credential_permissions_level Object to be assigned
     def xapi_credential_permissions_level=(xapi_credential_permissions_level)
-      validator = EnumAttributeValidator.new('String', ['DEFAULT', 'USER', 'ROOT', 'READONLY', 'WRITEONLY'])
-      unless validator.valid?(xapi_credential_permissions_level)
-        fail ArgumentError, 'invalid value for "xapi_credential_permissions_level", must be one of #{validator.allowable_values}.'
-      end
       @xapi_credential_permissions_level = xapi_credential_permissions_level
     end
 
@@ -117,7 +92,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -213,5 +188,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

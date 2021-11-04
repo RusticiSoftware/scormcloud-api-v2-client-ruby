@@ -19,8 +19,8 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Get all of the account information specified by the given app ID
-    # Get all of the account information specified by the given app ID
+    # Get account information 
+    # Returns all of the account information for the specified application. 
     # @param [Hash] opts the optional parameters
     # @return [ReportageAccountInfoSchema]
     def get_account_info(opts = {})
@@ -28,8 +28,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get all of the account information specified by the given app ID
-    # Get all of the account information specified by the given app ID
+    # Get account information 
+    # Returns all of the account information for the specified application. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ReportageAccountInfoSchema, Fixnum, Hash)>] ReportageAccountInfoSchema data, response status code and response headers
     def get_account_info_with_http_info(opts = {})
@@ -67,8 +67,8 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get a session authentication token to use when launching Reportage
-    # Get a session authentication token to use when launching Reportage
+    # Get a Reportage session authentication token 
+    # Returns a session authentication token to use when launching Reportage. 
     # @param nav_permission The navigation permissions for this Reportage session
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :admin Grant admin privileges to this Reportage session (default to false)
@@ -78,8 +78,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get a session authentication token to use when launching Reportage
-    # Get a session authentication token to use when launching Reportage
+    # Get a Reportage session authentication token 
+    # Returns a session authentication token to use when launching Reportage. 
     # @param nav_permission The navigation permissions for this Reportage session
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :admin Grant admin privileges to this Reportage session
@@ -89,12 +89,8 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ReportingApi.get_reportage_auth_token ...'
       end
       # verify the required parameter 'nav_permission' is set
-      if @api_client.config.client_side_validation && nav_permission.nil?
+      if nav_permission.nil?
         fail ArgumentError, "Missing the required parameter 'nav_permission' when calling ReportingApi.get_reportage_auth_token"
-      end
-      # verify enum value
-      if @api_client.config.client_side_validation && !['NONAV', 'DOWNONLY', 'FREENAV'].include?(nav_permission)
-        fail ArgumentError, "invalid value for 'nav_permission', must be one of NONAV, DOWNONLY, FREENAV"
       end
       # resource path
       local_var_path = '/reporting/reportageAuth'
@@ -129,10 +125,10 @@ module RusticiSoftwareCloudV2
       end
       return data, status_code, headers
     end
-    # Get the link to a page in Reportage with the given authentication and permissions
-    # Get the link to a page in Reportage with the given authentication and permissions
-    # @param auth The reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60;
-    # @param report_url The Reportage URL to try and access
+    # Get a link to a page in Reportage with the given permissions 
+    # Returns the link to use for viewing Reportage.  In order to generate a link, GetReportageAuthToken will need to be called to generate an auth token with the necessary permissions. 
+    # @param auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60;
+    # @param report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. 
     # @param [Hash] opts the optional parameters
     # @return [ReportageLinkSchema]
     def get_reportage_link(auth, report_url, opts = {})
@@ -140,10 +136,10 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get the link to a page in Reportage with the given authentication and permissions
-    # Get the link to a page in Reportage with the given authentication and permissions
-    # @param auth The reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60;
-    # @param report_url The Reportage URL to try and access
+    # Get a link to a page in Reportage with the given permissions 
+    # Returns the link to use for viewing Reportage.  In order to generate a link, GetReportageAuthToken will need to be called to generate an auth token with the necessary permissions. 
+    # @param auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60;
+    # @param report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ReportageLinkSchema, Fixnum, Hash)>] ReportageLinkSchema data, response status code and response headers
     def get_reportage_link_with_http_info(auth, report_url, opts = {})
@@ -151,11 +147,11 @@ module RusticiSoftwareCloudV2
         @api_client.config.logger.debug 'Calling API: ReportingApi.get_reportage_link ...'
       end
       # verify the required parameter 'auth' is set
-      if @api_client.config.client_side_validation && auth.nil?
+      if auth.nil?
         fail ArgumentError, "Missing the required parameter 'auth' when calling ReportingApi.get_reportage_link"
       end
       # verify the required parameter 'report_url' is set
-      if @api_client.config.client_side_validation && report_url.nil?
+      if report_url.nil?
         fail ArgumentError, "Missing the required parameter 'report_url' when calling ReportingApi.get_reportage_link"
       end
       # resource path

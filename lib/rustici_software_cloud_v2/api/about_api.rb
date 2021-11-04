@@ -19,8 +19,8 @@ module RusticiSoftwareCloudV2
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Get back the API version and application name. 
-    # Get back the API version and application name. 
+    # Get back the API version and Application name 
+    # Get back the API version and application name.  The return value for this method will never change. This method largely exists for API parity with our on-premise or Managed Hosting products, which may return different release numbers from this endpoint.  For SCORM Cloud, this is effectively equal to the `/ping` resource. 
     # @param [Hash] opts the optional parameters
     # @return [AboutSchema]
     def get_about(opts = {})
@@ -28,8 +28,8 @@ module RusticiSoftwareCloudV2
       data
     end
 
-    # Get back the API version and application name. 
-    # Get back the API version and application name. 
+    # Get back the API version and Application name 
+    # Get back the API version and application name.  The return value for this method will never change. This method largely exists for API parity with our on-premise or Managed Hosting products, which may return different release numbers from this endpoint.  For SCORM Cloud, this is effectively equal to the &#x60;/ping&#x60; resource. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AboutSchema, Fixnum, Hash)>] AboutSchema data, response status code and response headers
     def get_about_with_http_info(opts = {})

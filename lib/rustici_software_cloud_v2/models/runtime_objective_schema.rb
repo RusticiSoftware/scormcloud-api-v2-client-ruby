@@ -32,28 +32,6 @@ module RusticiSoftwareCloudV2
 
     attr_accessor :description
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -143,30 +121,23 @@ module RusticiSoftwareCloudV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      runtime_objective_success_status_validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'PASSED', 'FAILED'])
-      return false unless runtime_objective_success_status_validator.valid?(@runtime_objective_success_status)
-      runtime_objective_completion_status_validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'COMPLETED', 'INCOMPLETE', 'NOT_ATTEMPTED', 'BROWSED'])
-      return false unless runtime_objective_completion_status_validator.valid?(@runtime_objective_completion_status)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['UNKNOWN', 'PASSED', 'FAILED']
+    #
     # @param [Object] runtime_objective_success_status Object to be assigned
     def runtime_objective_success_status=(runtime_objective_success_status)
-      validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'PASSED', 'FAILED'])
-      unless validator.valid?(runtime_objective_success_status)
-        fail ArgumentError, 'invalid value for "runtime_objective_success_status", must be one of #{validator.allowable_values}.'
-      end
       @runtime_objective_success_status = runtime_objective_success_status
     end
-
     # Custom attribute writer method checking allowed values (enum).
+    #
+    # allowable_values = ['UNKNOWN', 'COMPLETED', 'INCOMPLETE', 'NOT_ATTEMPTED', 'BROWSED']
+    #
     # @param [Object] runtime_objective_completion_status Object to be assigned
     def runtime_objective_completion_status=(runtime_objective_completion_status)
-      validator = EnumAttributeValidator.new('String', ['UNKNOWN', 'COMPLETED', 'INCOMPLETE', 'NOT_ATTEMPTED', 'BROWSED'])
-      unless validator.valid?(runtime_objective_completion_status)
-        fail ArgumentError, 'invalid value for "runtime_objective_completion_status", must be one of #{validator.allowable_values}.'
-      end
       @runtime_objective_completion_status = runtime_objective_completion_status
     end
 
@@ -205,7 +176,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -301,5 +272,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end

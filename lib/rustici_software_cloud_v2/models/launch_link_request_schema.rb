@@ -17,10 +17,10 @@ module RusticiSoftwareCloudV2
     # Number of seconds from now this link will expire in. Defaults to 120s. Range 10s:300s
     attr_accessor :expiry
 
-    # The URL the application should redirect to when the learner exits a course. If not specified, configured value will be used.
+    # The URL the application should redirect to when the learner exits a course.  Alternatively one of the following keywords can be used to redirect to: - `closer` - A page that automatically tries to close the browser tab/window - `blank` - A blank page - `message` - A page with a message about the course being complete  If an empty string is specified, the configured setting will be used (default www.scorm.com). If an invalid url is specified, the Message.html page will be loaded. 
     attr_accessor :redirect_on_exit_url
 
-    # Should this launch be tracked? If false, Engine will avoid tracking to the extent possible for the standard being used.
+    # Should this launch be tracked? If false, SCORM Cloud will avoid tracking to the extent possible for the standard being used.
     attr_accessor :tracking
 
     # For SCORM, SCO identifier to override launch, overriding the normal sequencing.
@@ -159,6 +159,7 @@ module RusticiSoftwareCloudV2
       true
     end
 
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -196,7 +197,7 @@ module RusticiSoftwareCloudV2
       return nil unless attributes.is_a?(Hash)
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
-          # check to ensure the input is an array given that the the attribute
+          # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
             self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
@@ -292,5 +293,6 @@ module RusticiSoftwareCloudV2
         value
       end
     end
+
   end
 end
