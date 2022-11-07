@@ -13,33 +13,25 @@ require 'date'
 
 
 module RusticiSoftwareCloudV2
-  # An high level overview of information about the registration of the user to the invitation.
-  class UserInvitationSchemaRegistrationReport
-    attr_accessor :complete
+  class ApplicationInfoListSchema
+    attr_accessor :applications
 
-    attr_accessor :success
-
-    attr_accessor :total_seconds_tracked
-
-    attr_accessor :score
+    # Token for getting the next set of results, from the prior set of results.
+    attr_accessor :more
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'complete' => :'complete',
-        :'success' => :'success',
-        :'total_seconds_tracked' => :'totalSecondsTracked',
-        :'score' => :'score'
+        :'applications' => :'applications',
+        :'more' => :'more'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'complete' => :'RegistrationCompletion',
-        :'success' => :'RegistrationSuccess',
-        :'total_seconds_tracked' => :'Float',
-        :'score' => :'ScoreSchema'
+        :'applications' => :'Array<ApplicationInfoSchema>',
+        :'more' => :'String'
       }
     end
 
@@ -51,20 +43,14 @@ module RusticiSoftwareCloudV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'complete')
-        self.complete = attributes[:'complete']
+      if attributes.has_key?(:'applications')
+        if (value = attributes[:'applications']).is_a?(Array)
+          self.applications = value
+        end
       end
 
-      if attributes.has_key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.has_key?(:'totalSecondsTracked')
-        self.total_seconds_tracked = attributes[:'totalSecondsTracked']
-      end
-
-      if attributes.has_key?(:'score')
-        self.score = attributes[:'score']
+      if attributes.has_key?(:'more')
+        self.more = attributes[:'more']
       end
     end
 
@@ -87,10 +73,8 @@ module RusticiSoftwareCloudV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          complete == o.complete &&
-          success == o.success &&
-          total_seconds_tracked == o.total_seconds_tracked &&
-          score == o.score
+          applications == o.applications &&
+          more == o.more
     end
 
     # @see the `==` method
@@ -102,7 +86,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [complete, success, total_seconds_tracked, score].hash
+      [applications, more].hash
     end
 
     # Builds the object from hash
