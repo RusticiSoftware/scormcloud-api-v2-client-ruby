@@ -14,6 +14,7 @@ require 'date'
 
 module RusticiSoftwareCloudV2
   class LaunchHistorySchema
+    # Identifier for the registration associated with this record
     attr_accessor :id
 
     attr_accessor :instance
@@ -37,6 +38,9 @@ module RusticiSoftwareCloudV2
     # The time of the last runtime update in UTC
     attr_accessor :last_runtime_update
 
+    # A unique identifier for this launch history record
+    attr_accessor :launch_history_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +53,8 @@ module RusticiSoftwareCloudV2
         :'total_seconds_tracked' => :'totalSecondsTracked',
         :'launch_time' => :'launchTime',
         :'exit_time' => :'exitTime',
-        :'last_runtime_update' => :'lastRuntimeUpdate'
+        :'last_runtime_update' => :'lastRuntimeUpdate',
+        :'launch_history_id' => :'launchHistoryId'
       }
     end
 
@@ -65,7 +70,8 @@ module RusticiSoftwareCloudV2
         :'total_seconds_tracked' => :'Float',
         :'launch_time' => :'DateTime',
         :'exit_time' => :'DateTime',
-        :'last_runtime_update' => :'DateTime'
+        :'last_runtime_update' => :'DateTime',
+        :'launch_history_id' => :'String'
       }
     end
 
@@ -120,6 +126,10 @@ module RusticiSoftwareCloudV2
       if attributes.has_key?(:'lastRuntimeUpdate')
         self.last_runtime_update = attributes[:'lastRuntimeUpdate']
       end
+
+      if attributes.has_key?(:'launchHistoryId')
+        self.launch_history_id = attributes[:'launchHistoryId']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -166,7 +176,8 @@ module RusticiSoftwareCloudV2
           total_seconds_tracked == o.total_seconds_tracked &&
           launch_time == o.launch_time &&
           exit_time == o.exit_time &&
-          last_runtime_update == o.last_runtime_update
+          last_runtime_update == o.last_runtime_update &&
+          launch_history_id == o.launch_history_id
     end
 
     # @see the `==` method
@@ -178,7 +189,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, instance, score, completion_status, success_status, history_log, total_seconds_tracked, launch_time, exit_time, last_runtime_update].hash
+      [id, instance, score, completion_status, success_status, history_log, total_seconds_tracked, launch_time, exit_time, last_runtime_update, launch_history_id].hash
     end
 
     # Builds the object from hash

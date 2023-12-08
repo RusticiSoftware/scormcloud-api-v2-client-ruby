@@ -13,40 +13,56 @@ require 'date'
 
 
 module RusticiSoftwareCloudV2
-  class CredentialCreatedSchema
-    # id for this credential
-    attr_accessor :id
-
-    # name for this credential
+  class DestinationInfoSchema
+    # The destination's name.
     attr_accessor :name
 
-    # The newly created API credential
-    attr_accessor :credential
+    attr_accessor :dispatch_count
 
-    # The PENS key for this credential
-    attr_accessor :pens_credential
+    attr_accessor :updated
 
-    attr_accessor :status
+    attr_accessor :created
+
+    # Optional array of tags.
+    attr_accessor :tags
+
+    # SCORM Cloud user e-mail associated with this destination. If this is not provided, it will default to the owner of the Realm. 
+    attr_accessor :email
+
+    # Any provided notes about this Destination
+    attr_accessor :notes
+
+    attr_accessor :launch_auth
+
+    attr_accessor :lti13_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'name' => :'name',
-        :'credential' => :'credential',
-        :'pens_credential' => :'pensCredential',
-        :'status' => :'status'
+        :'dispatch_count' => :'dispatchCount',
+        :'updated' => :'updated',
+        :'created' => :'created',
+        :'tags' => :'tags',
+        :'email' => :'email',
+        :'notes' => :'notes',
+        :'launch_auth' => :'launchAuth',
+        :'lti13_data' => :'lti13Data'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
         :'name' => :'String',
-        :'credential' => :'String',
-        :'pens_credential' => :'String',
-        :'status' => :'String'
+        :'dispatch_count' => :'Integer',
+        :'updated' => :'DateTime',
+        :'created' => :'DateTime',
+        :'tags' => :'Array<String>',
+        :'email' => :'String',
+        :'notes' => :'String',
+        :'launch_auth' => :'LaunchAuthSchema',
+        :'lti13_data' => :'Lti13PlatformConfigurationSchema'
       }
     end
 
@@ -58,24 +74,42 @@ module RusticiSoftwareCloudV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
-
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'credential')
-        self.credential = attributes[:'credential']
+      if attributes.has_key?(:'dispatchCount')
+        self.dispatch_count = attributes[:'dispatchCount']
       end
 
-      if attributes.has_key?(:'pensCredential')
-        self.pens_credential = attributes[:'pensCredential']
+      if attributes.has_key?(:'updated')
+        self.updated = attributes[:'updated']
       end
 
-      if attributes.has_key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.has_key?(:'created')
+        self.created = attributes[:'created']
+      end
+
+      if attributes.has_key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
+
+      if attributes.has_key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'notes')
+        self.notes = attributes[:'notes']
+      end
+
+      if attributes.has_key?(:'launchAuth')
+        self.launch_auth = attributes[:'launchAuth']
+      end
+
+      if attributes.has_key?(:'lti13Data')
+        self.lti13_data = attributes[:'lti13Data']
       end
     end
 
@@ -98,11 +132,15 @@ module RusticiSoftwareCloudV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           name == o.name &&
-          credential == o.credential &&
-          pens_credential == o.pens_credential &&
-          status == o.status
+          dispatch_count == o.dispatch_count &&
+          updated == o.updated &&
+          created == o.created &&
+          tags == o.tags &&
+          email == o.email &&
+          notes == o.notes &&
+          launch_auth == o.launch_auth &&
+          lti13_data == o.lti13_data
     end
 
     # @see the `==` method
@@ -114,7 +152,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, credential, pens_credential, status].hash
+      [name, dispatch_count, updated, created, tags, email, notes, launch_auth, lti13_data].hash
     end
 
     # Builds the object from hash

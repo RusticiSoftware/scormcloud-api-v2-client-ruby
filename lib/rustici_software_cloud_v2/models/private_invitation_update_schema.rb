@@ -14,7 +14,7 @@ require 'date'
 
 module RusticiSoftwareCloudV2
   class PrivateInvitationUpdateSchema
-    # If true, then new registrations can be created for this invitation.
+    # Determines if learners are allowed to launch the invitation. If false, the invitation is disabled and no new or existing learners are allowed to launch it. 
     attr_accessor :allow_launch
 
     attr_accessor :invitation_email

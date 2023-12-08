@@ -20,12 +20,12 @@ module RusticiSoftwareCloudV2
     # Course Id for this Invitation.
     attr_accessor :course_id
 
-    # If true, then new registrations can be created for this invitation.
+    # Determines if learners are allowed to launch the invitation. If false, the invitation is disabled and no new or existing learners are allowed to launch it. 
     attr_accessor :allow_launch
 
     attr_accessor :invitation_email
 
-    # If true, then new registrations can be created for this invitation.
+    # Determines if new registrations can be created for this public invitation. If false, no new registrations can be created for the invitation, so only learners with existing registrations can access the invitation. 
     attr_accessor :allow_new_registrations
 
     # The launch URL for the invitation
@@ -42,7 +42,7 @@ module RusticiSoftwareCloudV2
     # The ISO 8601 TimeStamp (defaults to UTC) after which this invitation will expire and can no longer be launched. An empty value will represent no expiration date. 
     attr_accessor :expiration_date
 
-    # Integer value that limits the amount of registrations a public invitation can generate.
+    # Integer value that represents the maximum number of registrations that can be created for a public invitation. Setting this value to '0' allows an unlimited amount of registrations to be created for the invitation. 
     attr_accessor :registration_cap
 
     # The count of registrations for this invitation
