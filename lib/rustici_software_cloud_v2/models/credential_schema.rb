@@ -28,6 +28,12 @@ module RusticiSoftwareCloudV2
 
     attr_accessor :status
 
+    # The time the API credential was created in UTC
+    attr_accessor :created
+
+    # The time the API credential was last updated in UTC
+    attr_accessor :updated
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -35,7 +41,9 @@ module RusticiSoftwareCloudV2
         :'name' => :'name',
         :'credential' => :'credential',
         :'pens_credential' => :'pensCredential',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'created' => :'created',
+        :'updated' => :'updated'
       }
     end
 
@@ -46,7 +54,9 @@ module RusticiSoftwareCloudV2
         :'name' => :'String',
         :'credential' => :'String',
         :'pens_credential' => :'String',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'created' => :'DateTime',
+        :'updated' => :'DateTime'
       }
     end
 
@@ -77,6 +87,14 @@ module RusticiSoftwareCloudV2
       if attributes.has_key?(:'status')
         self.status = attributes[:'status']
       end
+
+      if attributes.has_key?(:'created')
+        self.created = attributes[:'created']
+      end
+
+      if attributes.has_key?(:'updated')
+        self.updated = attributes[:'updated']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -102,7 +120,9 @@ module RusticiSoftwareCloudV2
           name == o.name &&
           credential == o.credential &&
           pens_credential == o.pens_credential &&
-          status == o.status
+          status == o.status &&
+          created == o.created &&
+          updated == o.updated
     end
 
     # @see the `==` method
@@ -114,7 +134,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, credential, pens_credential, status].hash
+      [id, name, credential, pens_credential, status, created, updated].hash
     end
 
     # Builds the object from hash

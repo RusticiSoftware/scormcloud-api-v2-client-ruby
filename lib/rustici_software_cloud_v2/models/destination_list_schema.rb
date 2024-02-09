@@ -17,22 +17,17 @@ module RusticiSoftwareCloudV2
     # 
     attr_accessor :destinations
 
-    # Token for getting the next set of results, from the prior set of results.
-    attr_accessor :more
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'destinations' => :'destinations',
-        :'more' => :'more'
+        :'destinations' => :'destinations'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'destinations' => :'Array<DestinationIdSchema>',
-        :'more' => :'String'
+        :'destinations' => :'Array<DestinationIdSchema>'
       }
     end
 
@@ -48,10 +43,6 @@ module RusticiSoftwareCloudV2
         if (value = attributes[:'destinations']).is_a?(Array)
           self.destinations = value
         end
-      end
-
-      if attributes.has_key?(:'more')
-        self.more = attributes[:'more']
       end
     end
 
@@ -74,8 +65,7 @@ module RusticiSoftwareCloudV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          destinations == o.destinations &&
-          more == o.more
+          destinations == o.destinations
     end
 
     # @see the `==` method
@@ -87,7 +77,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [destinations, more].hash
+      [destinations].hash
     end
 
     # Builds the object from hash

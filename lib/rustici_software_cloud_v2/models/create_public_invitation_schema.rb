@@ -20,7 +20,7 @@ module RusticiSoftwareCloudV2
     # The email of the user who is creating the invitation.
     attr_accessor :creating_user_email
 
-    # Integer value that limits the amount of registrations a public invitation can generate.
+    # Integer value that represents the maximum number of registrations that can be created for a public invitation. Setting this value to '0' allows an unlimited amount of registrations to be created for the invitation. 
     attr_accessor :registration_cap
 
     # Specifies a URL for which to post activity and status data in real time as the course is completed

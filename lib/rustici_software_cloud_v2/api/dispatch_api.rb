@@ -598,7 +598,8 @@ module RusticiSoftwareCloudV2
     # Returns detailed information about the destination.  This includes name, tags, and launchAuth information. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [DestinationSchema]
+    # @option opts [BOOLEAN] :include_dispatch_count Include a count of dispatches for the destination. (default to false)
+    # @return [DestinationInfoSchema]
     def get_destination(destination_id, opts = {})
       data, _status_code, _headers = get_destination_with_http_info(destination_id, opts)
       data
@@ -608,7 +609,8 @@ module RusticiSoftwareCloudV2
     # Returns detailed information about the destination.  This includes name, tags, and launchAuth information. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DestinationSchema, Fixnum, Hash)>] DestinationSchema data, response status code and response headers
+    # @option opts [BOOLEAN] :include_dispatch_count Include a count of dispatches for the destination.
+    # @return [Array<(DestinationInfoSchema, Fixnum, Hash)>] DestinationInfoSchema data, response status code and response headers
     def get_destination_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destination ...'
@@ -622,6 +624,7 @@ module RusticiSoftwareCloudV2
 
       # query parameters
       query_params = {}
+      query_params[:'includeDispatchCount'] = opts[:'include_dispatch_count'] if !opts[:'include_dispatch_count'].nil?
 
       # header parameters
       header_params = {}
@@ -642,7 +645,7 @@ module RusticiSoftwareCloudV2
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'DestinationSchema')
+        :return_type => 'DestinationInfoSchema')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DispatchApi#get_destination\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -964,7 +967,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Get a list of Destinations 
-    # Returns a list of destinations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # Returns a list of destinations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  >**Info:** >This endpoint caches the dispatch count of a destination for 24 hours if the `includeDispatchCount` parameter is set to `true`.  Since this value is cached for an extended period, any changes made to the number of dispatches for a destination will not be reflected in the results of this endpoint until the caching period has passed.  >If you want to get an up-to-date value of the dispatch count for a single destination within the caching period, use the GetDestination endpoint with `includeDispatchCount` set to `true`.  GetDestination *always* gathers the most up-to-date values and overwrites them in the cache, resetting the caching period for that destination. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
@@ -975,15 +978,16 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to destination_id)
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_dispatch_count Include a count of dispatches for each destination. (default to false)
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token.  (default to false)
-    # @return [DestinationListSchema]
+    # @return [DestinationInfoListSchema]
     def get_destinations(opts = {})
       data, _status_code, _headers = get_destinations_with_http_info(opts)
       data
     end
 
     # Get a list of Destinations 
-    # Returns a list of destinations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # Returns a list of destinations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  &gt;**Info:** &gt;This endpoint caches the dispatch count of a destination for 24 hours if the &#x60;includeDispatchCount&#x60; parameter is set to &#x60;true&#x60;.  Since this value is cached for an extended period, any changes made to the number of dispatches for a destination will not be reflected in the results of this endpoint until the caching period has passed.  &gt;If you want to get an up-to-date value of the dispatch count for a single destination within the caching period, use the GetDestination endpoint with &#x60;includeDispatchCount&#x60; set to &#x60;true&#x60;.  GetDestination *always* gathers the most up-to-date values and overwrites them in the cache, resetting the caching period for that destination. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
@@ -994,8 +998,9 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_dispatch_count Include a count of dispatches for each destination.
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(DestinationListSchema, Fixnum, Hash)>] DestinationListSchema data, response status code and response headers
+    # @return [Array<(DestinationInfoListSchema, Fixnum, Hash)>] DestinationInfoListSchema data, response status code and response headers
     def get_destinations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destinations ...'
@@ -1014,6 +1019,7 @@ module RusticiSoftwareCloudV2
       query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
       query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
+      query_params[:'includeDispatchCount'] = opts[:'include_dispatch_count'] if !opts[:'include_dispatch_count'].nil?
       query_params[:'includeTotalCount'] = opts[:'include_total_count'] if !opts[:'include_total_count'].nil?
 
       # header parameters
@@ -1035,7 +1041,7 @@ module RusticiSoftwareCloudV2
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'DestinationListSchema')
+        :return_type => 'DestinationInfoListSchema')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DispatchApi#get_destinations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

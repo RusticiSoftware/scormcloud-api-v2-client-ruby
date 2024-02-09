@@ -13,50 +13,25 @@ require 'date'
 
 
 module RusticiSoftwareCloudV2
-  class CreatePrivateInvitationSchema
-    # The id of the course for which to create an invitation.
-    attr_accessor :course_id
+  class DestinationInfoIdSchema
+    # 
+    attr_accessor :id
 
-    # The email of the user who is creating the invitation.
-    attr_accessor :creating_user_email
-
-    attr_accessor :invitation_email
-
-    # Specifies a URL for which to post activity and status data in real time as the course is completed
-    attr_accessor :post_back
-
-    # The ISO 8601 TimeStamp (defaults to UTC) after which this invitation will expire and can no longer be launched. An empty value will represent no expiration date. 
-    attr_accessor :expiration_date
-
-    # Optional tags to be applied to this invitation.
-    attr_accessor :tags
-
-    # Represents the possible values that determine how existing registrations will be handled when an invitation is sent to an email address that has already received an invitation:   - `FAIL`: Do not create a new invitation, do not send an email, and do nothing with registrations   - `INSTANCE_EXISTING`: Create a new instance of the existing registration and send it with the invitation   - `SEND_EXISTING`: Re-send the existing registration with the new invitation   - `CREATE_NEW`: Create a new registration for the invitation 
-    attr_accessor :duplicate_registration_option
+    attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'course_id' => :'courseId',
-        :'creating_user_email' => :'creatingUserEmail',
-        :'invitation_email' => :'invitationEmail',
-        :'post_back' => :'postBack',
-        :'expiration_date' => :'expirationDate',
-        :'tags' => :'tags',
-        :'duplicate_registration_option' => :'duplicateRegistrationOption'
+        :'id' => :'id',
+        :'data' => :'data'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'course_id' => :'String',
-        :'creating_user_email' => :'String',
-        :'invitation_email' => :'InvitationEmailSchema',
-        :'post_back' => :'PostBackSchema',
-        :'expiration_date' => :'DateTime',
-        :'tags' => :'Array<String>',
-        :'duplicate_registration_option' => :'String'
+        :'id' => :'String',
+        :'data' => :'DestinationInfoSchema'
       }
     end
 
@@ -68,36 +43,12 @@ module RusticiSoftwareCloudV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'courseId')
-        self.course_id = attributes[:'courseId']
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.has_key?(:'creatingUserEmail')
-        self.creating_user_email = attributes[:'creatingUserEmail']
-      end
-
-      if attributes.has_key?(:'invitationEmail')
-        self.invitation_email = attributes[:'invitationEmail']
-      end
-
-      if attributes.has_key?(:'postBack')
-        self.post_back = attributes[:'postBack']
-      end
-
-      if attributes.has_key?(:'expirationDate')
-        self.expiration_date = attributes[:'expirationDate']
-      end
-
-      if attributes.has_key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Array)
-          self.tags = value
-        end
-      end
-
-      if attributes.has_key?(:'duplicateRegistrationOption')
-        self.duplicate_registration_option = attributes[:'duplicateRegistrationOption']
-      else
-        self.duplicate_registration_option = 'SEND_EXISTING'
+      if attributes.has_key?(:'data')
+        self.data = attributes[:'data']
       end
     end
 
@@ -105,51 +56,23 @@ module RusticiSoftwareCloudV2
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @course_id.nil?
-        invalid_properties.push('invalid value for "course_id", course_id cannot be nil.')
-      end
-
-      if @creating_user_email.nil?
-        invalid_properties.push('invalid value for "creating_user_email", creating_user_email cannot be nil.')
-      end
-
-      if @invitation_email.nil?
-        invalid_properties.push('invalid value for "invitation_email", invitation_email cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @course_id.nil?
-      return false if @creating_user_email.nil?
-      return false if @invitation_email.nil?
       true
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    #
-    # allowable_values = ['FAIL', 'INSTANCE_EXISTING', 'SEND_EXISTING', 'CREATE_NEW']
-    #
-    # @param [Object] duplicate_registration_option Object to be assigned
-    def duplicate_registration_option=(duplicate_registration_option)
-      @duplicate_registration_option = duplicate_registration_option
-    end
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          course_id == o.course_id &&
-          creating_user_email == o.creating_user_email &&
-          invitation_email == o.invitation_email &&
-          post_back == o.post_back &&
-          expiration_date == o.expiration_date &&
-          tags == o.tags &&
-          duplicate_registration_option == o.duplicate_registration_option
+          id == o.id &&
+          data == o.data
     end
 
     # @see the `==` method
@@ -161,7 +84,7 @@ module RusticiSoftwareCloudV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [course_id, creating_user_email, invitation_email, post_back, expiration_date, tags, duplicate_registration_option].hash
+      [id, data].hash
     end
 
     # Builds the object from hash
