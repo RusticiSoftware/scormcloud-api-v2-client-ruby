@@ -142,7 +142,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [object_type, name, mbox, mbox_sha1sum, openid, account, member].hash
     end

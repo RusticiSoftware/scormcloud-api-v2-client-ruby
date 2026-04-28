@@ -191,7 +191,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [id, title, xapi_activity_id, created, updated, version, registration_count, activity_id, course_learning_standard, tags, dispatched, metadata, root_activity].hash
     end

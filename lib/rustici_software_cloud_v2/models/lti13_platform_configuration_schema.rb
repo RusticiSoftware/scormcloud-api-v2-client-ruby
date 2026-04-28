@@ -148,7 +148,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [client_id, platform_issuer_identifier, deployment_id, oidc_authorization_endpoint, json_web_key_set_url, access_token_url].hash
     end

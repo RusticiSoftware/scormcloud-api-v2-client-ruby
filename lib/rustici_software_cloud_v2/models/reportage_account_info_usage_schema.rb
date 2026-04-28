@@ -99,7 +99,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [month_start, reg_count, total_registrations, total_courses].hash
     end

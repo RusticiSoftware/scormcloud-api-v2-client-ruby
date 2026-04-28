@@ -91,7 +91,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [fetch_request, media_file_reference_request, connector_reference_request].hash
     end

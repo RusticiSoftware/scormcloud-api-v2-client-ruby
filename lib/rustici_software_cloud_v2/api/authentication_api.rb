@@ -37,7 +37,7 @@ module RusticiSoftwareCloudV2
     # @param scope Space separated string of OAuth scopes, e.g. \&quot;write:course read:registration\&quot;. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :expiration Amount of seconds until the OAuth token expires. 
-    # @return [Array<(ApplicationToken, Fixnum, Hash)>] ApplicationToken data, response status code and response headers
+    # @return [Array<(ApplicationToken, Integer, Hash)>] ApplicationToken data, response status code and response headers
     def get_app_token_with_http_info(scope, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticationApi.get_app_token ...'
@@ -66,7 +66,7 @@ module RusticiSoftwareCloudV2
 
       # http body (model)
       post_body = nil
-      auth_names = ['APP_NORMAL']
+      auth_names = ['APP_MANAGEMENT', 'APP_NORMAL']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,

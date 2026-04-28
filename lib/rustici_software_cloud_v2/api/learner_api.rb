@@ -37,7 +37,7 @@ module RusticiSoftwareCloudV2
     # @param learner_id The id of the learner
     # @param user_email The email of the user initiating this request on behalf of the learner being deleted. This must be a valid primary email address for a SCORM Cloud realm which this application is in. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_all_learner_data_with_http_info(learner_id, user_email, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LearnerApi.delete_all_learner_data ...'
@@ -98,7 +98,7 @@ module RusticiSoftwareCloudV2
     # @param learner_id The id of the learner
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_learner_tags_with_http_info(learner_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LearnerApi.delete_learner_tags ...'
@@ -156,7 +156,7 @@ module RusticiSoftwareCloudV2
     # Returns the tags for the learner. 
     # @param learner_id The id of the learner
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
+    # @return [Array<(TagListSchema, Integer, Hash)>] TagListSchema data, response status code and response headers
     def get_learner_tags_with_http_info(learner_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LearnerApi.get_learner_tags ...'
@@ -213,7 +213,7 @@ module RusticiSoftwareCloudV2
     # @param learner_id The id of the learner
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_learner_tags_with_http_info(learner_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LearnerApi.put_learner_tags ...'
@@ -271,7 +271,7 @@ module RusticiSoftwareCloudV2
     # Applies all of the provided tags on all of the provided learners.  Tags are used to easily identify resources. Adding tags can enable more refined searches when working with Reportage. 
     # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_learner_tags_batch_with_http_info(batch, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LearnerApi.put_learner_tags_batch ...'
@@ -327,7 +327,7 @@ module RusticiSoftwareCloudV2
     # @param learner_id The id of the learner
     # @param learner_info 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_learner_info_with_http_info(learner_id, learner_info, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LearnerApi.update_learner_info ...'

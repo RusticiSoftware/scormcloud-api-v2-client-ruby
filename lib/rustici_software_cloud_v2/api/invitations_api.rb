@@ -35,7 +35,7 @@ module RusticiSoftwareCloudV2
     # Creates a private invitation job which sends emails with a link to the course.  Invitations are meant as a way to provide access to your content.  Registrations will be created from the provided email addresses.  The email job will asynchronously send emails to those addresses inviting them to the course.  When the learners visit the link in the email, the course will be launched with the already created registration.  The private invitation ID can be used with GetPrivateInvitationJobStatus to view the status of the email job.  &gt;**Info:** &gt;While invitations are a way to provide access to your content, the majority of use cases would be better suited by creating a registration and building a launch link with the registration endpoints instead.  Invitations build upon registrations by grouping a set of registrations together and adding access control measures to said group. Invitations could be used to pass yearly compliance training to an entire company.  Invitations also have an associated expiration date which determines when the course will no longer be launchable.  &gt;**Note:** &gt;The behavior of a private invitation request sent to a learner who has already been sent an invitation to the course can be specified with the &#x60;duplicateRegistrationOption&#x60; parameter. The available options are: &gt;- &#x60;FAIL&#x60;: Do not send an invitation to any learners who have already received an invitation to the course. Use this option when a list of emails might contain learners who have and have not received an invitation and you only want to send the invitation to the learners who have not yet received an invitation. &gt;- &#x60;INSTANCE_EXISTING&#x60;: Send an invitation to all learners in the list. For learners who have previously been sent an invitation, instance their existing registration. Use this option to force the learner to start the course from the beginning, regardless if they have taken the course in the past. Results from all instances of a registration can be fetched &lt;a href&#x3D;\\\&quot;https://cloud.scorm.com/docs/v2/reference/swagger/#/registration/GetRegistrationInstances\\\&quot;&gt;here&lt;/a&gt; &gt;- &#x60;SEND_EXISTING&#x60;: For any learners who have previously been sent an invitation to the course, use the existing registration on the previous invitation. Use this if you want to remind a learner to take their course or continue their existing course. &gt;- &#x60;CREATE_NEW&#x60;: For any learners who have previously been sent an invitation to the course, create a new registration for the learner. Use this if you&#39;d like to have simultaneous records of the same user to one course. 
     # @param private_invitation_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InvitationSummarySchema, Fixnum, Hash)>] InvitationSummarySchema data, response status code and response headers
+    # @return [Array<(InvitationSummarySchema, Integer, Hash)>] InvitationSummarySchema data, response status code and response headers
     def create_private_invitation_with_http_info(private_invitation_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.create_private_invitation ...'
@@ -90,7 +90,7 @@ module RusticiSoftwareCloudV2
     # Creates an invitation link to the course which can then be publicly distributed.  Invitations are meant as a way to provide access to your content.  When a learner visits the link, they will be prompted for name and email, a registration will be created from the information provided, and they will be redirected to the course.  Since anyone visiting the link will create a registration, it is highly advised that you set the &#x60;registrationCap&#x60; parameter when calling this method.  &gt;**Info:** &gt;While invitations are a way to provide access to your content, the majority of use cases would be better suited by creating a registration and building a launch link with the registration endpoints instead.  Invitations build upon registrations by grouping a set of registrations together and adding access control measures to said group. Invitations could be used to pass yearly compliance training to an entire company.  Invitations also have an associated expiration date which determines when the course will no longer be launchable. 
     # @param public_invitation_request A description of the public invitation to be created.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(PublicInvitationSchema, Fixnum, Hash)>] PublicInvitationSchema data, response status code and response headers
+    # @return [Array<(PublicInvitationSchema, Integer, Hash)>] PublicInvitationSchema data, response status code and response headers
     def create_public_invitation_with_http_info(public_invitation_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.create_public_invitation ...'
@@ -147,7 +147,7 @@ module RusticiSoftwareCloudV2
     # @param invitation_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_invitation_tags_with_http_info(invitation_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.delete_invitation_tags ...'
@@ -223,7 +223,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(InvitationSummaryList, Fixnum, Hash)>] InvitationSummaryList data, response status code and response headers
+    # @return [Array<(InvitationSummaryList, Integer, Hash)>] InvitationSummaryList data, response status code and response headers
     def get_all_invitations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_all_invitations ...'
@@ -284,7 +284,7 @@ module RusticiSoftwareCloudV2
     # Returns the tags for the invitation. 
     # @param invitation_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
+    # @return [Array<(TagListSchema, Integer, Hash)>] TagListSchema data, response status code and response headers
     def get_invitation_tags_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_invitation_tags ...'
@@ -341,7 +341,7 @@ module RusticiSoftwareCloudV2
     # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
-    # @return [Array<(PrivateInvitationSchema, Fixnum, Hash)>] PrivateInvitationSchema data, response status code and response headers
+    # @return [Array<(PrivateInvitationSchema, Integer, Hash)>] PrivateInvitationSchema data, response status code and response headers
     def get_private_invitation_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_invitation ...'
@@ -397,7 +397,7 @@ module RusticiSoftwareCloudV2
     # Check the status of a private invitation email job.  This can be called incrementally to check the progress of the emails. 
     # @param invitation_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InvitationJobStatusSchema, Fixnum, Hash)>] InvitationJobStatusSchema data, response status code and response headers
+    # @return [Array<(InvitationJobStatusSchema, Integer, Hash)>] InvitationJobStatusSchema data, response status code and response headers
     def get_private_invitation_job_status_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_invitation_job_status ...'
@@ -439,7 +439,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Get a list of Private Invitations 
-    # Returns a list of private invitations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # Returns a list of private invitations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  >**Info:** >This endpoint caches the launched registration count and total registration count of all private invitations for 24 hours if the `includeRegistrationCount` parameter is set to `true`.  Since these values are cached for an extended period, any changes made to the number of launched registrations for a private invitation will not be reflected in the results of this endpoint until the caching period has passed.  >If you want to get up-to-date values of the launched or total registration counts for a single private invitation within the caching period, use the GetPrivateInvitation endpoint with `includeRegistrationCount` set to `true`. GetPrivateInvitation *always* gathers the most up-to-date values and overwrites them in the cache, resetting the caching period for that private invitation. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
@@ -450,6 +450,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to invitation_id)
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token.  (default to false)
     # @return [PrivateInvitationList]
     def get_private_invitations(opts = {})
@@ -458,7 +459,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Get a list of Private Invitations 
-    # Returns a list of private invitations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # Returns a list of private invitations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  &gt;**Info:** &gt;This endpoint caches the launched registration count and total registration count of all private invitations for 24 hours if the &#x60;includeRegistrationCount&#x60; parameter is set to &#x60;true&#x60;.  Since these values are cached for an extended period, any changes made to the number of launched registrations for a private invitation will not be reflected in the results of this endpoint until the caching period has passed.  &gt;If you want to get up-to-date values of the launched or total registration counts for a single private invitation within the caching period, use the GetPrivateInvitation endpoint with &#x60;includeRegistrationCount&#x60; set to &#x60;true&#x60;. GetPrivateInvitation *always* gathers the most up-to-date values and overwrites them in the cache, resetting the caching period for that private invitation. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
@@ -469,8 +470,9 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(PrivateInvitationList, Fixnum, Hash)>] PrivateInvitationList data, response status code and response headers
+    # @return [Array<(PrivateInvitationList, Integer, Hash)>] PrivateInvitationList data, response status code and response headers
     def get_private_invitations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_invitations ...'
@@ -489,6 +491,7 @@ module RusticiSoftwareCloudV2
       query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
       query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
+      query_params[:'includeRegistrationCount'] = opts[:'include_registration_count'] if !opts[:'include_registration_count'].nil?
       query_params[:'includeTotalCount'] = opts[:'include_total_count'] if !opts[:'include_total_count'].nil?
 
       # header parameters
@@ -549,7 +552,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_registration_report Optional flag to include basic registration information
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(UserInvitationList, Fixnum, Hash)>] UserInvitationList data, response status code and response headers
+    # @return [Array<(UserInvitationList, Integer, Hash)>] UserInvitationList data, response status code and response headers
     def get_private_user_invitations_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_private_user_invitations ...'
@@ -615,7 +618,7 @@ module RusticiSoftwareCloudV2
     # @param invitation_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
-    # @return [Array<(PublicInvitationSchema, Fixnum, Hash)>] PublicInvitationSchema data, response status code and response headers
+    # @return [Array<(PublicInvitationSchema, Integer, Hash)>] PublicInvitationSchema data, response status code and response headers
     def get_public_invitation_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_public_invitation ...'
@@ -658,7 +661,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Get a list of Public Invitations 
-    # Returns a list of public invitations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # Returns a list of public invitations.  Can be filtered using the request parameters to provide a subset of results.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  >**Info:** >This endpoint caches the registration count of all public invitations for 24 hours if the  `includeRegistrationCount` parameter is set to `true`.  Since this value is cached for an extended period, any changes made to the number of registrations for a public invitation will not be reflected in the results of this endpoint until the caching period has passed.  >If you want to get an up-to-date value of the registration count for a single public invitation within the  caching period, use the GetPublicInvitation endpoint with `includeRegistrationCount` set to `true`. GetPublicInvitation *always* gathers the most up-to-date values and overwrites them in the cache, resetting the caching period for that public invitation. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
@@ -669,6 +672,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter.  (default to invitation_id)
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results.  (default to updated_asc)
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results (default to false)
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token.  (default to false)
     # @return [PublicInvitationList]
     def get_public_invitations(opts = {})
@@ -677,7 +681,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Get a list of Public Invitations 
-    # Returns a list of public invitations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
+    # Returns a list of public invitations.  Can be filtered using the request parameters to provide a subset of results.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request.  &gt;**Info:** &gt;This endpoint caches the registration count of all public invitations for 24 hours if the  &#x60;includeRegistrationCount&#x60; parameter is set to &#x60;true&#x60;.  Since this value is cached for an extended period, any changes made to the number of registrations for a public invitation will not be reflected in the results of this endpoint until the caching period has passed.  &gt;If you want to get an up-to-date value of the registration count for a single public invitation within the  caching period, use the GetPublicInvitation endpoint with &#x60;includeRegistrationCount&#x60; set to &#x60;true&#x60;. GetPublicInvitation *always* gathers the most up-to-date values and overwrites them in the cache, resetting the caching period for that public invitation. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
@@ -688,8 +692,9 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
+    # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(PublicInvitationList, Fixnum, Hash)>] PublicInvitationList data, response status code and response headers
+    # @return [Array<(PublicInvitationList, Integer, Hash)>] PublicInvitationList data, response status code and response headers
     def get_public_invitations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_public_invitations ...'
@@ -708,6 +713,7 @@ module RusticiSoftwareCloudV2
       query_params[:'filterBy'] = opts[:'filter_by'] if !opts[:'filter_by'].nil?
       query_params[:'orderBy'] = opts[:'order_by'] if !opts[:'order_by'].nil?
       query_params[:'more'] = opts[:'more'] if !opts[:'more'].nil?
+      query_params[:'includeRegistrationCount'] = opts[:'include_registration_count'] if !opts[:'include_registration_count'].nil?
       query_params[:'includeTotalCount'] = opts[:'include_total_count'] if !opts[:'include_total_count'].nil?
 
       # header parameters
@@ -768,7 +774,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_registration_report Optional flag to include basic registration information
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(UserInvitationList, Fixnum, Hash)>] UserInvitationList data, response status code and response headers
+    # @return [Array<(UserInvitationList, Integer, Hash)>] UserInvitationList data, response status code and response headers
     def get_public_user_invitations_with_http_info(invitation_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.get_public_user_invitations ...'
@@ -834,7 +840,7 @@ module RusticiSoftwareCloudV2
     # @param invitation_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_invitation_tags_with_http_info(invitation_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.put_invitation_tags ...'
@@ -892,7 +898,7 @@ module RusticiSoftwareCloudV2
     # Applies all of the provided tags on all of the provided invitations.  Both public and private invitations may be tagged via this operation.  Tags are used to easily identify resources.  Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetInvitations). 
     # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_invitation_tags_batch_with_http_info(batch, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.put_invitation_tags_batch ...'
@@ -948,7 +954,7 @@ module RusticiSoftwareCloudV2
     # @param invitation_id 
     # @param invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(PrivateInvitationSchema, Fixnum, Hash)>] PrivateInvitationSchema data, response status code and response headers
+    # @return [Array<(PrivateInvitationSchema, Integer, Hash)>] PrivateInvitationSchema data, response status code and response headers
     def update_private_invitation_with_http_info(invitation_id, invitation_update_schema, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.update_private_invitation ...'
@@ -1009,7 +1015,7 @@ module RusticiSoftwareCloudV2
     # @param invitation_id 
     # @param invitation_update_schema Object with values to be updated.  Any value not specified above will be ignored. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(PublicInvitationSchema, Fixnum, Hash)>] PublicInvitationSchema data, response status code and response headers
+    # @return [Array<(PublicInvitationSchema, Integer, Hash)>] PublicInvitationSchema data, response status code and response headers
     def update_public_invitation_with_http_info(invitation_id, invitation_update_schema, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.update_public_invitation ...'

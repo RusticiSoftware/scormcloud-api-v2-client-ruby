@@ -35,7 +35,7 @@ module RusticiSoftwareCloudV2
     # Creates an xAPI statement pipe.  &gt;**Note:** &gt;This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the creation of the xAPI statement pipe takes place. 
     # @param xapi_statement_pipe 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def create_statement_pipe_with_http_info(xapi_statement_pipe, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.create_statement_pipe ...'
@@ -90,7 +90,7 @@ module RusticiSoftwareCloudV2
     # Creates an xAPI credential combination from the provided secret and a generated ID. 
     # @param xapi_credential 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def create_xapi_credential_with_http_info(xapi_credential, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.create_xapi_credential ...'
@@ -145,7 +145,7 @@ module RusticiSoftwareCloudV2
     # Deletes the specified xAPI statement pipe  &gt;**Note:** &gt;This method is asynchronous.  A returned success status indicates a background process has been started, but there will still be a delay before the deletion takes place.  Recreating a statement pipe with the same ID too quickly could cause the statement pipe to end up in a faulty state. 
     # @param statement_pipe_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_statement_pipe_with_http_info(statement_pipe_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.delete_statement_pipe ...'
@@ -199,7 +199,7 @@ module RusticiSoftwareCloudV2
     # Deletes the specified xAPI credentials. 
     # @param xapi_credential_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_xapi_credential_with_http_info(xapi_credential_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.delete_xapi_credential ...'
@@ -253,7 +253,7 @@ module RusticiSoftwareCloudV2
     # Returns detailed information about the xAPI pipe.  This includes source and target urls, the last time a statement was successfully forwarded, and how many attempts have been made to send data to the target url. 
     # @param statement_pipe_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(XapiStatementPipeSchema, Fixnum, Hash)>] XapiStatementPipeSchema data, response status code and response headers
+    # @return [Array<(XapiStatementPipeSchema, Integer, Hash)>] XapiStatementPipeSchema data, response status code and response headers
     def get_statement_pipe_with_http_info(statement_pipe_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.get_statement_pipe ...'
@@ -306,7 +306,7 @@ module RusticiSoftwareCloudV2
     # Get a list of xAPI Statement Pipes 
     # Returns a list of all xAPI statement pipes. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(XapiStatementPipeListSchema, Fixnum, Hash)>] XapiStatementPipeListSchema data, response status code and response headers
+    # @return [Array<(XapiStatementPipeListSchema, Integer, Hash)>] XapiStatementPipeListSchema data, response status code and response headers
     def get_statement_pipes_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.get_statement_pipes ...'
@@ -357,7 +357,7 @@ module RusticiSoftwareCloudV2
     # Returns detailed information about the xAPI credentials.  This includes the id (username), secret (password), permissions, and whether or not the credentials are enabled. 
     # @param xapi_credential_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(XapiCredentialSchema, Fixnum, Hash)>] XapiCredentialSchema data, response status code and response headers
+    # @return [Array<(XapiCredentialSchema, Integer, Hash)>] XapiCredentialSchema data, response status code and response headers
     def get_xapi_credential_with_http_info(xapi_credential_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.get_xapi_credential ...'
@@ -426,7 +426,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(XapiCredentialsListSchema, Fixnum, Hash)>] XapiCredentialsListSchema data, response status code and response headers
+    # @return [Array<(XapiCredentialsListSchema, Integer, Hash)>] XapiCredentialsListSchema data, response status code and response headers
     def get_xapi_credentials_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.get_xapi_credentials ...'
@@ -487,7 +487,7 @@ module RusticiSoftwareCloudV2
     # @param statement_pipe_id 
     # @param xapi_statement_pipe 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def set_statement_pipe_with_http_info(statement_pipe_id, xapi_statement_pipe, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.set_statement_pipe ...'
@@ -548,7 +548,7 @@ module RusticiSoftwareCloudV2
     # @param xapi_credential_id 
     # @param xapi_credential 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_xapi_credential_with_http_info(xapi_credential_id, xapi_credential, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: XapiApi.set_xapi_credential ...'

@@ -183,7 +183,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [id, actor, verb, object_activity, object_agent_group, object_statement_reference, object_sub_statement, result, context, timestamp, stored, authority, attachments].hash
     end

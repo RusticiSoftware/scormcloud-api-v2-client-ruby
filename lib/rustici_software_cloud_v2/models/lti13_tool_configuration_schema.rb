@@ -123,7 +123,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [public_key, oidc_login_initiations_url, redirect_uri, json_web_key_set_url].hash
     end

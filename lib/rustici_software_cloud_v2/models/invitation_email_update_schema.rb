@@ -13,24 +13,26 @@ require 'date'
 
 
 module RusticiSoftwareCloudV2
-  class ZoomiCourseOptionsSchema
-    attr_accessor :nti
+  class InvitationEmailUpdateSchema
+    # The subject line for the email.
+    attr_accessor :subject
 
-    attr_accessor :cta
+    # The body of the email.
+    attr_accessor :body
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'nti' => :'nti',
-        :'cta' => :'cta'
+        :'subject' => :'subject',
+        :'body' => :'body'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'nti' => :'String',
-        :'cta' => :'String'
+        :'subject' => :'String',
+        :'body' => :'String'
       }
     end
 
@@ -42,12 +44,12 @@ module RusticiSoftwareCloudV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'nti')
-        self.nti = attributes[:'nti']
+      if attributes.has_key?(:'subject')
+        self.subject = attributes[:'subject']
       end
 
-      if attributes.has_key?(:'cta')
-        self.cta = attributes[:'cta']
+      if attributes.has_key?(:'body')
+        self.body = attributes[:'body']
       end
     end
 
@@ -55,22 +57,12 @@ module RusticiSoftwareCloudV2
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @nti.nil?
-        invalid_properties.push('invalid value for "nti", nti cannot be nil.')
-      end
-
-      if @cta.nil?
-        invalid_properties.push('invalid value for "cta", cta cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @nti.nil?
-      return false if @cta.nil?
       true
     end
 
@@ -80,8 +72,8 @@ module RusticiSoftwareCloudV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          nti == o.nti &&
-          cta == o.cta
+          subject == o.subject &&
+          body == o.body
     end
 
     # @see the `==` method
@@ -91,9 +83,9 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
-      [nti, cta].hash
+      [subject, body].hash
     end
 
     # Builds the object from hash

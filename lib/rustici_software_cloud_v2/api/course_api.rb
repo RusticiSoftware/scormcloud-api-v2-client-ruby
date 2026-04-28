@@ -37,7 +37,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(LaunchLinkSchema, Fixnum, Hash)>] LaunchLinkSchema data, response status code and response headers
+    # @return [Array<(LaunchLinkSchema, Integer, Hash)>] LaunchLinkSchema data, response status code and response headers
     def build_course_preview_launch_link_with_http_info(course_id, launch_link_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.build_course_preview_launch_link ...'
@@ -100,7 +100,7 @@ module RusticiSoftwareCloudV2
     # @param version_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(LaunchLinkSchema, Fixnum, Hash)>] LaunchLinkSchema data, response status code and response headers
+    # @return [Array<(LaunchLinkSchema, Integer, Hash)>] LaunchLinkSchema data, response status code and response headers
     def build_course_preview_launch_link_with_version_with_http_info(course_id, version_id, launch_link_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.build_course_preview_launch_link_with_version ...'
@@ -156,6 +156,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (default to false)
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
+    # @option opts [Array<String>] :tags A list of tags to apply, allowing for more refined filtering of resources
     # @return [StringResultSchema]
     def create_fetch_and_import_course_job(course_id, import_request, opts = {})
       data, _status_code, _headers = create_fetch_and_import_course_job_with_http_info(course_id, import_request, opts)
@@ -169,7 +170,8 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist.
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @option opts [Array<String>] :tags A list of tags to apply, allowing for more refined filtering of resources
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def create_fetch_and_import_course_job_with_http_info(course_id, import_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.create_fetch_and_import_course_job ...'
@@ -190,6 +192,7 @@ module RusticiSoftwareCloudV2
       query_params[:'courseId'] = course_id
       query_params[:'mayCreateNewVersion'] = opts[:'may_create_new_version'] if !opts[:'may_create_new_version'].nil?
       query_params[:'postbackUrl'] = opts[:'postback_url'] if !opts[:'postback_url'].nil?
+      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
 
       # header parameters
       header_params = {}
@@ -224,6 +227,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (default to false)
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
+    # @option opts [Array<String>] :tags A list of tags to apply, allowing for more refined filtering of resources
     # @return [StringResultSchema]
     def create_no_upload_and_import_course_job(course_id, import_request, opts = {})
       data, _status_code, _headers = create_no_upload_and_import_course_job_with_http_info(course_id, import_request, opts)
@@ -237,7 +241,8 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist.
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @option opts [Array<String>] :tags A list of tags to apply, allowing for more refined filtering of resources
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def create_no_upload_and_import_course_job_with_http_info(course_id, import_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.create_no_upload_and_import_course_job ...'
@@ -258,6 +263,7 @@ module RusticiSoftwareCloudV2
       query_params[:'courseId'] = course_id
       query_params[:'mayCreateNewVersion'] = opts[:'may_create_new_version'] if !opts[:'may_create_new_version'].nil?
       query_params[:'postbackUrl'] = opts[:'postback_url'] if !opts[:'postback_url'].nil?
+      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
 
       # header parameters
       header_params = {}
@@ -291,6 +297,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist. (default to false)
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
+    # @option opts [Array<String>] :tags A list of tags to apply, allowing for more refined filtering of resources
     # @option opts [String] :uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4). (default to application/zip)
     # @option opts [String] :content_metadata Serialized &#39;mediaFileMetadata&#39; schema.
     # @option opts [File] :file The zip file of the course contents to import. 
@@ -306,10 +313,11 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :may_create_new_version Is it OK to create a new version of this course? If this is set to false and the course already exists, the upload will fail. If true and the course already exists then a new version will be created. No effect if the course doesn&#39;t already exist.
     # @option opts [String] :postback_url An optional parameter that specifies a URL to send a postback to when the course has finished uploading.
+    # @option opts [Array<String>] :tags A list of tags to apply, allowing for more refined filtering of resources
     # @option opts [String] :uploaded_content_type The MIME type identifier for the content to be uploaded. This is required if uploading a media file (.pdf, .mp3, or .mp4).
     # @option opts [String] :content_metadata Serialized &#39;mediaFileMetadata&#39; schema.
     # @option opts [File] :file The zip file of the course contents to import. 
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def create_upload_and_import_course_job_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.create_upload_and_import_course_job ...'
@@ -326,6 +334,7 @@ module RusticiSoftwareCloudV2
       query_params[:'courseId'] = course_id
       query_params[:'mayCreateNewVersion'] = opts[:'may_create_new_version'] if !opts[:'may_create_new_version'].nil?
       query_params[:'postbackUrl'] = opts[:'postback_url'] if !opts[:'postback_url'].nil?
+      query_params[:'tags'] = @api_client.build_collection_param(opts[:'tags'], :csv) if !opts[:'tags'].nil?
 
       # header parameters
       header_params = {}
@@ -370,7 +379,7 @@ module RusticiSoftwareCloudV2
     # Deletes the specified course.  &gt;**Caution:** &gt;When a course is deleted, so is everything connected to the course.  This includes: &gt;- Registrations &gt;- Invitations &gt;- Dispatches &gt;- Debug Logs 
     # @param course_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_course_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course ...'
@@ -426,7 +435,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param relative_path Relative path of the asset within the course. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_course_asset_with_http_info(course_id, relative_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_asset ...'
@@ -487,7 +496,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_course_configuration_setting_with_http_info(course_id, setting_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_configuration_setting ...'
@@ -547,7 +556,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_course_tags_with_http_info(course_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_tags ...'
@@ -607,7 +616,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param version_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_course_version_with_http_info(course_id, version_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_version ...'
@@ -669,7 +678,7 @@ module RusticiSoftwareCloudV2
     # @param version_id 
     # @param relative_path Relative path of the asset within the course. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_course_version_asset_with_http_info(course_id, version_id, relative_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_version_asset ...'
@@ -736,7 +745,7 @@ module RusticiSoftwareCloudV2
     # @param version_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_course_version_configuration_setting_with_http_info(course_id, version_id, setting_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.delete_course_version_configuration_setting ...'
@@ -802,7 +811,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect.
-    # @return [Array<(CourseSchema, Fixnum, Hash)>] CourseSchema data, response status code and response headers
+    # @return [Array<(CourseSchema, Integer, Hash)>] CourseSchema data, response status code and response headers
     def get_course_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course ...'
@@ -861,7 +870,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param relative_path Relative path of the asset within the course. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     def get_course_asset_with_http_info(course_id, relative_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_asset ...'
@@ -923,7 +932,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
-    # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
+    # @return [Array<(SettingListSchema, Integer, Hash)>] SettingListSchema data, response status code and response headers
     def get_course_configuration_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_configuration ...'
@@ -979,7 +988,7 @@ module RusticiSoftwareCloudV2
     # Returns a list of asset files in the course.  Included will be the relative path to use for the other course asset manipulation calls. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(FileListSchema, Fixnum, Hash)>] FileListSchema data, response status code and response headers
+    # @return [Array<(FileListSchema, Integer, Hash)>] FileListSchema data, response status code and response headers
     def get_course_file_list_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_file_list ...'
@@ -1042,7 +1051,7 @@ module RusticiSoftwareCloudV2
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
-    # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
+    # @return [Array<(XapiStatementResult, Integer, Hash)>] XapiStatementResult data, response status code and response headers
     def get_course_statements_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_statements ...'
@@ -1101,7 +1110,7 @@ module RusticiSoftwareCloudV2
     # Returns the tags for the course. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
+    # @return [Array<(TagListSchema, Integer, Hash)>] TagListSchema data, response status code and response headers
     def get_course_tags_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_tags ...'
@@ -1160,7 +1169,7 @@ module RusticiSoftwareCloudV2
     # @param version_id 
     # @param relative_path Relative path of the asset within the course. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     def get_course_version_asset_with_http_info(course_id, version_id, relative_path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_asset ...'
@@ -1228,7 +1237,7 @@ module RusticiSoftwareCloudV2
     # @param version_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
-    # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
+    # @return [Array<(SettingListSchema, Integer, Hash)>] SettingListSchema data, response status code and response headers
     def get_course_version_configuration_with_http_info(course_id, version_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_configuration ...'
@@ -1290,7 +1299,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param version_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(FileListSchema, Fixnum, Hash)>] FileListSchema data, response status code and response headers
+    # @return [Array<(FileListSchema, Integer, Hash)>] FileListSchema data, response status code and response headers
     def get_course_version_file_list_with_http_info(course_id, version_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_file_list ...'
@@ -1355,7 +1364,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect.
-    # @return [Array<(CourseSchema, Fixnum, Hash)>] CourseSchema data, response status code and response headers
+    # @return [Array<(CourseSchema, Integer, Hash)>] CourseSchema data, response status code and response headers
     def get_course_version_info_with_http_info(course_id, version_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_info ...'
@@ -1426,7 +1435,7 @@ module RusticiSoftwareCloudV2
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
-    # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
+    # @return [Array<(XapiStatementResult, Integer, Hash)>] XapiStatementResult data, response status code and response headers
     def get_course_version_statements_with_http_info(course_id, version_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_version_statements ...'
@@ -1497,7 +1506,7 @@ module RusticiSoftwareCloudV2
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect.
-    # @return [Array<(CourseListNonPagedSchema, Fixnum, Hash)>] CourseListNonPagedSchema data, response status code and response headers
+    # @return [Array<(CourseListNonPagedSchema, Integer, Hash)>] CourseListNonPagedSchema data, response status code and response headers
     def get_course_versions_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_versions ...'
@@ -1556,7 +1565,7 @@ module RusticiSoftwareCloudV2
     # Downloads a zip package for the course.  The course zip package contains all of the files (assets) needed for a learner to take the course.  The returned zip will contain all of the files orginally uploaded with the course, as well as any modifications made through updating/ adding new assets.  &gt;**Info:** &gt;If looking to retrieve a specific file from a course, use &#x60;GetCourseAsset&#x60; instead. 
     # @param course_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     def get_course_zip_with_http_info(course_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_course_zip ...'
@@ -1631,7 +1640,7 @@ module RusticiSoftwareCloudV2
     # @option opts [BOOLEAN] :include_course_metadata Include course metadata in the results. If the course has no metadata, adding this parameter has no effect.
     # @option opts [BOOLEAN] :include_registration_count Include the registration count in the results
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(CourseListSchema, Fixnum, Hash)>] CourseListSchema data, response status code and response headers
+    # @return [Array<(CourseListSchema, Integer, Hash)>] CourseListSchema data, response status code and response headers
     def get_courses_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_courses ...'
@@ -1693,7 +1702,7 @@ module RusticiSoftwareCloudV2
     # Check the status of a course import.  This can be called incrementally to check the progress of a call to any of the import options.  &gt;**Note:** &gt;The import job ID used for calls to GetImportJobStatus are only valid for one week after the course import finishes. 
     # @param import_job_id Id received when the import job was submitted to the importJobs resource.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ImportJobResultSchema, Fixnum, Hash)>] ImportJobResultSchema data, response status code and response headers
+    # @return [Array<(ImportJobResultSchema, Integer, Hash)>] ImportJobResultSchema data, response status code and response headers
     def get_import_job_status_with_http_info(import_job_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_import_job_status ...'
@@ -1750,7 +1759,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param version_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     def get_versioned_course_zip_with_http_info(course_id, version_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.get_versioned_course_zip ...'
@@ -1813,7 +1822,7 @@ module RusticiSoftwareCloudV2
     # @param asset_schema 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
-    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    # @return [Array<(AssetFileSchema, Integer, Hash)>] AssetFileSchema data, response status code and response headers
     def import_course_asset_file_with_http_info(course_id, asset_schema, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.import_course_asset_file ...'
@@ -1879,7 +1888,7 @@ module RusticiSoftwareCloudV2
     # @param asset_schema 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
-    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    # @return [Array<(AssetFileSchema, Integer, Hash)>] AssetFileSchema data, response status code and response headers
     def import_course_version_asset_file_with_http_info(course_id, version_id, asset_schema, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.import_course_version_asset_file ...'
@@ -1945,7 +1954,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_course_tags_with_http_info(course_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.put_course_tags ...'
@@ -2003,7 +2012,7 @@ module RusticiSoftwareCloudV2
     # Applies all of the provided tags on all of the provided courses.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetCourses). 
     # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_course_tags_batch_with_http_info(batch, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.put_course_tags_batch ...'
@@ -2059,7 +2068,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_course_configuration_with_http_info(course_id, configuration_settings, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.set_course_configuration ...'
@@ -2119,7 +2128,7 @@ module RusticiSoftwareCloudV2
     # @param course_id 
     # @param title 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_course_title_with_http_info(course_id, title, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.set_course_title ...'
@@ -2181,7 +2190,7 @@ module RusticiSoftwareCloudV2
     # @param version_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_course_version_configuration_with_http_info(course_id, version_id, configuration_settings, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.set_course_version_configuration ...'
@@ -2249,7 +2258,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file The asset file to import into the course. 
     # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
-    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    # @return [Array<(AssetFileSchema, Integer, Hash)>] AssetFileSchema data, response status code and response headers
     def upload_course_asset_file_with_http_info(course_id, destination, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.upload_course_asset_file ...'
@@ -2319,7 +2328,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file The asset file to import into the course. 
     # @option opts [String] :update_asset_policy Describes how SCORM Cloud should handle importing asset files with respect to overwriting files. Valid values are &#39;reject&#39;, &#39;strict&#39;, and &#39;lax&#39;. A &#39;reject&#39; policy request will fail if the asset file already exists on the system (&#39;overwriting&#39; not allowed). A &#39;strict&#39; policy request will fail if the asset file does not already exist (&#39;overwriting&#39; is required). A &#39;lax&#39; policy request will not consider whether the file already exists (i.e., it will attempt to import in all cases). 
-    # @return [Array<(AssetFileSchema, Fixnum, Hash)>] AssetFileSchema data, response status code and response headers
+    # @return [Array<(AssetFileSchema, Integer, Hash)>] AssetFileSchema data, response status code and response headers
     def upload_course_version_asset_file_with_http_info(course_id, version_id, destination, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CourseApi.upload_course_version_asset_file ...'

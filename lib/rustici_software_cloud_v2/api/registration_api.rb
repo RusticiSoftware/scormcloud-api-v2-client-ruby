@@ -37,7 +37,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param launch_link_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(LaunchLinkSchema, Fixnum, Hash)>] LaunchLinkSchema data, response status code and response headers
+    # @return [Array<(LaunchLinkSchema, Integer, Hash)>] LaunchLinkSchema data, response status code and response headers
     def build_registration_launch_link_with_http_info(registration_id, launch_link_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.build_registration_launch_link ...'
@@ -96,7 +96,7 @@ module RusticiSoftwareCloudV2
     # Creates a new instance of the registration.  Registration instances will be automatically created when a learner launches a new version of the course.  This allows for tracking registration progress for each of the versions of the course the learner has taken.  When the created registration instance is \&quot;launched\&quot;, the course specified at creation time will be launched. 
     # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def create_new_registration_instance_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.create_new_registration_instance ...'
@@ -152,7 +152,7 @@ module RusticiSoftwareCloudV2
     # @param registration 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :course_version Unless you have a reason for using this you probably do not need to. 
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def create_registration_with_http_info(registration, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.create_registration ...'
@@ -207,7 +207,7 @@ module RusticiSoftwareCloudV2
     # Deletes the specified registration.  &gt;**Caution:** &gt;This will also delete all instances of the registration. 
     # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_registration_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration ...'
@@ -263,7 +263,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_registration_configuration_setting_with_http_info(registration_id, setting_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_configuration_setting ...'
@@ -321,7 +321,7 @@ module RusticiSoftwareCloudV2
     # Deletes the global data associated with the registration, but the registration itself will remain.  This means any progress towards the global objectives will be removed. 
     # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_registration_global_data_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_global_data ...'
@@ -377,7 +377,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param instance_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_registration_instance_with_http_info(registration_id, instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_instance ...'
@@ -439,7 +439,7 @@ module RusticiSoftwareCloudV2
     # @param instance_id 
     # @param setting_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_registration_instance_configuration_setting_with_http_info(registration_id, instance_id, setting_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_instance_configuration_setting ...'
@@ -501,7 +501,7 @@ module RusticiSoftwareCloudV2
     # Deletes the data associated with the registration, but the registration itself will remain.  This means any of the launch history, and progress will be removed.  After the data has been deleted, the registration will automatically register itself for the latest version of the course. 
     # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_registration_progress_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_progress ...'
@@ -557,7 +557,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_registration_tags_with_http_info(registration_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.delete_registration_tags ...'
@@ -615,7 +615,7 @@ module RusticiSoftwareCloudV2
     # Checks that the registration exists within SCORM Cloud.  &gt;**Info:** &gt;No registration data will be returned for this call. A successful &#x60;200&#x60; response indicates that the registration exists. If the registration does not exist, a &#x60;404&#x60; error will be returned instead. If you are looking for information about the registration, try calling &#x60;GetRegistrationProgress&#x60; instead. 
     # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def get_registration_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration ...'
@@ -671,7 +671,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
-    # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
+    # @return [Array<(SettingListSchema, Integer, Hash)>] SettingListSchema data, response status code and response headers
     def get_registration_configuration_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_configuration ...'
@@ -731,7 +731,7 @@ module RusticiSoftwareCloudV2
     # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_metadata 
-    # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
+    # @return [Array<(SettingListSchema, Integer, Hash)>] SettingListSchema data, response status code and response headers
     def get_registration_instance_configuration_with_http_info(registration_id, instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_configuration ...'
@@ -795,7 +795,7 @@ module RusticiSoftwareCloudV2
     # @param instance_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_history_log Whether to include the history log in the launch history
-    # @return [Array<(LaunchHistoryListSchema, Fixnum, Hash)>] LaunchHistoryListSchema data, response status code and response headers
+    # @return [Array<(LaunchHistoryListSchema, Integer, Hash)>] LaunchHistoryListSchema data, response status code and response headers
     def get_registration_instance_launch_history_with_http_info(registration_id, instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_launch_history ...'
@@ -863,7 +863,7 @@ module RusticiSoftwareCloudV2
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results
-    # @return [Array<(RegistrationSchema, Fixnum, Hash)>] RegistrationSchema data, response status code and response headers
+    # @return [Array<(RegistrationSchema, Integer, Hash)>] RegistrationSchema data, response status code and response headers
     def get_registration_instance_progress_with_http_info(registration_id, instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_progress ...'
@@ -933,7 +933,7 @@ module RusticiSoftwareCloudV2
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
-    # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
+    # @return [Array<(XapiStatementResult, Integer, Hash)>] XapiStatementResult data, response status code and response headers
     def get_registration_instance_statements_with_http_info(registration_id, instance_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instance_statements ...'
@@ -1007,7 +1007,7 @@ module RusticiSoftwareCloudV2
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results
-    # @return [Array<(RegistrationListSchema, Fixnum, Hash)>] RegistrationListSchema data, response status code and response headers
+    # @return [Array<(RegistrationListSchema, Integer, Hash)>] RegistrationListSchema data, response status code and response headers
     def get_registration_instances_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_instances ...'
@@ -1070,7 +1070,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_history_log Whether to include the history log in the launch history
-    # @return [Array<(LaunchHistoryListSchema, Fixnum, Hash)>] LaunchHistoryListSchema data, response status code and response headers
+    # @return [Array<(LaunchHistoryListSchema, Integer, Hash)>] LaunchHistoryListSchema data, response status code and response headers
     def get_registration_launch_history_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_launch_history ...'
@@ -1132,7 +1132,7 @@ module RusticiSoftwareCloudV2
     # @option opts [BOOLEAN] :include_child_results Include information about each learning object, not just the top level in the results
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results
-    # @return [Array<(RegistrationSchema, Fixnum, Hash)>] RegistrationSchema data, response status code and response headers
+    # @return [Array<(RegistrationSchema, Integer, Hash)>] RegistrationSchema data, response status code and response headers
     def get_registration_progress_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_progress ...'
@@ -1196,7 +1196,7 @@ module RusticiSoftwareCloudV2
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
-    # @return [Array<(XapiStatementResult, Fixnum, Hash)>] XapiStatementResult data, response status code and response headers
+    # @return [Array<(XapiStatementResult, Integer, Hash)>] XapiStatementResult data, response status code and response headers
     def get_registration_statements_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_statements ...'
@@ -1254,7 +1254,7 @@ module RusticiSoftwareCloudV2
     # Returns the tags for the registration. 
     # @param registration_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
+    # @return [Array<(TagListSchema, Integer, Hash)>] TagListSchema data, response status code and response headers
     def get_registration_tags_with_http_info(registration_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registration_tags ...'
@@ -1335,7 +1335,7 @@ module RusticiSoftwareCloudV2
     # @option opts [BOOLEAN] :include_interactions_and_objectives Include interactions and objectives in the results
     # @option opts [BOOLEAN] :include_runtime Include runtime details in the results
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(RegistrationListSchema, Fixnum, Hash)>] RegistrationListSchema data, response status code and response headers
+    # @return [Array<(RegistrationListSchema, Integer, Hash)>] RegistrationListSchema data, response status code and response headers
     def get_registrations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.get_registrations ...'
@@ -1402,7 +1402,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_registration_tags_with_http_info(registration_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.put_registration_tags ...'
@@ -1460,7 +1460,7 @@ module RusticiSoftwareCloudV2
     # Applies all of the provided tags on all of the provided registrations.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetRegistrations). 
     # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_registration_tags_batch_with_http_info(batch, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.put_registration_tags_batch ...'
@@ -1516,7 +1516,7 @@ module RusticiSoftwareCloudV2
     # @param registration_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_registration_configuration_with_http_info(registration_id, configuration_settings, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.set_registration_configuration ...'
@@ -1578,7 +1578,7 @@ module RusticiSoftwareCloudV2
     # @param instance_id 
     # @param configuration_settings 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_registration_instance_configuration_with_http_info(registration_id, instance_id, configuration_settings, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.set_registration_instance_configuration ...'
@@ -1640,7 +1640,7 @@ module RusticiSoftwareCloudV2
     # Sends a postback with dummy data to the url specified.  The postback will use additional information from the configuration provided with the request (e.g. a provided username/password will be sent along with the postback to allow for logging in to a secure page.  The format of the data sent will differ depending on whether &#x60;httpbasic&#x60; or &#x60;form&#x60; is passed for &#x60;authType&#x60;.  - With httpbasic, an authorization header will be sent with the base64 encoded credentials.  The body will be JSON formatted data. - With form, the username and password will be sent in the body of the request along with the data.  The whole body will be url encoded.  &gt;**Note:** &gt;The data that will be sent to the provided url is the same format as the output of the GetRegistrationProgress endpoint. 
     # @param post_back 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def test_registration_postback_with_http_info(post_back, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RegistrationApi.test_registration_postback ...'
