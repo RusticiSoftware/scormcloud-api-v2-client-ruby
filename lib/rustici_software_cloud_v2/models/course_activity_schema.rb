@@ -152,7 +152,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [external_identifier, item_identifier, resource_identifier, activity_type, href, scaled_passing_score, title, children].hash
     end

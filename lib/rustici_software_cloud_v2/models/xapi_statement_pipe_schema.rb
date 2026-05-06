@@ -126,7 +126,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [id, last_forwarded_statement_date, more_url, attempts, visible_after, source, target].hash
     end

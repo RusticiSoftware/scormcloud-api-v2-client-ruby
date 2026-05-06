@@ -261,7 +261,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [completion_status, credit, entry, exit, learner_preference, location, mode, progress_measure, score_scaled, score_raw, score_min, score_max, total_time, time_tracked, runtime_success_status, suspend_data, learner_comments, lms_comments, runtime_interactions, runtime_objectives].hash
     end

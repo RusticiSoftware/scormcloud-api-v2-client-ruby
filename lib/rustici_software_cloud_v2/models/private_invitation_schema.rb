@@ -20,6 +20,9 @@ module RusticiSoftwareCloudV2
     # Course Id for this Invitation.
     attr_accessor :course_id
 
+    # Title of the course associated with this invitation.
+    attr_accessor :course_title
+
     # Determines if learners are allowed to launch the invitation. If false, the invitation is disabled and no new or existing learners are allowed to launch it. 
     attr_accessor :allow_launch
 
@@ -39,18 +42,23 @@ module RusticiSoftwareCloudV2
     # The count of registrations for this invitation
     attr_accessor :registration_count
 
+    # The count of launched registrations for this invitation
+    attr_accessor :launched_registration_count
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'course_id' => :'courseId',
+        :'course_title' => :'courseTitle',
         :'allow_launch' => :'allowLaunch',
         :'invitation_email' => :'invitationEmail',
         :'create_date' => :'createDate',
         :'updated' => :'updated',
         :'post_back' => :'postBack',
         :'expiration_date' => :'expirationDate',
-        :'registration_count' => :'registrationCount'
+        :'registration_count' => :'registrationCount',
+        :'launched_registration_count' => :'launchedRegistrationCount'
       }
     end
 
@@ -59,13 +67,15 @@ module RusticiSoftwareCloudV2
       {
         :'id' => :'String',
         :'course_id' => :'String',
+        :'course_title' => :'String',
         :'allow_launch' => :'BOOLEAN',
         :'invitation_email' => :'InvitationEmailSchema',
         :'create_date' => :'DateTime',
         :'updated' => :'DateTime',
         :'post_back' => :'PostBackSchema',
         :'expiration_date' => :'DateTime',
-        :'registration_count' => :'Integer'
+        :'registration_count' => :'Integer',
+        :'launched_registration_count' => :'Integer'
       }
     end
 
@@ -83,6 +93,10 @@ module RusticiSoftwareCloudV2
 
       if attributes.has_key?(:'courseId')
         self.course_id = attributes[:'courseId']
+      end
+
+      if attributes.has_key?(:'courseTitle')
+        self.course_title = attributes[:'courseTitle']
       end
 
       if attributes.has_key?(:'allowLaunch')
@@ -112,6 +126,10 @@ module RusticiSoftwareCloudV2
       if attributes.has_key?(:'registrationCount')
         self.registration_count = attributes[:'registrationCount']
       end
+
+      if attributes.has_key?(:'launchedRegistrationCount')
+        self.launched_registration_count = attributes[:'launchedRegistrationCount']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -135,13 +153,15 @@ module RusticiSoftwareCloudV2
       self.class == o.class &&
           id == o.id &&
           course_id == o.course_id &&
+          course_title == o.course_title &&
           allow_launch == o.allow_launch &&
           invitation_email == o.invitation_email &&
           create_date == o.create_date &&
           updated == o.updated &&
           post_back == o.post_back &&
           expiration_date == o.expiration_date &&
-          registration_count == o.registration_count
+          registration_count == o.registration_count &&
+          launched_registration_count == o.launched_registration_count
     end
 
     # @see the `==` method
@@ -151,9 +171,9 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
-      [id, course_id, allow_launch, invitation_email, create_date, updated, post_back, expiration_date, registration_count].hash
+      [id, course_id, course_title, allow_launch, invitation_email, create_date, updated, post_back, expiration_date, registration_count, launched_registration_count].hash
     end
 
     # Builds the object from hash

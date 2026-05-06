@@ -185,7 +185,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [expiry, redirect_on_exit_url, tracking, start_sco, culture, css_url, learner_tags, course_tags, registration_tags, additionalvalues, launch_auth].hash
     end

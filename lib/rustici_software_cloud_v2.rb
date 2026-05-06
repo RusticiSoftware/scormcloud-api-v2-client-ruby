@@ -69,6 +69,7 @@ require 'rustici_software_cloud_v2/models/import_request_schema'
 require 'rustici_software_cloud_v2/models/import_result_schema'
 require 'rustici_software_cloud_v2/models/integer_result_schema'
 require 'rustici_software_cloud_v2/models/invitation_email_schema'
+require 'rustici_software_cloud_v2/models/invitation_email_update_schema'
 require 'rustici_software_cloud_v2/models/invitation_job_status_schema'
 require 'rustici_software_cloud_v2/models/invitation_summary_list'
 require 'rustici_software_cloud_v2/models/invitation_summary_schema'
@@ -154,8 +155,6 @@ require 'rustici_software_cloud_v2/models/xapi_statement_pipe_schema'
 require 'rustici_software_cloud_v2/models/xapi_statement_reference'
 require 'rustici_software_cloud_v2/models/xapi_statement_result'
 require 'rustici_software_cloud_v2/models/xapi_verb'
-require 'rustici_software_cloud_v2/models/zoomi_company_id'
-require 'rustici_software_cloud_v2/models/zoomi_course_options_schema'
 
 # APIs
 require 'rustici_software_cloud_v2/api/about_api'
@@ -170,7 +169,6 @@ require 'rustici_software_cloud_v2/api/ping_api'
 require 'rustici_software_cloud_v2/api/registration_api'
 require 'rustici_software_cloud_v2/api/reporting_api'
 require 'rustici_software_cloud_v2/api/xapi_api'
-require 'rustici_software_cloud_v2/api/zoomi_api'
 
 module RusticiSoftwareCloudV2
   class << self

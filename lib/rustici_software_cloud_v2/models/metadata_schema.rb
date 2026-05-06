@@ -128,7 +128,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [title, title_language, description, description_language, duration, typical_time, keywords].hash
     end

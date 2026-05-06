@@ -33,7 +33,7 @@ module RusticiSoftwareCloudV2
     # A call to this method will create a new content connector and return a newly created Id for it. 
     # @param connector 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def create_connector_with_http_info(connector, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentConnectorsApi.create_connector ...'
@@ -88,7 +88,7 @@ module RusticiSoftwareCloudV2
     # Delete the specified connector. 
     # @param connector_id the connector id
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_connector_with_http_info(connector_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentConnectorsApi.delete_connector ...'
@@ -142,7 +142,7 @@ module RusticiSoftwareCloudV2
     # Get list of all Content Connectors in this application. 
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_additional_instance_information 
-    # @return [Array<(ConnectorListSchema, Fixnum, Hash)>] ConnectorListSchema data, response status code and response headers
+    # @return [Array<(ConnectorListSchema, Integer, Hash)>] ConnectorListSchema data, response status code and response headers
     def get_connectors_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentConnectorsApi.get_connectors_list ...'
@@ -194,7 +194,7 @@ module RusticiSoftwareCloudV2
     # @param connector_id the connector id
     # @param connector 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_connector_with_http_info(connector_id, connector, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentConnectorsApi.update_connector ...'

@@ -35,7 +35,7 @@ module RusticiSoftwareCloudV2
     # Creates an application.  Applications are how resources are grouped together in SCORM Cloud.  Any courses, registrations, etc. will only be accessible via the credentials for the application they belong to.  &gt;**Note:** &gt;Application IDs are unique in that we do not allow the user to supply a custom value for this field.  The ID of the newly created application will be specified in the response from this method.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param application_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ApplicationSchema, Fixnum, Hash)>] ApplicationSchema data, response status code and response headers
+    # @return [Array<(ApplicationSchema, Integer, Hash)>] ApplicationSchema data, response status code and response headers
     def create_application_with_http_info(application_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.create_application ...'
@@ -92,7 +92,7 @@ module RusticiSoftwareCloudV2
     # @param child_app_id 
     # @param credential_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CredentialSchema, Fixnum, Hash)>] CredentialSchema data, response status code and response headers
+    # @return [Array<(CredentialSchema, Integer, Hash)>] CredentialSchema data, response status code and response headers
     def create_credential_with_http_info(child_app_id, credential_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.create_credential ...'
@@ -151,7 +151,7 @@ module RusticiSoftwareCloudV2
     # Creates, signs and returns an OAuth2 token based on the provided permissions, if the credentials used to request the token have the permissions being requested.  &gt;**Note:** &gt;The token is not stored and therefore can not be modified or deleted.  The requested permissions are encoded in the token which is then signed. 
     # @param token_request 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(StringResultSchema, Fixnum, Hash)>] StringResultSchema data, response status code and response headers
+    # @return [Array<(StringResultSchema, Integer, Hash)>] StringResultSchema data, response status code and response headers
     def create_token_with_http_info(token_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.create_token ...'
@@ -178,7 +178,7 @@ module RusticiSoftwareCloudV2
 
       # http body (model)
       post_body = @api_client.object_to_http_body(token_request)
-      auth_names = ['APP_NORMAL']
+      auth_names = ['APP_MANAGEMENT', 'APP_NORMAL']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -206,7 +206,7 @@ module RusticiSoftwareCloudV2
     # Deletes the specified application.  All content within an application must be removed in order to allow deletion.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_application_with_http_info(child_app_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.delete_application ...'
@@ -264,7 +264,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
     # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_application_configuration_setting_with_http_info(setting_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.delete_application_configuration_setting ...'
@@ -322,7 +322,7 @@ module RusticiSoftwareCloudV2
     # @param child_app_id 
     # @param credential_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_credential_with_http_info(child_app_id, credential_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.delete_credential ...'
@@ -384,7 +384,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
     # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
     # @option opts [BOOLEAN] :include_metadata 
-    # @return [Array<(SettingListSchema, Fixnum, Hash)>] SettingListSchema data, response status code and response headers
+    # @return [Array<(SettingListSchema, Integer, Hash)>] SettingListSchema data, response status code and response headers
     def get_application_configuration_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_application_configuration ...'
@@ -442,7 +442,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_course_count Include a count of courses for the application.
     # @option opts [BOOLEAN] :include_registration_count Include a count of registrations created for the application during the current billing period.
-    # @return [Array<(ApplicationInfoSchema, Fixnum, Hash)>] ApplicationInfoSchema data, response status code and response headers
+    # @return [Array<(ApplicationInfoSchema, Integer, Hash)>] ApplicationInfoSchema data, response status code and response headers
     def get_application_info_with_http_info(child_app_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_application_info ...'
@@ -498,7 +498,7 @@ module RusticiSoftwareCloudV2
     # (Deprecated) Use the Application Management App to get basic data about all Applications in a Realm 
     # Returns a list of all applications which are in this Realm.  &gt;**Deprecated:** &gt;It is advised to use GetApplications instead of this endpoint, as this one now exists for backwards  compatibility.  This endpoint returns very limited data about **all** applications in a Realm and is not  paginated.  Because of this, this endpoint can run into issues and have very slow performance when attempting to  pull data for accounts with many applications.  The GetApplications endpoint alleviates this problem by using pagination to return a limited amount of applications at once, while also providing much more detail about every  application present in a Realm.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ApplicationListSchema, Fixnum, Hash)>] ApplicationListSchema data, response status code and response headers
+    # @return [Array<(ApplicationListSchema, Integer, Hash)>] ApplicationListSchema data, response status code and response headers
     def get_application_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_application_list ...'
@@ -568,7 +568,7 @@ module RusticiSoftwareCloudV2
     # @option opts [BOOLEAN] :include_course_count Include a count of courses for the application.
     # @option opts [BOOLEAN] :include_registration_count Include a count of registrations created for the application during the current billing period.
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(ApplicationInfoListSchema, Fixnum, Hash)>] ApplicationInfoListSchema data, response status code and response headers
+    # @return [Array<(ApplicationInfoListSchema, Integer, Hash)>] ApplicationInfoListSchema data, response status code and response headers
     def get_applications_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_applications ...'
@@ -629,7 +629,7 @@ module RusticiSoftwareCloudV2
     # Returns a list of all the credentials (aka secret keys) belonging to the child application.  &gt;**Note:** &gt;Each Realm has a special application called the **Application Management Application**.  When using this special application&#39;s credentials to authenticate with the API, you are able to perform actions on all the other applications within that Realm (and only those actions, this isn&#39;t a general purpose credential).  You can list, add, update, and delete both applications and credentials with this API resource. 
     # @param child_app_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CredentialListSchema, Fixnum, Hash)>] CredentialListSchema data, response status code and response headers
+    # @return [Array<(CredentialListSchema, Integer, Hash)>] CredentialListSchema data, response status code and response headers
     def get_credentials_with_http_info(child_app_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.get_credentials ...'
@@ -688,7 +688,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :learning_standard If specified, the request will be scoped to the provided learning standard.
     # @option opts [BOOLEAN] :single_sco Required if &#x60;learningStandard&#x60; is specified. Scopes settings to either single or multi-SCO content. 
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_application_configuration_with_http_info(configuration_settings, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.set_application_configuration ...'
@@ -746,7 +746,7 @@ module RusticiSoftwareCloudV2
     # @param child_app_id 
     # @param application_properties 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_application_with_http_info(child_app_id, application_properties, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.update_application ...'
@@ -808,7 +808,7 @@ module RusticiSoftwareCloudV2
     # @param credential_id 
     # @param credential_update 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_credential_with_http_info(child_app_id, credential_id, credential_update, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicationManagementApi.update_credential ...'

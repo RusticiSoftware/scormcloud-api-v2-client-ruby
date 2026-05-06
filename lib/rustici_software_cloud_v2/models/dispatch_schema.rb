@@ -45,6 +45,9 @@ module RusticiSoftwareCloudV2
     # The current number of registrations that have been created for this dispatch. 
     attr_accessor :registration_count
 
+    # The ISO 8601 TimeStamp (defaults to UTC) at which the registration count for this dispatch was reset. 
+    attr_accessor :registration_reset_date
+
     # The ISO 8601 TimeStamp (defaults to UTC) after which this dispatch will be disabled. An empty value will represent no expiration date. 
     attr_accessor :expiration_date
 
@@ -71,6 +74,7 @@ module RusticiSoftwareCloudV2
         :'instanced' => :'instanced',
         :'registration_cap' => :'registrationCap',
         :'registration_count' => :'registrationCount',
+        :'registration_reset_date' => :'registrationResetDate',
         :'expiration_date' => :'expirationDate',
         :'tags' => :'tags',
         :'email' => :'email',
@@ -92,6 +96,7 @@ module RusticiSoftwareCloudV2
         :'instanced' => :'BOOLEAN',
         :'registration_cap' => :'Integer',
         :'registration_count' => :'Integer',
+        :'registration_reset_date' => :'DateTime',
         :'expiration_date' => :'DateTime',
         :'tags' => :'Array<String>',
         :'email' => :'String',
@@ -151,6 +156,10 @@ module RusticiSoftwareCloudV2
         self.registration_count = attributes[:'registrationCount']
       end
 
+      if attributes.has_key?(:'registrationResetDate')
+        self.registration_reset_date = attributes[:'registrationResetDate']
+      end
+
       if attributes.has_key?(:'expirationDate')
         self.expiration_date = attributes[:'expirationDate']
       end
@@ -200,6 +209,7 @@ module RusticiSoftwareCloudV2
           instanced == o.instanced &&
           registration_cap == o.registration_cap &&
           registration_count == o.registration_count &&
+          registration_reset_date == o.registration_reset_date &&
           expiration_date == o.expiration_date &&
           tags == o.tags &&
           email == o.email &&
@@ -213,9 +223,9 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
-      [destination_id, destination_name, course_id, course_title, updated, created, allow_new_registrations, enabled, instanced, registration_cap, registration_count, expiration_date, tags, email, notes].hash
+      [destination_id, destination_name, course_id, course_title, updated, created, allow_new_registrations, enabled, instanced, registration_cap, registration_count, registration_reset_date, expiration_date, tags, email, notes].hash
     end
 
     # Builds the object from hash

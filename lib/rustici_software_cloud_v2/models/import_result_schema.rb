@@ -104,7 +104,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [web_path_to_course, parser_warnings, course_languages, course].hash
     end

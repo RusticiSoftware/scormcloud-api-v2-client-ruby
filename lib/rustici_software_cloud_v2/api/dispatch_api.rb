@@ -35,7 +35,7 @@ module RusticiSoftwareCloudV2
     # Creates a group of destinations.  A destination is a label used to identify an entity outside of SCORM Cloud, such as an LMS.  Used in conjunction with dispatches to provide access control mechanisms for the courses distributed to the destination. 
     # @param destinations_list 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def create_destinations_with_http_info(destinations_list, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.create_destinations ...'
@@ -89,7 +89,7 @@ module RusticiSoftwareCloudV2
     # Creates a group of dispatches.  Dispatches are the connection between a course and a destination.  A dispatch zip package is a distributable course stub which, upon launch in a third-party LMS, will reference and launch the underlying course in SCORM Cloud.  As an extension, dispatches allow for limiting access control even after the zip file has been given to the destination.  &gt;**Caution:** &gt;Only one dispatch can exist for a given course-destination combination.  If calling this method with the same course and destination supplied, the old one will be loaded for modification.  An exception to this is if a dispatchId is passed in the body, the request will fail with a 400 response warning that the dispatch already exists.  This is to prevent confusion over which dispatchId is to be used in future requests. 
     # @param dispatch_list 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def create_dispatches_with_http_info(dispatch_list, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.create_dispatches ...'
@@ -143,7 +143,7 @@ module RusticiSoftwareCloudV2
     # Deletes the specified destination.  &gt;**Caution:** &gt;This will also delete all dispatches belonging to the destination. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_destination_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.delete_destination ...'
@@ -197,7 +197,7 @@ module RusticiSoftwareCloudV2
     # Deletes all the dispatches from the destination.  &gt;**Caution:** &gt;This will invalidate any existing dispatch packages, rendering them unlaunchable. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_destination_dispatches_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.delete_destination_dispatches ...'
@@ -253,7 +253,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_destination_tags_with_http_info(destination_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.delete_destination_tags ...'
@@ -311,7 +311,7 @@ module RusticiSoftwareCloudV2
     # Deletes the specified dispatch.  &gt;**Caution:** &gt;This will invalidate any existing dispatch packages, rendering them unlaunchable. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_dispatch_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.delete_dispatch ...'
@@ -365,7 +365,7 @@ module RusticiSoftwareCloudV2
     # Clears the postback settings from the dispatch.  This causes the postback settings to inherit a value from a higher level (e.g. application).  If there is no setting at the application level, this will disable postbacks for the dispatch. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_dispatch_postback_info_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.delete_dispatch_postback_info ...'
@@ -421,7 +421,7 @@ module RusticiSoftwareCloudV2
     # @param dispatch_id Identifier for the dispatch
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_dispatch_tags_with_http_info(dispatch_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.delete_dispatch_tags ...'
@@ -491,7 +491,7 @@ module RusticiSoftwareCloudV2
     # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
     # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_dispatches_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.delete_dispatches ...'
@@ -550,7 +550,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param enabled 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def enable_registration_instancing_with_http_info(destination_id, enabled, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.enable_registration_instancing ...'
@@ -610,7 +610,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :include_dispatch_count Include a count of dispatches for the destination.
-    # @return [Array<(DestinationInfoSchema, Fixnum, Hash)>] DestinationInfoSchema data, response status code and response headers
+    # @return [Array<(DestinationInfoSchema, Integer, Hash)>] DestinationInfoSchema data, response status code and response headers
     def get_destination_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destination ...'
@@ -666,7 +666,7 @@ module RusticiSoftwareCloudV2
     # Returns the registration count for all dispatches distributed to the destination.  &gt;**Note:** &gt;The count here is a convenience counter.  Since it has the capability of being reset, it may not match the actual billed registration count for a dispatch. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(IntegerResultSchema, Fixnum, Hash)>] IntegerResultSchema data, response status code and response headers
+    # @return [Array<(IntegerResultSchema, Integer, Hash)>] IntegerResultSchema data, response status code and response headers
     def get_destination_dispatch_registration_count_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destination_dispatch_registration_count ...'
@@ -727,7 +727,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :type The type of dispatch package to export (SCORM_12 only supported in SCORM Cloud today)
     # @option opts [String] :css_url 
     # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     def get_destination_dispatch_zip_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destination_dispatch_zip ...'
@@ -776,6 +776,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [BOOLEAN] :is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. 
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
@@ -796,6 +797,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [BOOLEAN] :is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. 
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
@@ -805,7 +807,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(DispatchListSchema, Fixnum, Hash)>] DispatchListSchema data, response status code and response headers
+    # @return [Array<(DispatchListSchema, Integer, Hash)>] DispatchListSchema data, response status code and response headers
     def get_destination_dispatches_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destination_dispatches ...'
@@ -820,6 +822,7 @@ module RusticiSoftwareCloudV2
       # query parameters
       query_params = {}
       query_params[:'courseId'] = opts[:'course_id'] if !opts[:'course_id'].nil?
+      query_params[:'isEnabled'] = opts[:'is_enabled'] if !opts[:'is_enabled'].nil?
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
       query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
@@ -870,7 +873,7 @@ module RusticiSoftwareCloudV2
     # Returns whether or not user PII hashing is enabled for the destination.  Enabling it will cause all user PII to be hashed.  Hashing PII will anonymize the learner data from the dispatched course.  This will make looking up specific details about a learner difficult. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EnabledSchema, Fixnum, Hash)>] EnabledSchema data, response status code and response headers
+    # @return [Array<(EnabledSchema, Integer, Hash)>] EnabledSchema data, response status code and response headers
     def get_destination_hash_user_info_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destination_hash_user_info ...'
@@ -925,7 +928,7 @@ module RusticiSoftwareCloudV2
     # Returns the tags for the destination. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
+    # @return [Array<(TagListSchema, Integer, Hash)>] TagListSchema data, response status code and response headers
     def get_destination_tags_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destination_tags ...'
@@ -1000,7 +1003,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_dispatch_count Include a count of dispatches for each destination.
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(DestinationInfoListSchema, Fixnum, Hash)>] DestinationInfoListSchema data, response status code and response headers
+    # @return [Array<(DestinationInfoListSchema, Integer, Hash)>] DestinationInfoListSchema data, response status code and response headers
     def get_destinations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_destinations ...'
@@ -1062,7 +1065,7 @@ module RusticiSoftwareCloudV2
     # Returns detailed information about the dispatch.  This includes destination and course IDs, as well as registration count. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DispatchSchema, Fixnum, Hash)>] DispatchSchema data, response status code and response headers
+    # @return [Array<(DispatchSchema, Integer, Hash)>] DispatchSchema data, response status code and response headers
     def get_dispatch_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_dispatch ...'
@@ -1117,7 +1120,7 @@ module RusticiSoftwareCloudV2
     # Returns the enabled status for the dispatch.  This is an access control measure allowing you to turn access to a previously distributed dispatch packages on or off. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EnabledSchema, Fixnum, Hash)>] EnabledSchema data, response status code and response headers
+    # @return [Array<(EnabledSchema, Integer, Hash)>] EnabledSchema data, response status code and response headers
     def get_dispatch_enabled_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_dispatch_enabled ...'
@@ -1172,7 +1175,7 @@ module RusticiSoftwareCloudV2
     # Returns whether or not user PII hashing is enabled for the dispatch.  Enabling it will cause all user PII to be hashed.  Hashing PII will anonymize the learner data from the dispatched course.  This will make looking up specific details about a learner difficult. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EnabledSchema, Fixnum, Hash)>] EnabledSchema data, response status code and response headers
+    # @return [Array<(EnabledSchema, Integer, Hash)>] EnabledSchema data, response status code and response headers
     def get_dispatch_hash_user_info_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_dispatch_hash_user_info ...'
@@ -1227,7 +1230,7 @@ module RusticiSoftwareCloudV2
     # Returns the registration count for the dispatch, as well as the date and time of the last count reset, if any.  &gt;**Note:** &gt;The count here is a convenience counter.  Since it has the capability of being reset, it may not match the actual billed registration count for a dispatch. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DispatchRegistrationCountSchema, Fixnum, Hash)>] DispatchRegistrationCountSchema data, response status code and response headers
+    # @return [Array<(DispatchRegistrationCountSchema, Integer, Hash)>] DispatchRegistrationCountSchema data, response status code and response headers
     def get_dispatch_registration_count_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_dispatch_registration_count ...'
@@ -1282,7 +1285,7 @@ module RusticiSoftwareCloudV2
     # Returns the tags for the dispatch. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(TagListSchema, Fixnum, Hash)>] TagListSchema data, response status code and response headers
+    # @return [Array<(TagListSchema, Integer, Hash)>] TagListSchema data, response status code and response headers
     def get_dispatch_tags_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_dispatch_tags ...'
@@ -1341,7 +1344,7 @@ module RusticiSoftwareCloudV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :type The type of dispatch package to export (currently only SCORM_12 available)
     # @option opts [String] :css_url Custom CSS to apply to the dispatch package
-    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
     def get_dispatch_zip_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_dispatch_zip ...'
@@ -1388,6 +1391,7 @@ module RusticiSoftwareCloudV2
     # Returns a list of dispatches.  Can be filtered using the request parameters to provide a subset of results.  Using the `courseId` filter will allow for viewing which destinations the course has been dispatched to.  >**Note:** >This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a `more` token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [BOOLEAN] :is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. 
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against (default to updated)
@@ -1407,6 +1411,7 @@ module RusticiSoftwareCloudV2
     # Returns a list of dispatches.  Can be filtered using the request parameters to provide a subset of results.  Using the &#x60;courseId&#x60; filter will allow for viewing which destinations the course has been dispatched to.  &gt;**Note:** &gt;This request is paginated and will only provide a limited amount of resources at a time.  If there are more results to be collected, a &#x60;more&#x60; token provided with the response which can be passed to get the next page of results.  When passing this token, no other filter parameters can be sent as part of the request.  The resources will continue to respect the filters passed in by the original request. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :course_id Only retrieve resources having &#x60;courseId&#x60;
+    # @option opts [BOOLEAN] :is_enabled Optional boolean parameter used to filter the list of dispatches so that only enabled or disabled dispatches are retrieved. 
     # @option opts [DateTime] :since Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [DateTime] :_until Filter by ISO 8601 TimeStamp inclusive (defaults to UTC)
     # @option opts [String] :datetime_filter Specifies field that &#x60;since&#x60; and &#x60;until&#x60; parameters are applied against
@@ -1416,7 +1421,7 @@ module RusticiSoftwareCloudV2
     # @option opts [String] :order_by Optional enum parameter for specifying the field and order by which to sort the results. 
     # @option opts [String] :more Pagination token returned as &#x60;more&#x60; property of multi page list requests
     # @option opts [BOOLEAN] :include_total_count Include the total count of results matching the provided filters as a header on the initial request.  The header will not be present on subsequent requests resulting from passing the &#x60;more&#x60; token. 
-    # @return [Array<(DispatchListSchema, Fixnum, Hash)>] DispatchListSchema data, response status code and response headers
+    # @return [Array<(DispatchListSchema, Integer, Hash)>] DispatchListSchema data, response status code and response headers
     def get_dispatches_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_dispatches ...'
@@ -1427,6 +1432,7 @@ module RusticiSoftwareCloudV2
       # query parameters
       query_params = {}
       query_params[:'courseId'] = opts[:'course_id'] if !opts[:'course_id'].nil?
+      query_params[:'isEnabled'] = opts[:'is_enabled'] if !opts[:'is_enabled'].nil?
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
       query_params[:'datetimeFilter'] = opts[:'datetime_filter'] if !opts[:'datetime_filter'].nil?
@@ -1477,7 +1483,7 @@ module RusticiSoftwareCloudV2
     # Get the information necessary to import this dispatch as a resource link according to the IMS LTI 1.3 specification. The information from this call will be provided to the platform during the configuration step. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DispatchLti13InfoSchema, Fixnum, Hash)>] DispatchLti13InfoSchema data, response status code and response headers
+    # @return [Array<(DispatchLti13InfoSchema, Integer, Hash)>] DispatchLti13InfoSchema data, response status code and response headers
     def get_lti13_dispatch_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_lti13_dispatch ...'
@@ -1536,7 +1542,7 @@ module RusticiSoftwareCloudV2
     # @param external_config External configuration object
     # @param jwt 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def get_lti13_dispatch_launch_with_http_info(dispatch_id, external_config, jwt, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_lti13_dispatch_launch ...'
@@ -1598,7 +1604,7 @@ module RusticiSoftwareCloudV2
     # Get the information needed to configure a LTI 1.3 platform with the destination id &#x60;destinationId&#x60; 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Lti13ToolConfigurationSchema, Fixnum, Hash)>] Lti13ToolConfigurationSchema data, response status code and response headers
+    # @return [Array<(Lti13ToolConfigurationSchema, Integer, Hash)>] Lti13ToolConfigurationSchema data, response status code and response headers
     def get_lti13_tool_configuration_schema_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_lti13_tool_configuration_schema ...'
@@ -1653,7 +1659,7 @@ module RusticiSoftwareCloudV2
     # Retrieve the information needed to launch this dispatch using the IMS LTI 1.1 specification. This information is then provided to the platform so it can launch this dispatch. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(DispatchLtiInfoSchema, Fixnum, Hash)>] DispatchLtiInfoSchema data, response status code and response headers
+    # @return [Array<(DispatchLtiInfoSchema, Integer, Hash)>] DispatchLtiInfoSchema data, response status code and response headers
     def get_lti_dispatch_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.get_lti_dispatch ...'
@@ -1710,7 +1716,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_destination_tags_with_http_info(destination_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.put_destination_tags ...'
@@ -1768,7 +1774,7 @@ module RusticiSoftwareCloudV2
     # Applies all of the provided tags on all of the provided destinations.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetDestinations). 
     # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_destination_tags_batch_with_http_info(batch, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.put_destination_tags_batch ...'
@@ -1824,7 +1830,7 @@ module RusticiSoftwareCloudV2
     # @param dispatch_id Identifier for the dispatch
     # @param tags 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_dispatch_tags_with_http_info(dispatch_id, tags, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.put_dispatch_tags ...'
@@ -1882,7 +1888,7 @@ module RusticiSoftwareCloudV2
     # Applies all of the provided tags on all of the provided dispatches.  Tags are used to easily identify resources. Adding tags can enable more refined searches when making calls to certain endpoints (e.g. GetDispatches). 
     # @param batch Array of ids, and array of tags for bulk tag operations
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def put_dispatch_tags_batch_with_http_info(batch, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.put_dispatch_tags_batch ...'
@@ -1936,7 +1942,7 @@ module RusticiSoftwareCloudV2
     # Clears the registration count for all dispatches distributed to the destination.  This resets the registration counter on the dispatch itself, but has no effect on the existing registrations.  Can be used in situations where the license for the course material has been renewed. 
     # @param destination_id Identifier for the destination
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def reset_destination_dispatch_registration_count_with_http_info(destination_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.reset_destination_dispatch_registration_count ...'
@@ -1990,7 +1996,7 @@ module RusticiSoftwareCloudV2
     # Clears the registration count for the dispatch.  This resets the registration counter on the dispatch itself, but has no effect on the existing registrations.  Can be used in situations where the license for the course material has been renewed. 
     # @param dispatch_id Identifier for the dispatch
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def reset_dispatch_registration_count_with_http_info(dispatch_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.reset_dispatch_registration_count ...'
@@ -2046,7 +2052,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param destination 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_destination_with_http_info(destination_id, destination, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.set_destination ...'
@@ -2106,7 +2112,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param enabled 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_destination_dispatch_enabled_with_http_info(destination_id, enabled, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.set_destination_dispatch_enabled ...'
@@ -2166,7 +2172,7 @@ module RusticiSoftwareCloudV2
     # @param dispatch_id Identifier for the dispatch
     # @param enabled 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def set_dispatch_enabled_with_http_info(dispatch_id, enabled, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.set_dispatch_enabled ...'
@@ -2226,7 +2232,7 @@ module RusticiSoftwareCloudV2
     # @param destination_id Identifier for the destination
     # @param enabled 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_destination_hash_user_info_with_http_info(destination_id, enabled, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.update_destination_hash_user_info ...'
@@ -2286,7 +2292,7 @@ module RusticiSoftwareCloudV2
     # @param dispatch_id Identifier for the dispatch
     # @param dispatch_properties 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_dispatch_with_http_info(dispatch_id, dispatch_properties, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.update_dispatch ...'
@@ -2346,7 +2352,7 @@ module RusticiSoftwareCloudV2
     # @param dispatch_id Identifier for the dispatch
     # @param enabled 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_dispatch_hash_user_info_with_http_info(dispatch_id, enabled, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.update_dispatch_hash_user_info ...'
@@ -2418,7 +2424,7 @@ module RusticiSoftwareCloudV2
     # @option opts [Array<String>] :tags Filter items matching any tag provided (not all)
     # @option opts [String] :filter Optional string which filters results by a specified field (described by filterBy).
     # @option opts [String] :filter_by Optional enum parameter for specifying the field on which to run the filter. 
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def update_dispatches_with_http_info(dispatch_properties, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DispatchApi.update_dispatches ...'

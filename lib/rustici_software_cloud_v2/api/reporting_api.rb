@@ -33,7 +33,7 @@ module RusticiSoftwareCloudV2
     # Get account information 
     # Returns all of the account information for the specified application. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ReportageAccountInfoSchema, Fixnum, Hash)>] ReportageAccountInfoSchema data, response status code and response headers
+    # @return [Array<(ReportageAccountInfoSchema, Integer, Hash)>] ReportageAccountInfoSchema data, response status code and response headers
     def get_account_info_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReportingApi.get_account_info ...'
@@ -86,7 +86,7 @@ module RusticiSoftwareCloudV2
     # @param nav_permission The navigation permissions for this Reportage session
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :admin Grant admin privileges to this Reportage session
-    # @return [Array<(ReportageAuthTokenSchema, Fixnum, Hash)>] ReportageAuthTokenSchema data, response status code and response headers
+    # @return [Array<(ReportageAuthTokenSchema, Integer, Hash)>] ReportageAuthTokenSchema data, response status code and response headers
     def get_reportage_auth_token_with_http_info(nav_permission, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReportingApi.get_reportage_auth_token ...'
@@ -145,7 +145,7 @@ module RusticiSoftwareCloudV2
     # @param auth The Reportage authentication token retrieved from a previous call to &#x60;GET reportageAuth&#x60;
     # @param report_url The Reportage URL to try and access.  Common values are the Reportage homepage &#x60;https://cloud.scorm.com/Reportage/reportage.php?appId&#x3D;{{your appId}}&#x60; or a URL pointing to a specific report within Reportage.  The latter type of URL includes lots of parameters of the report, such as the date range, demographic (via tags), specific course or learner, and so on. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ReportageLinkSchema, Fixnum, Hash)>] ReportageLinkSchema data, response status code and response headers
+    # @return [Array<(ReportageLinkSchema, Integer, Hash)>] ReportageLinkSchema data, response status code and response headers
     def get_reportage_link_with_http_info(auth, report_url, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReportingApi.get_reportage_link ...'

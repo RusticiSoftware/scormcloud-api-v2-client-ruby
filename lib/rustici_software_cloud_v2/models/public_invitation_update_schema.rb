@@ -77,8 +77,6 @@ module RusticiSoftwareCloudV2
 
       if attributes.has_key?(:'registrationCap')
         self.registration_cap = attributes[:'registrationCap']
-      else
-        self.registration_cap = 0
       end
     end
 
@@ -115,7 +113,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [allow_launch, allow_new_registrations, post_back, expiration_date, registration_cap].hash
     end

@@ -30,7 +30,7 @@ module RusticiSoftwareCloudV2
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "Swagger-Codegen/4.0.0/ruby"
+      @user_agent = "Swagger-Codegen/5.0.0/ruby"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent
@@ -43,7 +43,7 @@ module RusticiSoftwareCloudV2
 
     # Call an API with given options.
     #
-    # @return [Array<(Object, Fixnum, Hash)>] an array of 3 elements:
+    # @return [Array<(Object, Integer, Hash)>] an array of 3 elements:
     #   the data deserialized from response body (could be nil), response status code and response headers.
     def call_api(http_method, path, opts = {})
       request = build_request(http_method, path, opts)

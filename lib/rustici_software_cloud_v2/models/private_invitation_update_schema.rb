@@ -39,7 +39,7 @@ module RusticiSoftwareCloudV2
     def self.swagger_types
       {
         :'allow_launch' => :'BOOLEAN',
-        :'invitation_email' => :'InvitationEmailSchema',
+        :'invitation_email' => :'InvitationEmailUpdateSchema',
         :'post_back' => :'PostBackSchema',
         :'expiration_date' => :'DateTime'
       }
@@ -102,7 +102,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [allow_launch, invitation_email, post_back, expiration_date].hash
     end

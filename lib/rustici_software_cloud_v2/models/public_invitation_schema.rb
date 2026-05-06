@@ -20,10 +20,11 @@ module RusticiSoftwareCloudV2
     # Course Id for this Invitation.
     attr_accessor :course_id
 
+    # Title of the course associated with this invitation.
+    attr_accessor :course_title
+
     # Determines if learners are allowed to launch the invitation. If false, the invitation is disabled and no new or existing learners are allowed to launch it. 
     attr_accessor :allow_launch
-
-    attr_accessor :invitation_email
 
     # Determines if new registrations can be created for this public invitation. If false, no new registrations can be created for the invitation, so only learners with existing registrations can access the invitation. 
     attr_accessor :allow_new_registrations
@@ -53,8 +54,8 @@ module RusticiSoftwareCloudV2
       {
         :'id' => :'id',
         :'course_id' => :'courseId',
+        :'course_title' => :'courseTitle',
         :'allow_launch' => :'allowLaunch',
-        :'invitation_email' => :'invitationEmail',
         :'allow_new_registrations' => :'allowNewRegistrations',
         :'url' => :'url',
         :'create_date' => :'createDate',
@@ -71,8 +72,8 @@ module RusticiSoftwareCloudV2
       {
         :'id' => :'String',
         :'course_id' => :'String',
+        :'course_title' => :'String',
         :'allow_launch' => :'BOOLEAN',
-        :'invitation_email' => :'InvitationEmailSchema',
         :'allow_new_registrations' => :'BOOLEAN',
         :'url' => :'String',
         :'create_date' => :'DateTime',
@@ -100,12 +101,12 @@ module RusticiSoftwareCloudV2
         self.course_id = attributes[:'courseId']
       end
 
-      if attributes.has_key?(:'allowLaunch')
-        self.allow_launch = attributes[:'allowLaunch']
+      if attributes.has_key?(:'courseTitle')
+        self.course_title = attributes[:'courseTitle']
       end
 
-      if attributes.has_key?(:'invitationEmail')
-        self.invitation_email = attributes[:'invitationEmail']
+      if attributes.has_key?(:'allowLaunch')
+        self.allow_launch = attributes[:'allowLaunch']
       end
 
       if attributes.has_key?(:'allowNewRegistrations')
@@ -134,8 +135,6 @@ module RusticiSoftwareCloudV2
 
       if attributes.has_key?(:'registrationCap')
         self.registration_cap = attributes[:'registrationCap']
-      else
-        self.registration_cap = 0
       end
 
       if attributes.has_key?(:'registrationCount')
@@ -164,8 +163,8 @@ module RusticiSoftwareCloudV2
       self.class == o.class &&
           id == o.id &&
           course_id == o.course_id &&
+          course_title == o.course_title &&
           allow_launch == o.allow_launch &&
-          invitation_email == o.invitation_email &&
           allow_new_registrations == o.allow_new_registrations &&
           url == o.url &&
           create_date == o.create_date &&
@@ -183,9 +182,9 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
-      [id, course_id, allow_launch, invitation_email, allow_new_registrations, url, create_date, updated, post_back, expiration_date, registration_cap, registration_count].hash
+      [id, course_id, course_title, allow_launch, allow_new_registrations, url, create_date, updated, post_back, expiration_date, registration_cap, registration_count].hash
     end
 
     # Builds the object from hash

@@ -144,7 +144,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [email, first_name, last_name, company, account_type, reg_limit, strict_limit, create_date, usage].hash
     end

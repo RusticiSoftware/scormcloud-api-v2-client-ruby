@@ -33,7 +33,7 @@ module RusticiSoftwareCloudV2
     # Ping the API 
     # Get back a message indicating that the API is working. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(PingSchema, Fixnum, Hash)>] PingSchema data, response status code and response headers
+    # @return [Array<(PingSchema, Integer, Hash)>] PingSchema data, response status code and response headers
     def ping_app_id_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PingApi.ping_app_id ...'

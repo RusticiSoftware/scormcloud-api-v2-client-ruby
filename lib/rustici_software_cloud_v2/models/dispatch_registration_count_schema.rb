@@ -16,6 +16,7 @@ module RusticiSoftwareCloudV2
   class DispatchRegistrationCountSchema
     attr_accessor :registration_count
 
+    # The ISO 8601 TimeStamp (defaults to UTC) at which the registration count for this dispatch was reset. 
     attr_accessor :last_reset_date
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -81,7 +82,7 @@ module RusticiSoftwareCloudV2
     end
 
     # Calculates hash code according to all attributes.
-    # @return [Fixnum] Hash code
+    # @return [Integer] Hash code
     def hash
       [registration_count, last_reset_date].hash
     end
